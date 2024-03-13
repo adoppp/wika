@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 
 export const metadata = {
     title: 'Wika',
@@ -7,15 +7,19 @@ export const metadata = {
 
 interface LayoutProps {
     children: ReactNode;
+    loading: ReactNode;
 };
 
 export default function RootLayout({
     children,
+    loading,
 }: Readonly<LayoutProps>) {
     return (
         <html lang="en">
             <body>
-                {children}
+                <Suspense fallback={loading}>
+                    {children}
+                </Suspense>
             </body>
         </html>
     );

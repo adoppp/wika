@@ -15,14 +15,12 @@ export default function RootLayout({
     children,
 }: Readonly<LayoutProps>) {
     return (
-        <html lang="en">
-            <body>
-                {header}
-                
-                <main>
-                    {children}
-                </main>
-            </body>
-        </html>
+    <>
+        {header}
+        
+        <main>
+            {children}
+        </main>
+    </>
     )
 }
