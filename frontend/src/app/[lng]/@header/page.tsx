@@ -1,7 +1,7 @@
 export default function Header() {
     return (
         <header>
-            <div>
+            <div className="wk_hotPink_50">
                 Header
             </div>
         </header>

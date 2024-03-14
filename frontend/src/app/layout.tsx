@@ -1,4 +1,7 @@
 import { ReactNode, Suspense } from 'react';
+import { Rubik } from 'next/font/google'
+
+const font = Rubik({ subsets: ['latin'], weight: ['300', '400', '500'] }); 
 
 export const metadata = {
     title: 'Wika',
@@ -16,7 +19,7 @@ export default function RootLayout({
 }: Readonly<LayoutProps>) {
     return (
         <html lang="en">
-            <body>
+            <body className={font.className}>
                 <Suspense fallback={loading}>
                     {children}
                 </Suspense>

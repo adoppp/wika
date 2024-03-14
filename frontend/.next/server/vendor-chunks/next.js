@@ -362,6 +362,16 @@ eval("\nObject.defineProperty(exports, \"__esModule\", ({\n    value: true\n}));
 
 /***/ }),
 
+/***/ "(rsc)/./node_modules/next/font/google/target.css?{\"path\":\"src\\\\app\\\\layout.tsx\",\"import\":\"Rubik\",\"arguments\":[{\"subsets\":[\"latin\"],\"weight\":[\"300\",\"400\",\"500\"]}],\"variableName\":\"font\"}":
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/next/font/google/target.css?{"path":"src\\app\\layout.tsx","import":"Rubik","arguments":[{"subsets":["latin"],"weight":["300","400","500"]}],"variableName":"font"} ***!
+  \******************************************************************************************************************************************************************************************/
+/***/ ((module) => {
+
+eval("// Exports\nmodule.exports = {\n\t\"style\": {\"fontFamily\":\"'__Rubik_5a418d', '__Rubik_Fallback_5a418d'\",\"fontStyle\":\"normal\"},\n\t\"className\": \"__className_5a418d\"\n};\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvbmV4dC9mb250L2dvb2dsZS90YXJnZXQuY3NzP3tcInBhdGhcIjpcInNyY1xcXFxhcHBcXFxcbGF5b3V0LnRzeFwiLFwiaW1wb3J0XCI6XCJSdWJpa1wiLFwiYXJndW1lbnRzXCI6W3tcInN1YnNldHNcIjpbXCJsYXRpblwiXSxcIndlaWdodFwiOltcIjMwMFwiLFwiNDAwXCIsXCI1MDBcIl19XSxcInZhcmlhYmxlTmFtZVwiOlwiZm9udFwifSIsIm1hcHBpbmdzIjoiQUFBQTtBQUNBO0FBQ0EsV0FBVyxnRkFBZ0Y7QUFDM0Y7QUFDQSIsInNvdXJjZXMiOlsid2VicGFjazovL3dpa2EvLi9ub2RlX21vZHVsZXMvbmV4dC9mb250L2dvb2dsZS90YXJnZXQuY3NzP2ZhZTkiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gRXhwb3J0c1xubW9kdWxlLmV4cG9ydHMgPSB7XG5cdFwic3R5bGVcIjoge1wiZm9udEZhbWlseVwiOlwiJ19fUnViaWtfNWE0MThkJywgJ19fUnViaWtfRmFsbGJhY2tfNWE0MThkJ1wiLFwiZm9udFN0eWxlXCI6XCJub3JtYWxcIn0sXG5cdFwiY2xhc3NOYW1lXCI6IFwiX19jbGFzc05hbWVfNWE0MThkXCJcbn07XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/next/font/google/target.css?{\"path\":\"src\\\\app\\\\layout.tsx\",\"import\":\"Rubik\",\"arguments\":[{\"subsets\":[\"latin\"],\"weight\":[\"300\",\"400\",\"500\"]}],\"variableName\":\"font\"}\n");
+
+/***/ }),
+
 /***/ "(ssr)/./node_modules/next/dist/client/add-base-path.js":
 /*!********************************************************!*\
   !*** ./node_modules/next/dist/client/add-base-path.js ***!

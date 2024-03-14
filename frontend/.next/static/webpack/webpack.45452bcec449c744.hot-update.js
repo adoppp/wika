@@ -9,9 +9,18 @@
  */
 self["webpackHotUpdate_N_E"]("webpack",{},
 /******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ /* webpack/runtime/get mini-css chunk filename */
+/******/ !function() {
+/******/ 	// This function allow to reference all chunks
+/******/ 	__webpack_require__.miniCssF = function(chunkId) {
+/******/ 		// return url for filenames based on template
+/******/ 		return undefined;
+/******/ 	};
+/******/ }();
+/******/ 
 /******/ /* webpack/runtime/getFullHash */
 /******/ !function() {
-/******/ 	__webpack_require__.h = function() { return "0af36c6171f2c582"; }
+/******/ 	__webpack_require__.h = function() { return "8e4ae0a1736d518f"; }
 /******/ }();
 /******/ 
 /******/ }
