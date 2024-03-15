@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: {
       th_accent: '#FE59C2',
@@ -41,23 +41,46 @@ const config: Config = {
       green_success: '#39ff14'
     },
     fontSize: {
-      xs: '12px',
-      xs_10: '68px',
-      sm: '14px',
-      base: '16px',
-      lg: '18px',
-      xl: '20px',
-      xl_2: '22px',
-      xl_3: '24px',
-      xl_4: '30px',
-      xl_5: '36px',
-      xl_6: '42px',
-      xl_7: '44px',
-      xl_8: '50px',
-      xl_9: '56px',
+      'text_xs': '12px',
+      'text_10xs': ['68px', {
+        lineHeight: '100%',
+      }],
+      'text_sm': '14px',
+      'text_base': '16px',
+      'text_lg': '18px',
+      'text_xl': '20px',
+      'text_xl_150lH': ['20px', {
+        lineHeight: '150%',
+      }],
+      'text_2xl': '22px',
+      'text_3xl': '24px',
+      'text_4xl': '30px',
+      'text_5xl': '36px',
+      'text_6xl': '42px',
+      'text_7xl': '44px',
+      'text_8xl': '50px',
+      'text_9xl': '56px',
+      'title_xs': '32px',
+      'title_sm': '57px',
+      'title_base': '60px',
+      'title_lg': '80px',
+      'button_xs': ['14px', {
+        lineHeight: '100%'
+      }],
+      'button_sm': ['16px', {
+        lineHeight: '100%'
+      }],
+      'button_base': ['34px', {
+        lineHeight: '100%'
+      }]
     },
     fontFamily: {
       sans: ['Rubik', 'sans-serif']
+    },
+    screens: {
+      'tablet': '640px',
+      'laptop': '1024px',
+      'desktop': '1280px',
     }
   },
   plugins: [],

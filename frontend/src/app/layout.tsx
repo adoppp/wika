@@ -1,9 +1,12 @@
+import type { Metadata } from "next";
 import { ReactNode, Suspense } from 'react';
 import { Rubik } from 'next/font/google'
 
-const font = Rubik({ subsets: ['latin'], weight: ['300', '400', '500'] }); 
+import "./globals.css";
 
-export const metadata = {
+const font = Rubik({ subsets: ['latin'], weight: ['300', '400', '500', '700'] }); 
+
+export const metadata: Metadata = {
     title: 'Wika',
     description: 'Your online fitness trainer, sport, workout, online, food, trainings, girls',
 };
