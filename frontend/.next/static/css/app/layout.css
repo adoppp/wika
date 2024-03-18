@@ -1053,3 +1053,17 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
+.wk_bg-th_bg_tertiary {
+  --tw-bg-opacity: 1;
+  background-color: rgb(24 24 24 / var(--tw-bg-opacity));
+}
+.wk_text-text_4xl {
+  font-size: 30px;
+}
+.wk_font-500 {
+  font-weight: 500;
+}
+.wk_text-th_accent {
+  --tw-text-opacity: 1;
+  color: rgb(254 89 194 / var(--tw-text-opacity));
+}

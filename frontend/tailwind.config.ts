@@ -74,6 +74,12 @@ const config: Config = {
         lineHeight: '100%'
       }]
     },
+    fontWeight: {
+      '300': '300',
+      '400': '400',
+      '500': '500',
+      '700': '700',
+    },
     fontFamily: {
       sans: ['Rubik', 'sans-serif']
     },
