@@ -84,10 +84,28 @@ const config: Config = {
       sans: ['Rubik', 'sans-serif']
     },
     screens: {
-      'tablet': '640px',
+      'mobile': '420px',
+      'tablet': '768px',
       'laptop': '1024px',
-      'desktop': '1280px',
-    }
+      'desktop': '1440px',
+    },
+    container: {
+      center: true,
+      screens: {
+        sm: '380px',
+        md: '768px',
+        xl: '1440px',
+      }
+    },
+    minWidth: {
+    'mobile': '380px',
+    },
+    maxWidth: {
+      'dekstop': '1440px'
+    },
+    borderRadius: {
+      'large': '20px',
+    },
   },
   plugins: [],
   prefix: 'wk_',
