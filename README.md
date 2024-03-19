@@ -4,7 +4,7 @@
 * [Tailwind](#Tailwind)
 * [svg](#svg)
 
-### Tailwind
+## Tailwind
 
 For use you need to make a space in a className string
 
@@ -14,13 +14,13 @@ For use you need to make a space in a className string
 </Component>
 ```
 
-### svg
+## svg
 
-#### First step:
+### First step:
 
 You need to import your svg in 'utils/svg/imports.ts'
 
-#### Second step:
+### Second step:
 
 You need to add name of svg to literal type:
 
@@ -34,7 +34,7 @@ type Svg =
     'HERE;
 ```
 
-#### Third step:
+### Third step:
 
 add your svg in object:
 
@@ -49,7 +49,7 @@ const svg: Readonly<SvgTypes>= {
 };
 ```
 
-#### Fourth step:
+### Fourth step:
 
 import and use!
 
