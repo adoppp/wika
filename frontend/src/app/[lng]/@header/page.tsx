@@ -1,7 +1,8 @@
 import { useTranslation } from "@/app/i18n";
 import { Language } from "@/app/i18n/settings";
 import Logo from "@/app/components/logo/logo";
-import Menu from '@/../public/svg/menu.svg'
+import BurgerMenu from '@/../public/svg/menu.svg'
+import { svg } from "@/app/utils";
 
 interface PageProps {
     params: {
@@ -21,7 +22,7 @@ export default async function Header({
             className="
             wk_bg-th_bg_tertiary 
             wk_w-fit 
-            wk_min-w-mobile
+            wk_min-w-smallMobile
             wk_max-w-dekstop
             wk_flex 
             wk_flex-row-reverse
@@ -31,22 +32,27 @@ export default async function Header({
             wk_px-[16px] 
             wk_rounded-large 
             wk_absolute 
-            wk_top-[40px] 
+            wk_mt-[80px] 
             wk_left-[50%]
-            /* transfrom */
 
-            /* responsive */
+            wk_translate-x-[-50%] 
+            wk_translate-y-[-50%] 
+            
+            mobile:wk_min-w-mobile
 
             tablet:wk_py-[18px]
-            tablet:wk_top-[50px] 
+            tablet:wk_mt-[100px] 
 
-            dekstop:wk_top-[40px]
+            desktop:wk_mt-[80px]
             "
             >
                 <Logo />
 
+
+
                 <button>
-                    <Menu />
+                    {/* {svg.BurgerMenu} */}
+                    <BurgerMenu />
                 </button>
             </div>
         </header>

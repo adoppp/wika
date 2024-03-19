@@ -33,7 +33,7 @@ export default async function RootLayout({
 }: Readonly<LayoutProps>) {
     return (
         <html lang={lng} dir={dir(lng)}>
-            <body className={font.className}>
+            <body className={`${font.className} wk_bg-th_bg_primaty`}>
                 <Suspense fallback={loading}>
                     {children}
                 </Suspense>
