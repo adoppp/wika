@@ -1,1 +1,1 @@
-export {default as svg} from '@/app/utils/useSvg'
+export {default as svg} from '@/app/utils/svg/svg'

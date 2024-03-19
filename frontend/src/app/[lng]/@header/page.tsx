@@ -1,7 +1,6 @@
 import { useTranslation } from "@/app/i18n";
 import { Language } from "@/app/i18n/settings";
 import Logo from "@/app/components/logo/logo";
-import BurgerMenu from '@/../public/svg/menu.svg'
 import { svg } from "@/app/utils";
 
 interface PageProps {
@@ -51,8 +50,7 @@ export default async function Header({
 
 
                 <button>
-                    {/* {svg.BurgerMenu} */}
-                    <BurgerMenu />
+                    {svg.burgerMenu}
                 </button>
             </div>
         </header>

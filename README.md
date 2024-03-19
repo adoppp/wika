@@ -1,33 +1,68 @@
-### wika.
+# wika.
 
 ## Table of contents
 * [Tailwind](#Tailwind)
+* [svg](#svg)
 
-# Tailwind
+### Tailwind
 
 For use you need make a space in a className string
 
-```
+```ruby
 <Component className=' wk_bg-hotPink_300 '>
     Content
 </Component>
 ```
 
-# svrg/webpack
+### svg
 
-To use svg in component you need just import svg what you need from public/dvg/exmpl/svg.
-Than all you need is just add it as component in your component.
+#### First step:
 
-example:
+You need to import your svg in 'utils/svg/imports.ts'
+
+#### Second step:
+
+You need to add name of svg to literal type:
 
 ```ruby
-import Sun from 'path/to/sun.svg';
+type Svg =
+    'burgerMenu' |
+    'globe' |
+    'handshake' |
+    'apple' |
+    'codeMentor' |
+    'HERE;
+```
 
-export default function Example() {
+#### Third step:
+
+add your svg in object:
+
+```ruby
+const svg: Readonly<SvgTypes>= {
+    burgerMenu: <BurgerMenu />,
+    globe: <Globe />,
+    handshake: <Handshake />,
+    apple: <Apple />,
+    codeMentor: <CodeMentor />,
+    HERE: <HERE />
+};
+```
+
+#### Fourth step:
+
+import and use!
+
+```ruby
+import { svg } from "@/app/utils";
+
+...
+
+export default function Component() {
     return (
-        <div>
-            <Sun/>
-        </div>
-    );
+        <button>
+            {svg.burgerMenu}
+        </button>
+    )
 };
 ```
