@@ -6,7 +6,7 @@
 
 ### Tailwind
 
-For use you need make a space in a className string
+For use you need to make a space in a className string
 
 ```ruby
 <Component className=' wk_bg-hotPink_300 '>
