@@ -1,14 +1,17 @@
 
 
 type EndpointTypes = {
-    about: string;
+    homeUa: string,
+    homeRu: string,
+    about: string,
     services: string,
     photos: string,
     reviews: string
 };
 
 const endpoints: Readonly<EndpointTypes> = {
-    // home: `/${'ua'}`,
+    homeUa: 'ua',
+    homeRu: 'ru',
     about: '#about',
     services: '#services',
     photos: '#photos',

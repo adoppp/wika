@@ -106,6 +106,7 @@ const config: Config = {
         'dekstop': '1440px'
         },
         borderRadius: {
+            'medium': '14px',
             'large': '20px',
         },
     },

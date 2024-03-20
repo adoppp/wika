@@ -9,7 +9,10 @@ export default function NavBar({ t }: Readonly<ComponentProps>) {
     return (
         <ul className=" 
         wk_text-gray_200 
-        wk_flex wk_gap-[38px]
+        wk_hidden 
+        
+        desktop:wk_flex
+        desktop:wk_gap-[38px] 
         ">
             <li className="hover:wk_text-gray_500">
                 <Link href={`${endpoints.about}`}>
