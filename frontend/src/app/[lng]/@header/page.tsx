@@ -1,7 +1,8 @@
 import { useTranslation } from "@/app/i18n";
 import { Language } from "@/app/i18n/settings";
-import Logo from "@/app/components/logo/logo";
 import { svg } from "@/app/utils";
+import Logo from "@/app/components/logo/logo";
+import NavBar from "@/app/ui/navBar/navBar";
 
 interface PageProps {
     params: {
@@ -45,11 +46,11 @@ export default async function Header({
             desktop:wk_mt-[80px]
             "
             >
-                <Logo />
+                <Logo lng={lng} />
 
-
-
-                <button>
+                <NavBar t={t} />
+                
+                <button className='wk_cursor-pointer hover:wk_transition-all hover:wk_stroke-gray_300'>
                     {svg.burgerMenu}
                 </button>
             </div>

@@ -19,7 +19,7 @@ type SvgTypes = {
     [K in Svg]: ReactNode;
 };
 
-const svg: Readonly<SvgTypes>= {
+const svg: Readonly<SvgTypes> = {
     burgerMenu: <BurgerMenu />,
     globe: <Globe />,
     handshake: <Handshake />,
