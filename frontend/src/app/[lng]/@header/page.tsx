@@ -59,7 +59,7 @@ export default async function Header({
                 <LanguageSwitcher lng={lng} />
 
                 <button className='wk_cursor-pointer desktop:wk_hidden'>
-                    <Svg id='burgerMenu' className=" wk_stroke-th_white hover:wk_stroke-th_accent wk_transition-all" />
+                    <Svg id='burgerMenu' className=" wk_stroke-th_white hover:wk_stroke-th_accent" />
                 </button>
 
 

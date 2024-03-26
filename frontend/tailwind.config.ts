@@ -103,12 +103,18 @@ const config: Config = {
             'mobile': '380px',
         },
         maxWidth: {
-        'dekstop': '1440px'
+            'dekstop': '1440px'
         },
         borderRadius: {
             'medium': '14px',
             'large': '20px',
         },
+        transitionTimingFunction: {
+            'wk_quart': 'cubic-bezier(0.76, 0, 0.24, 1)',
+        },
+        transitionDuration: {
+            '400': '400ms',
+        }
     },
     plugins: [],
     prefix: 'wk_',
