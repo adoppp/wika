@@ -20,7 +20,8 @@
     "react-cookie": "^7.1.0",
     "react-dom": "^18",
     "react-i18next": "^14.0.1",
-    "reset-css": "^5.0.2"
+    "reset-css": "^5.0.2",
+    "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

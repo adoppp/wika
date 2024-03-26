@@ -6,7 +6,12 @@ import { dir } from "i18next";
 import { languages } from "./i18n/settings";
 import "./globals.css";
 
-const font = Rubik({ subsets: ['latin'], weight: ['300', '400', '500', '700'] }); 
+const rubik = Rubik({
+    subsets: ['latin'],
+    weight: ['300', '400', '500', '700'],
+    display: 'swap',
+    variable: '--font-rubik'
+}); 
 
 
 export const metadata: Metadata = {
@@ -33,7 +38,7 @@ export default async function RootLayout({
 }: Readonly<LayoutProps>) {
     return (
         <html lang={lng} dir={dir(lng)}>
-            <body className={`${font.className} wk_bg-th_bg_primaty`}>
+            <body className={`${rubik.className} wk_bg-th_bg_primaty`}>
                 <Suspense fallback={loading}>
                     {children}
                 </Suspense>

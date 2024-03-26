@@ -1,6 +1,9 @@
+'use server'
+
 import { useTranslation } from "@/app/i18n";
 import { Language } from "@/app/i18n/settings";
-import { svg } from "@/app/utils";
+import { SvgConventor } from "@/app/utils";
+import Menu from '@/../public/svg/menu.svg'
 import { Logo } from "@/app/components";
 import {
     NavBar,
@@ -56,9 +59,10 @@ export default async function Header({
 
                 <LanguageSwitcher lng={lng} />
 
-                <button className='wk_cursor-pointer hover:wk_transition-all hover:wk_stroke-gray_300 desktop:wk_hidden'>
-                    {svg.burgerMenu}
+                <button className='wk_cursor-pointer desktop:wk_hidden'>
+                    <SvgConventor id='burgerMenu' className=" wk_stroke-th_white hover:wk_stroke-th_accent wk_transition-all" />
                 </button>
+
 
                 <Button button="white">
                     {t('buttonHeader')}

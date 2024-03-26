@@ -1,5 +1,4 @@
-import { ReactNode } from 'react';
-
+import { SvgTypes, SvgProps } from './svg.types';
 import {
     BurgerMenu,
     Globe,
@@ -8,23 +7,20 @@ import {
     CodeMentor
 } from './imports';
 
-type Svg =
-    'burgerMenu' |
-    'globe' |
-    'handshake' |
-    'apple' |
-    'codeMentor';
-
-type SvgTypes = {
-    [K in Svg]: ReactNode;
-};
-
 const svg: Readonly<SvgTypes> = {
-    burgerMenu: <BurgerMenu />,
-    globe: <Globe />,
-    handshake: <Handshake />,
-    apple: <Apple />,
-    codeMentor: <CodeMentor />
+    burgerMenu: ({ className }) => <BurgerMenu className={className} />,
+    globe: ({ className }) => <Globe className={className} />,
+    handshake: ({ className }) => <Handshake className={className} />,
+    apple: ({ className }) => <Apple className={className} />,
+    codeMentor: ({ className }) => <CodeMentor className={className} />
 };
 
-export default svg;
+function SvgConventor({ className, id }: Readonly<SvgProps>) {
+    const svgComponent = svg[id];
+    if (svgComponent) {
+        return svgComponent({ className });
+    }
+    return null;
+}
+
+export default SvgConventor;
