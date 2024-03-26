@@ -15,12 +15,10 @@ const svg: Readonly<SvgTypes> = {
     codeMentor: ({ className }) => <CodeMentor className={className} />
 };
 
-function SvgConventor({ className, id }: Readonly<SvgProps>) {
-    const svgComponent = svg[id];
-    if (svgComponent) {
-        return svgComponent({ className });
-    }
-    return null;
+function Svg({ className, id }: Readonly<SvgProps>) {
+    const SvgComponent = svg[id];
+    
+    return SvgComponent ? SvgComponent({ className }) : null;
 }
 
-export default SvgConventor;
+export default Svg;

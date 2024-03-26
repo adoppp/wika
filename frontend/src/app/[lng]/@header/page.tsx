@@ -2,8 +2,7 @@
 
 import { useTranslation } from "@/app/i18n";
 import { Language } from "@/app/i18n/settings";
-import { SvgConventor } from "@/app/utils";
-import Menu from '@/../public/svg/menu.svg'
+import { Svg } from "@/app/utils";
 import { Logo } from "@/app/components";
 import {
     NavBar,
@@ -60,7 +59,7 @@ export default async function Header({
                 <LanguageSwitcher lng={lng} />
 
                 <button className='wk_cursor-pointer desktop:wk_hidden'>
-                    <SvgConventor id='burgerMenu' className=" wk_stroke-th_white hover:wk_stroke-th_accent wk_transition-all" />
+                    <Svg id='burgerMenu' className=" wk_stroke-th_white hover:wk_stroke-th_accent wk_transition-all" />
                 </button>
 
 
