@@ -1,17 +1,10 @@
-import { ReactNode } from "react";
-
-type Svg =
-    'burgerMenu' |
-    'globe' |
-    'handshake' |
-    'apple' |
-    'codeMentor';
+type Svg = 'burgerMenu' | 'globe' | 'handshake' | 'apple' | 'codeMentor';
 
 export type SvgTypes = {
-    [K in Svg]: (props: { className?: string }) => ReactNode;
+  [K in Svg]: (props: { className?: string }) => JSX.Element;
 };
 
 export interface SvgProps {
-    className?: string,
-    id: Svg,
+  className?: string;
+  id: Svg;
 }

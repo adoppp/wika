@@ -1,1 +1,3 @@
-export { default as Logo } from '@/app/components/logo/logo';
+export * from './admin';
+export * from './aux';
+export * from './ui';
