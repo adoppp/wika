@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "accept-language": "^3.0.18",
     "clsx": "^2.1.0",
     "i18next": "^23.8.1",
@@ -24,7 +25,6 @@
     "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
-    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
