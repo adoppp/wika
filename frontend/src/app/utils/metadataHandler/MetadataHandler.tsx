@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-import { MetadataHandlerProps } from '../MetadataHandler';
+import { MetadataHandlerProps } from '../metadataHandler';
 
 export default function MetadataHandler({
   lang,

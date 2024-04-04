@@ -10,7 +10,7 @@ interface PageProps {
   };
 }
 
-export default async function Header({ params: { lng } }: Readonly<PageProps>) {
+export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'header');
 
   return (
@@ -29,7 +29,7 @@ export default async function Header({ params: { lng } }: Readonly<PageProps>) {
         
         smallMobile:wk_w-[calc(100%-48px)]
         tablet:wk_w-[calc(100%-128px)]
-        desktop:wk_w-[calc(100%-112px)]
+        desktop:wk_w-[1328px]
         
         wk_px-[22px]
         wk_py-[16px]
@@ -58,9 +58,7 @@ export default async function Header({ params: { lng } }: Readonly<PageProps>) {
       <div className="smallMobile:wk_hidden tablet:wk_flex wk_items-center wk_gap-[20px]">
         <LanguageSwitcher lng={lng} location="header" />
 
-        <Button color="white" type="button">
-          {t('button')}
-        </Button>
+        <Button color="white" type="button" lng={lng} />
       </div>
     </header>
   );

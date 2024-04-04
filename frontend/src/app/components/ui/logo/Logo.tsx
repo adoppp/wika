@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { LogoProps } from '../Logo';
+import { LogoProps } from '../logo';
 
 export default function Logo({ lng }: Readonly<LogoProps>) {
   return (

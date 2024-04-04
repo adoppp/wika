@@ -44,7 +44,7 @@ const config: Config = {
     fontSize: {
       title_mob: ['32px', { lineHeight: `${40 / 32}` }],
       title_tab: ['56px', { lineHeight: `${68 / 56}` }],
-      title_desc: ['60px', { lineHeight: `${72 / 60}` }],
+      title_desk: ['60px', { lineHeight: `${72 / 60}` }],
       //   text_xs: '12px',
       //   text_10xs: [
       //     '68px',
@@ -126,16 +126,26 @@ const config: Config = {
       desktop: '1440px',
     },
     borderRadius: {
-      //   medium: '14px',
-      //     large: '20px',
       '14': '14px',
       '20': '20px',
+      '25': '25px',
+      '50': '50px',
     },
     transitionTimingFunction: {
       wk_quart: 'cubic-bezier(0.76, 0, 0.24, 1)',
     },
     transitionDuration: {
       '400': '400ms',
+    },
+    extend: {
+      backgroundImage: {
+        hero_pattern_smallMob:
+          'image-set(url(../../public/images/hero_mobile.webp) 1x type("image/webp"), url(../../public/images/hero_mobile@2x.webp) 2x type("image/webp"), url(../../public/images/hero_mobile@3x.webp) 3x type("image/webp"), url(../../public/images/hero_mobile.jpg) 1x type("image/jpeg"), url(../../public/images/hero_mobile@2x.jpg) 2x type("image/jpeg"), url(../../public/images/hero_mobile@3x.jpg) 3x type("image/jpeg"))',
+        hero_pattern_mob:
+          'image-set(url(../../public/images/hero_tablet.webp) 1x type("image/webp"), url(../../public/images/hero_tablet@2x.webp) 2x type("image/webp"), url(../../public/images/hero_tablet@3x.webp) 3x type("image/webp"), url(../../public/images/hero_tablet.jpg) 1x type("image/jpeg"), url(../../public/images/hero_tablet@2x.jpg) 2x type("image/jpeg"), url(../../public/images/hero_tablet@3x.jpg) 3x type("image/jpeg"))',
+        hero_pattern_tab:
+          'image-set(url(../../public/images/hero_desktop.webp) 1x type("image/webp"), url(../../public/images/hero_desktop@2x.webp) 2x type("image/webp"), url(../../public/images/hero_desktop@3x.webp) 3x type("image/webp"), url(../../public/images/hero_desktop.jpg) 1x type("image/jpeg"), url(../../public/images/hero_desktop@2x.jpg) 2x type("image/jpeg"), url(../../public/images/hero_desktop@3x.jpg) 3x type("image/jpeg"))',
+      },
     },
   },
   plugins: [],

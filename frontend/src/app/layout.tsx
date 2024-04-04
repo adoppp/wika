@@ -17,7 +17,7 @@ interface LayoutProps {
 export default async function RootLayout({ children }: Readonly<LayoutProps>) {
   return (
     <html>
-      <body className={`${rubik.className} wk_bg-th_bg_primary p-10`}>
+      <body className={`${rubik.className} wk_bg-th_bg_primary wk_p-[12px]`}>
         {children}
       </body>
     </html>

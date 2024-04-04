@@ -1,9 +1,9 @@
-import { CSSProperties, ReactNode } from 'react';
+import { Language } from '@/app/i18n/settings';
 
 interface ButtonProps {
   type?: 'submit' | 'button' | 'reset';
-  children: ReactNode;
   color: 'white' | 'pink';
+  lng: Language;
   className?: string;
   onClick?: () => void;
 }

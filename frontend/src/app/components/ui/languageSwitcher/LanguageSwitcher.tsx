@@ -3,7 +3,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 
 import { languages } from '@/app/i18n/settings';
-import { LanguageSwitcherProps } from '../LanguageSwitcher';
+import { LanguageSwitcherProps } from '../languageSwitcher';
 import { cn } from '@/app/utils';
 
 export default function LanguageSwitcher({

@@ -7,6 +7,8 @@ import { MetadataHandler } from '../utils';
 
 interface LayoutProps {
   header: ReactNode;
+  hero: ReactNode;
+  services: ReactNode;
   children: ReactNode;
   params: {
     lng: string;
@@ -44,8 +46,10 @@ export async function generateStaticParams() {
   return languages.map(lng => ({ lng }));
 }
 
-export default function RootLayout({
+export default function Layout({
   header,
+  hero,
+  services,
   children,
   params: { lng },
 }: Readonly<LayoutProps>) {
@@ -55,7 +59,11 @@ export default function RootLayout({
 
       {header}
 
-      <main>{children}</main>
+      <main>
+        {hero}
+        {services}
+        {children}
+      </main>
     </>
   );
 }

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { cn, endpoints } from '@/app/utils';
 
-import { NavBarProps } from '../NavBar';
+import { NavBarProps } from '../navBar';
 
 export default function NavBar({ t, location }: Readonly<NavBarProps>) {
   return (
