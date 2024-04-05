@@ -24,12 +24,12 @@ export async function generateMetadata({
 
   switch (lng) {
     case 'uk':
-      title = 'Wika. Твоя персональна фітнес тренерка';
+      title = 'Твоя персональна фітнес тренерка';
       description = '';
       break;
 
     case 'ru':
-      title = 'Wika. Твой персональный фитнес тренер';
+      title = 'Твой персональный фитнес тренер';
       description = '';
       break;
 
