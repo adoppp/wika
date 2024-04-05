@@ -9,7 +9,7 @@ interface LayoutProps {
   header: ReactNode;
   hero: ReactNode;
   services: ReactNode;
-  children: ReactNode;
+  call: ReactNode;
   params: {
     lng: string;
   };
@@ -50,7 +50,7 @@ export default function Layout({
   header,
   hero,
   services,
-  children,
+  call,
   params: { lng },
 }: Readonly<LayoutProps>) {
   return (
@@ -62,7 +62,7 @@ export default function Layout({
       <main>
         {hero}
         {services}
-        {children}
+        {call}
       </main>
     </>
   );
