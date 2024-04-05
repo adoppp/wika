@@ -16,7 +16,7 @@ interface LayoutProps {
 
 export default async function RootLayout({ children }: Readonly<LayoutProps>) {
   return (
-    <html>
+    <html className="wk_scroll-smooth">
       <body className={`${rubik.className} wk_bg-th_bg_primary wk_p-[12px]`}>
         {children}
       </body>

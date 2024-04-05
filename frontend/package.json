@@ -12,6 +12,7 @@
     "@svgr/webpack": "^8.1.0",
     "accept-language": "^3.0.18",
     "clsx": "^2.1.0",
+    "date-fns": "^3.6.0",
     "i18next": "^23.8.1",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-resources-to-backend": "^1.2.0",
@@ -21,6 +22,7 @@
     "react-cookie": "^7.1.0",
     "react-dom": "^18",
     "react-i18next": "^14.0.1",
+    "react-player": "^2.15.1",
     "reset-css": "^5.0.2",
     "tailwind-merge": "^2.2.2"
   },

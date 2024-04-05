@@ -6,6 +6,8 @@ import CodeMentor from 'public/svg/codementor.svg';
 import Telegram from 'public/svg/telegram.svg';
 import Instagram from 'public/svg/instagram.svg';
 import Tiktok from 'public/svg/tiktok.svg';
+import ArrowCorner from 'public/svg/arrowCorner.svg';
+import ArrowSide from 'public/svg/arrowSide.svg';
 
 export {
   BurgerMenu,
@@ -16,4 +18,6 @@ export {
   Telegram,
   Instagram,
   Tiktok,
+  ArrowCorner,
+  ArrowSide,
 };

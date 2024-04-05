@@ -6,7 +6,9 @@ type Svg =
   | 'codeMentor'
   | 'telegram'
   | 'instagram'
-  | 'tiktok';
+  | 'tiktok'
+  | 'arrowCorner'
+  | 'arrowSide';
 
 export type SvgTypes = {
   [K in Svg]: (props: { className?: string }) => JSX.Element;

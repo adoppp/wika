@@ -14,12 +14,10 @@ export default function LanguageSwitcher({
     <ul
       className={cn(
         location === 'header' &&
-          `wk_hidden desktop:wk_flex desktop:wk_gap-[8px] wk_text-[20px] wk_leading-[${
-            24 / 20
-          }]`,
+          'wk_hidden desktop:wk_flex desktop:wk_gap-[8px] wk_text-[20px] wk_leading-[calc(24/20)]',
 
         location === 'mob_menu' &&
-          `wk_flex wk_gap-[12px] wk_text-[42px] wk_leading-[${52 / 42}]`,
+          'wk_flex wk_gap-[12px] wk_text-[42px] wk_leading-[calc(52/42)]',
       )}
     >
       {languages.map((language: string): ReactNode => {

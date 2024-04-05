@@ -10,6 +10,8 @@ import {
   Telegram,
   Instagram,
   Tiktok,
+  ArrowCorner,
+  ArrowSide,
 } from './imports';
 
 const transition = 'wk_ease-wk_quart wk_duration-400';
@@ -38,6 +40,12 @@ const svg: Readonly<SvgTypes> = {
   ),
   tiktok: ({ className }) => (
     <Tiktok className={twMerge(transition, className)} />
+  ),
+  arrowCorner: ({ className }) => (
+    <ArrowCorner className={twMerge(transition, className)} />
+  ),
+  arrowSide: ({ className }) => (
+    <ArrowSide className={twMerge(transition, className)} />
   ),
 };
 

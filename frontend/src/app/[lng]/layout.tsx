@@ -8,6 +8,7 @@ import { MetadataHandler } from '../utils';
 interface LayoutProps {
   header: ReactNode;
   hero: ReactNode;
+  about: ReactNode;
   services: ReactNode;
   call: ReactNode;
   footer: ReactNode;
@@ -50,6 +51,7 @@ export async function generateStaticParams() {
 export default function Layout({
   header,
   hero,
+  about,
   services,
   call,
   footer,
@@ -63,6 +65,7 @@ export default function Layout({
 
       <main className="wk_mb-[12px]">
         {hero}
+        {about}
         {services}
         {call}
       </main>

@@ -20,11 +20,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         {t('title')}
       </h2>
 
-      <p
-        className={`wk_max-w-[492px] wk_mx-auto wk_mb-[40px] tablet:wk_mb-[52px] desktop:wk_mb-[80px] wk_text-[20px] wk_leading-[${
-          32 / 20
-        }] wk_font-300 wk_text-center wk_text-gray_300`}
-      >
+      <p className="wk_max-w-[492px] wk_mx-auto wk_mb-[40px] tablet:wk_mb-[52px] desktop:wk_mb-[80px] wk_text-[20px] wk_leading-[calc(32/20)] wk_font-300 wk_text-center wk_text-gray_300">
         {t('text')}
       </p>
 

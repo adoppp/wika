@@ -15,20 +15,16 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
             }px]`,
 
           location === 'mob_menu' &&
-            `wk_text-[42px] wk_leading-[${50 / 42}] wk_text-th_white`,
+            'wk_text-[42px] wk_leading-[calc(50/42)] wk_text-th_white',
 
           location === 'footer' &&
-            `wk_items-center wk_text-[22px] wk_leading-[${
-              22 / 18
-            }] tablet:wk_flex-row tablet:wk_gap-[38px]`,
+            'wk_items-center wk_text-[22px] wk_leading-[calc(22/18)] tablet:wk_flex-row tablet:wk_gap-[38px]',
 
           location === 'header' &&
             'desktop:wk_flex desktop:wk_flex-row desktop:wk_gap-[38px]',
 
           location !== 'mob_menu' &&
-            `desktop:wk_text-[20px] desktop:wk_leading-[${
-              24 / 20
-            }] wk_text-gray_200`,
+            'desktop:wk_text-[20px] desktop:wk_leading-[calc(24/20)] wk_text-gray_200',
         )}
       >
         <li>

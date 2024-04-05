@@ -34,7 +34,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
 
           <li>
             <a
-              href="#"
+              href="https://www.instagram.com/viksi_fitness"
               target="_blank"
               aria-label={t('ariaLabelIg')}
               className="wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none"
@@ -45,7 +45,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
 
           <li>
             <a
-              href="#"
+              href="https://www.tiktok.com/@viksi_fitness"
               target="_blank"
               aria-label={t('ariaLabelTt')}
               className="wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none"
@@ -56,13 +56,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         </ul>
       </div>
 
-      <p
-        className={`wk_text-[12px] wk_leading-[${
-          16 / 12
-        }] tablet:wk_text-[16px] tablet:wk_leading-[${
-          20 / 16
-        }] wk_text-center wk_text-gray_700`}
-      >
+      <p className="wk_text-[12px] wk_leading-[calc(16/12)] tablet:wk_text-[16px] tablet:wk_leading-[calc(20/16)] wk_text-center wk_text-gray_700">
         {t('copyrightStart')}
 
         <a
