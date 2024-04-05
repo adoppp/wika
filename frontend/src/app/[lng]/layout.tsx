@@ -10,6 +10,7 @@ interface LayoutProps {
   hero: ReactNode;
   services: ReactNode;
   call: ReactNode;
+  footer: ReactNode;
   params: {
     lng: string;
   };
@@ -51,6 +52,7 @@ export default function Layout({
   hero,
   services,
   call,
+  footer,
   params: { lng },
 }: Readonly<LayoutProps>) {
   return (
@@ -59,11 +61,13 @@ export default function Layout({
 
       {header}
 
-      <main>
+      <main className="wk_mb-[12px]">
         {hero}
         {services}
         {call}
       </main>
+
+      {footer}
     </>
   );
 }

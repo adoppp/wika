@@ -1,7 +1,16 @@
 import { twMerge } from 'tailwind-merge';
 
 import { SvgTypes, SvgProps } from './svg.types';
-import { BurgerMenu, Globe, Handshake, Apple, CodeMentor } from './imports';
+import {
+  BurgerMenu,
+  Globe,
+  Handshake,
+  Apple,
+  CodeMentor,
+  Telegram,
+  Instagram,
+  Tiktok,
+} from './imports';
 
 const transition = 'wk_ease-wk_quart wk_duration-400';
 
@@ -20,6 +29,15 @@ const svg: Readonly<SvgTypes> = {
   ),
   codeMentor: ({ className }) => (
     <CodeMentor className={twMerge(transition, className)} />
+  ),
+  telegram: ({ className }) => (
+    <Telegram className={twMerge(transition, className)} />
+  ),
+  instagram: ({ className }) => (
+    <Instagram className={twMerge(transition, className)} />
+  ),
+  tiktok: ({ className }) => (
+    <Tiktok className={twMerge(transition, className)} />
   ),
 };
 

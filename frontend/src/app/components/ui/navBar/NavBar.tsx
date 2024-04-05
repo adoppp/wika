@@ -18,7 +18,7 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
             `wk_text-[42px] wk_leading-[${50 / 42}] wk_text-th_white`,
 
           location === 'footer' &&
-            `wk_text-[22px] wk_leading-[${
+            `wk_items-center wk_text-[22px] wk_leading-[${
               22 / 18
             }] tablet:wk_flex-row tablet:wk_gap-[38px]`,
 
@@ -34,7 +34,7 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
         <li>
           <Link
             href={`${endpoints.about}`}
-            className="wk_transition-text hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
           >
             {t('nav_1')}
           </Link>
@@ -43,7 +43,7 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
         <li>
           <Link
             href={`${endpoints.services}`}
-            className="wk_transition-text hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
           >
             {t('nav_2')}
           </Link>
@@ -52,7 +52,7 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
         <li>
           <Link
             href={`${endpoints.photos}`}
-            className="wk_transition-text hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
           >
             {t('nav_3')}
           </Link>
@@ -61,7 +61,7 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
         <li>
           <Link
             href={`${endpoints.reviews} `}
-            className="wk_transition-text hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
           >
             {t('nav_4')}
           </Link>

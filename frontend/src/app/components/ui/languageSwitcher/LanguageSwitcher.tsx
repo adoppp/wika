@@ -33,7 +33,7 @@ export default function LanguageSwitcher({
                       location === 'header' ? 'th_white' : 'th_accent'
                     }`
                   : 'wk_text-gray_300',
-                'wk_transition-text hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500',
+                'wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500',
               )}
             >
               {(language.includes('uk') && 'Укр') ||
