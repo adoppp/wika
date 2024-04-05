@@ -56,7 +56,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         </ul>
       </div>
 
-      <p className="wk_text-[12px] wk_leading-[calc(16/12)] tablet:wk_text-[16px] tablet:wk_leading-[calc(20/16)] wk_text-center wk_text-gray_700">
+      <p className="wk_text-[12px] wk_leading-[calc(16/12)] tablet:wk_text-[16px] tablet:wk_leading-[calc(20/16)] wk_text-center wk_text-gray_300">
         {t('copyrightStart')}
 
         <a
