@@ -15,36 +15,52 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
             }px]`,
 
           location === 'mob_menu' &&
-            `wk_text-[42px] wk_leading-[${50 / 42}] wk_text-th_white`,
+            'wk_text-[42px] wk_leading-[calc(50/42)] wk_text-th_white',
 
           location === 'footer' &&
-            `wk_text-[22px] wk_leading-[${
-              22 / 18
-            }] tablet:wk_flex-row tablet:wk_gap-[38px]`,
+            'wk_items-center wk_text-[22px] wk_leading-[calc(22/18)] tablet:wk_flex-row tablet:wk_gap-[38px]',
 
           location === 'header' &&
-            ' desktop:wk_flex desktop:wk_flex-row desktop:wk_gap-[38px]',
+            'desktop:wk_flex desktop:wk_flex-row desktop:wk_gap-[38px]',
 
           location !== 'mob_menu' &&
-            `desktop:wk_text-[20px] desktop:wk_leading-[${
-              24 / 20
-            }] wk_text-gray_200`,
+            'desktop:wk_text-[20px] desktop:wk_leading-[calc(24/20)] wk_text-gray_200',
         )}
       >
-        <li className="hover:wk_text-gray_500">
-          <Link href={`${endpoints.about}`}>{t('nav_1')}</Link>
+        <li>
+          <Link
+            href={`${endpoints.about}`}
+            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+          >
+            {t('nav_1')}
+          </Link>
         </li>
 
-        <li className="hover:wk_text-gray_500">
-          <Link href={`${endpoints.services}`}>{t('nav_2')}</Link>
+        <li>
+          <Link
+            href={`${endpoints.services}`}
+            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+          >
+            {t('nav_2')}
+          </Link>
         </li>
 
-        <li className="hover:wk_text-gray_500">
-          <Link href={`${endpoints.photos}`}>{t('nav_3')}</Link>
+        <li>
+          <Link
+            href={`${endpoints.photos}`}
+            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+          >
+            {t('nav_3')}
+          </Link>
         </li>
 
-        <li className="hover:wk_text-gray_500">
-          <Link href={`${endpoints.reviews}`}>{t('nav_4')}</Link>
+        <li>
+          <Link
+            href={`${endpoints.reviews} `}
+            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+          >
+            {t('nav_4')}
+          </Link>
         </li>
       </ul>
     </nav>

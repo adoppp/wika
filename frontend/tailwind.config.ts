@@ -129,6 +129,7 @@ const config: Config = {
       '14': '14px',
       '20': '20px',
       '25': '25px',
+      '40': '40px',
       '50': '50px',
     },
     transitionTimingFunction: {

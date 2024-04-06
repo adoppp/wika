@@ -12,6 +12,7 @@ interface PageProps {
 
 export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'header');
+  const { t: navT } = await useTranslation(lng, 'navBar');
 
   return (
     <header
@@ -39,11 +40,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         wk_bg-th_bg_tertiary
         "
     >
-      <div className="wk_w-[152px] desktop:wk_w-[248px]">
-        <Logo lng={lng} />
-      </div>
+      <Logo lng={lng} className="wk_w-[152px] desktop:wk_w-[248px]" />
 
-      <NavBar t={t} location="header" />
+      <NavBar t={navT} location="header" />
 
       <button
         className="wk_cursor-pointer desktop:wk_hidden"

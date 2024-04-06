@@ -8,8 +8,10 @@ import { MetadataHandler } from '../utils';
 interface LayoutProps {
   header: ReactNode;
   hero: ReactNode;
+  about: ReactNode;
   services: ReactNode;
-  children: ReactNode;
+  call: ReactNode;
+  footer: ReactNode;
   params: {
     lng: string;
   };
@@ -23,12 +25,12 @@ export async function generateMetadata({
 
   switch (lng) {
     case 'uk':
-      title = 'Wika. Твоя персональна фітнес тренерка';
+      title = 'Твоя персональна фітнес тренерка';
       description = '';
       break;
 
     case 'ru':
-      title = 'Wika. Твой персональный фитнес тренер';
+      title = 'Твой персональный фитнес тренер';
       description = '';
       break;
 
@@ -49,8 +51,10 @@ export async function generateStaticParams() {
 export default function Layout({
   header,
   hero,
+  about,
   services,
-  children,
+  call,
+  footer,
   params: { lng },
 }: Readonly<LayoutProps>) {
   return (
@@ -59,11 +63,14 @@ export default function Layout({
 
       {header}
 
-      <main>
+      <main className="wk_mb-[12px]">
         {hero}
+        {about}
         {services}
-        {children}
+        {call}
       </main>
+
+      {footer}
     </>
   );
 }
