@@ -1,0 +1,1 @@
+export type { PageProps } from '@/app/types/global';

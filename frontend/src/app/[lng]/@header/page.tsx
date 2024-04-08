@@ -1,18 +1,15 @@
 import { Logo, NavBar, LanguageSwitcher, Button } from '@/app/components';
 
 import { useTranslation } from '@/app/i18n';
-import { Language } from '@/app/i18n/settings';
+import { PageProps } from '@/app/types';
 import { Svg } from '@/app/utils';
+import Link from 'next/link';
 
-interface PageProps {
-  params: {
-    lng: Language;
-  };
-}
 
-export default async function Page({ params: { lng } }: Readonly<PageProps>) {
+export default async function Page({ params: { lng }, searchParams }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'header');
   const { t: navT } = await useTranslation(lng, 'navBar');
+  const showMobMenu: boolean = searchParams?.mobMenu ? true : false;
 
   return (
     <header
@@ -44,7 +41,8 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
 
       <NavBar t={navT} location="header" />
 
-      <button
+      <Link
+        href='?mobMenu=true'
         className="wk_cursor-pointer desktop:wk_hidden"
         aria-label={t('burger_aria_label')}
       >
@@ -52,7 +50,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
           id="burgerMenu"
           className="wk_stroke-th_white hover:wk_stroke-th_accent"
         />
-      </button>
+      </Link>
 
       <div className="smallMobile:wk_hidden tablet:wk_flex wk_items-center wk_gap-[20px]">
         <LanguageSwitcher lng={lng} location="header" />

@@ -1,12 +1,7 @@
 import { Button } from '@/app/components';
 import { useTranslation } from '@/app/i18n';
-import { Language } from '@/app/i18n/settings';
+import { PageProps } from '@/app/types';
 
-interface PageProps {
-  params: {
-    lng: Language;
-  };
-}
 
 export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'call');

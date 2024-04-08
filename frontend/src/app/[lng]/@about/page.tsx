@@ -2,17 +2,11 @@ import { AboutText, Statistics } from '@/app/components';
 import { transition } from '@/app/constants';
 
 import { useTranslation } from '@/app/i18n';
-import { Language } from '@/app/i18n/settings';
+import { PageProps } from '@/app/types';
 import { cn } from '@/app/utils';
 
 // import video_webm from 'public/video/about.webm';
 // import video_mp4 from 'public/video/about.mp4';
-
-interface PageProps {
-  params: {
-    lng: Language;
-  };
-}
 
 export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'about');
