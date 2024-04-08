@@ -8,6 +8,7 @@ import Instagram from 'public/svg/instagram.svg';
 import Tiktok from 'public/svg/tiktok.svg';
 import ArrowCorner from 'public/svg/arrowCorner.svg';
 import ArrowSide from 'public/svg/arrowSide.svg';
+import Close from 'public/svg/close.svg';
 import { transition } from '@/app/constants';
 
 export {
@@ -21,5 +22,6 @@ export {
   Tiktok,
   ArrowCorner,
   ArrowSide,
+  Close,
   transition
 };

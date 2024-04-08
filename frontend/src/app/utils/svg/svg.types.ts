@@ -8,7 +8,8 @@ type Svg =
   | 'instagram'
   | 'tiktok'
   | 'arrowCorner'
-  | 'arrowSide';
+  | 'arrowSide'
+  | 'close';
 
 export type SvgTypes = {
   [K in Svg]: (props: { className?: string }) => JSX.Element;

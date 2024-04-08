@@ -12,6 +12,7 @@ import {
   Tiktok,
   ArrowCorner,
   ArrowSide,
+  Close,
   transition
 } from './imports';
 
@@ -46,6 +47,9 @@ const svg: Readonly<SvgTypes> = {
   arrowSide: ({ className }) => (
     <ArrowSide className={twMerge(transition, className)} />
   ),
+  close: ({ className }) => (
+    <Close className={twMerge(transition,className)} />
+  )
 };
 
 function Svg({ className, id }: Readonly<SvgProps>) {

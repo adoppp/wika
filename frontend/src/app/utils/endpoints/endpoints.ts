@@ -1,5 +1,5 @@
 const enum endpoints {
-  homeUa = 'ua',
+  homeUa = 'uk',
   homeRu = 'ru',
   about = '#about',
   services = '#services',

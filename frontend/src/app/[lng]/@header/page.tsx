@@ -1,4 +1,4 @@
-import { Logo, NavBar, LanguageSwitcher, Button } from '@/app/components';
+import { Logo, NavBar, LanguageSwitcher, Button, BurgerMenu } from '@/app/components';
 
 import { useTranslation } from '@/app/i18n';
 import { PageProps } from '@/app/types';
@@ -57,6 +57,8 @@ export default async function Page({ params: { lng }, searchParams }: Readonly<P
 
         <Button color="white" type="button" lng={lng} />
       </div>
+
+      <BurgerMenu isOpen={showMobMenu} navT={navT} t={t} lng={lng} />
     </header>
   );
 }

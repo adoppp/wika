@@ -1,3 +1,4 @@
 {
-  "burger_aria_label": "Открыть мобильное меню"
+  "burger_aria_label": "Открыть мобильное меню",
+  "burger_close_aria_label": "Закрыть мобильное меню"
 }

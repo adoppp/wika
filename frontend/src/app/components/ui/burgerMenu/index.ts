@@ -1,0 +1,1 @@
+export { default as BurgerMenu } from '@/app/components/ui/burgerMenu/burgerMenu';
