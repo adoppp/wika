@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { cn, endpoints } from '@/app/utils';
+import { Svg, cn, endpoints } from '@/app/utils';
 
 import { NavBarProps } from '../navBar';
 import { transition } from '@/app/constants';
@@ -28,40 +28,56 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
             'desktop:wk_text-[20px] desktop:wk_leading-[calc(24/20)] wk_text-gray_200',
         )}
       >
-        <li>
+        <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.about}`}
-            className={cn("wk_transition-colors hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500", transition)}
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition)}
           >
             {t('nav_1')}
           </Link>
+          <Svg
+            id="arrowCorner"
+            className=' desktop:wk_hidden wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500'
+          />
         </li>
 
-        <li>
+        <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.services}`}
-            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition)}
           >
             {t('nav_2')}
           </Link>
+          <Svg
+            id="arrowCorner"
+            className=' desktop:wk_hidden wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500'
+          />
         </li>
 
-        <li>
+        <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.photos}`}
-            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition)}
           >
             {t('nav_3')}
           </Link>
+          <Svg
+            id="arrowCorner"
+            className=' desktop:wk_hidden wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500'
+          />
         </li>
 
-        <li>
+        <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.reviews} `}
-            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition)}
           >
             {t('nav_4')}
           </Link>
+          <Svg
+            id="arrowCorner"
+            className=' desktop:wk_hidden wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500'
+          />
         </li>
       </ul>
     </nav>
