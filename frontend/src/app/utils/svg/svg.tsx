@@ -12,9 +12,8 @@ import {
   Tiktok,
   ArrowCorner,
   ArrowSide,
+  transition
 } from './imports';
-
-const transition = 'wk_ease-wk_quart wk_duration-400';
 
 const svg: Readonly<SvgTypes> = {
   burgerMenu: ({ className }) => (

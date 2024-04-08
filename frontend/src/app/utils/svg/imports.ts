@@ -8,6 +8,7 @@ import Instagram from 'public/svg/instagram.svg';
 import Tiktok from 'public/svg/tiktok.svg';
 import ArrowCorner from 'public/svg/arrowCorner.svg';
 import ArrowSide from 'public/svg/arrowSide.svg';
+import { transition } from '@/app/constants';
 
 export {
   BurgerMenu,
@@ -20,4 +21,5 @@ export {
   Tiktok,
   ArrowCorner,
   ArrowSide,
+  transition
 };

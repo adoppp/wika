@@ -1,7 +1,8 @@
 import { Logo, NavBar } from '@/app/components';
+import { transition } from '@/app/constants';
 import { useTranslation } from '@/app/i18n';
 import { Language } from '@/app/i18n/settings';
-import { Svg } from '@/app/utils';
+import { Svg, cn } from '@/app/utils';
 
 interface PageProps {
   params: {
@@ -26,7 +27,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
               href="#"
               target="_blank"
               aria-label={t('ariaLabelTg')}
-              className="wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none"
+              className={cn("wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none",
+                transition
+              )}
             >
               <Svg id="telegram" />
             </a>
@@ -37,7 +40,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
               href="https://www.instagram.com/viksi_fitness"
               target="_blank"
               aria-label={t('ariaLabelIg')}
-              className="wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none"
+              className={cn("wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none",
+                transition
+              )}
             >
               <Svg id="instagram" />
             </a>
@@ -48,7 +53,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
               href="https://www.tiktok.com/@viksi_fitness"
               target="_blank"
               aria-label={t('ariaLabelTt')}
-              className="wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none"
+              className={cn("wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none",
+                transition
+              )}
             >
               <Svg id="tiktok" />
             </a>
@@ -62,7 +69,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         <a
           href="https://www.instagram.com/d1g1talsolut1ons"
           target="_blank"
-          className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-th_white focus:wk_text-th_white focus:wk_outline-none"
+          className={cn("wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-th_white focus:wk_text-th_white focus:wk_outline-none",
+            transition
+          )}
         >
           &#169; Digital Solutions 2024.
         </a>

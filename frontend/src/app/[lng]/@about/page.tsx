@@ -1,7 +1,9 @@
 import { AboutText, Statistics } from '@/app/components';
+import { transition } from '@/app/constants';
 
 import { useTranslation } from '@/app/i18n';
 import { Language } from '@/app/i18n/settings';
+import { cn } from '@/app/utils';
 
 // import video_webm from 'public/video/about.webm';
 // import video_mp4 from 'public/video/about.mp4';
@@ -33,14 +35,18 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
       </div>
 
       <div>
-        <ul className="wk_flex wk_gap-[8px] tablet: wk_gap-[12px]">
-          <li className="wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]">
+        <ul className="wk_flex wk_gap-[8px] tablet:wk_gap-[12px]">
+          <li className={cn("wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]",
+          transition
+        )}>
             <a href="#" target="_blank" className="focus:wk_outline-none">
               Telegram
             </a>
           </li>
 
-          <li className="wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]">
+          <li className={cn("wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]",
+          transition
+        )}>
             <a
               href="https://www.instagram.com/viksi_fitness"
               target="_blank"
@@ -50,7 +56,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
             </a>
           </li>
 
-          <li className="wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]">
+          <li className={cn("wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]",
+          transition
+        )}>
             <a
               href="https://www.tiktok.com/@viksi_fitness"
               target="_blank"

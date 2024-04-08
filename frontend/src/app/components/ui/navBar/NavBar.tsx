@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { cn, endpoints } from '@/app/utils';
 
 import { NavBarProps } from '../navBar';
+import { transition } from '@/app/constants';
 
 export default function NavBar({ t, location }: Readonly<NavBarProps>) {
   return (
@@ -30,7 +31,7 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
         <li>
           <Link
             href={`${endpoints.about}`}
-            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className={cn("wk_transition-colors hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500", transition)}
           >
             {t('nav_1')}
           </Link>

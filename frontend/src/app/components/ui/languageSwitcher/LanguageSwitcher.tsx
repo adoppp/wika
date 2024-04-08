@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { languages } from '@/app/i18n/settings';
 import { LanguageSwitcherProps } from '../languageSwitcher';
 import { cn } from '@/app/utils';
+import { transition } from '@/app/constants';
 
 export default function LanguageSwitcher({
   lng,
@@ -31,7 +32,8 @@ export default function LanguageSwitcher({
                       location === 'header' ? 'th_white' : 'th_accent'
                     }`
                   : 'wk_text-gray_300',
-                'wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500',
+                'wk_transition-colors hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500',
+                transition
               )}
             >
               {(language.includes('uk') && 'Укр') ||
