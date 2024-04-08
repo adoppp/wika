@@ -8,7 +8,7 @@ import { Button } from "../button";
 
 export default function BurgerMenu({isOpen, t, navT, lng}: Readonly<BurgerMenuProps>) {
     return (
-        <div className={cn(isOpen ? ' tablet:wk_-translate-x-[5.5rem] wk_-translate-x-[3rem]' : 'wk_translate-x-full', transition, 'wk_w-max wk_h-max wk_absolute wk_-top-10 desktop:wk_translate-x-full')}>
+        <div className={cn(isOpen ? ' tablet:wk_-translate-x-[5.5rem] wk_-translate-x-[3rem]' : 'wk_translate-x-full', transition, 'wk_w-max wk_h-max wk_absolute wk_-top-10 desktop:wk_translate-x-full desktop:wk_hidden')}>
             {isOpen && (
                 <>
                     <DisableScroll />
