@@ -9,7 +9,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t: navT } = await useTranslation(lng, 'navBar');
 
   return (
-    <footer className="wk_w-[calc(100vw-24px)] desktop:wk_w-[1416px] wk_mx-auto wk_px-[12px] wk_py-[48px] desktop:wk_px-[68px] desktop:wk_py-[100px] wk_rounded-50 wk_bg-th_black">
+    <footer className="wk_max-w-[calc(100vw-24px)] desktop:wk_w-[1416px] wk_mx-auto wk_px-[12px] wk_py-[48px] desktop:wk_px-[68px] desktop:wk_py-[100px] wk_rounded-50 wk_bg-th_black wk_w-auto">
       <div className="wk_flex wk_flex-col wk_items-center wk_gap-[40px] wk_mb-[40px] tablet:wk_mb-[48px] desktop:wk_flex-row desktop:wk_justify-between">
         <Logo lng={lng} className="desktop:wk_w-[152px]" />
 

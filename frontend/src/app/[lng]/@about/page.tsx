@@ -14,7 +14,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   return (
     <section
       id="about"
-      className="wk_w-[calc(100vw-24px)] desktop:wk_w-[1416px] wk_mx-auto wk_mb-[12px] wk_px-[16px] wk_py-[52px] tablet:wk_px-[68px] tablet:wk_pt-[56px] tablet:wk_pb-[68px] desktop:wk_py-[120px] wk_rounded-50 wk_bg-th_black"
+      className="wk_max-w-[calc(100vw-24px)] desktop:wk_w-[1416px] wk_mx-auto wk_mb-[12px] wk_px-[16px] wk_py-[52px] tablet:wk_px-[68px] tablet:wk_pt-[56px] tablet:wk_pb-[68px] desktop:wk_py-[120px] wk_rounded-50 wk_bg-th_black wk_w-fit"
     >
       <h2 className="wk_absolute wk_size-[1px] wk_m-[-1px] wk_p-0 wk_overflow-hidden wk_border-0">
         {t('title')}

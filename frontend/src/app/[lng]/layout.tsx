@@ -12,6 +12,7 @@ interface LayoutProps {
   services: ReactNode;
   call: ReactNode;
   footer: ReactNode;
+  burgerMenu: ReactNode;
   params: {
     lng: string;
   };
@@ -55,13 +56,17 @@ export default function Layout({
   services,
   call,
   footer,
+  burgerMenu,
   params: { lng },
 }: Readonly<LayoutProps>) {
   return (
     <>
       <MetadataHandler lang={lng} dir={dir(lng)} />
 
+
       {header}
+      
+      {burgerMenu}
 
       <main className="wk_mb-[12px]">
         {hero}

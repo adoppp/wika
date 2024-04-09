@@ -1,8 +1,7 @@
-import { ReactNode, Suspense } from 'react';
+import { ReactNode } from 'react';
 import { Rubik } from 'next/font/google';
 
 import './globals.css';
-import Loading from './loading';
 
 const rubik = Rubik({
   subsets: ['latin'],
@@ -17,11 +16,9 @@ interface LayoutProps {
 
 export default async function RootLayout({ children }: Readonly<LayoutProps>) {
   return (
-    <html className="wk_scroll-smooth">
+    <html className="wk_scroll-smooth wk_overflow-x-hidden">
       <body className={`${rubik.className} wk_bg-th_bg_primary wk_p-[12px] wk_overflow-x-hidden`}>
-        <Suspense fallback={<Loading />}>
           {children}
-        </Suspense>
       </body>
     </html>
   );

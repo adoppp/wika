@@ -1,4 +1,4 @@
-import { DisableScroll, ModalEventHandlers, Svg, cn, endpoints } from "@/app/utils";
+import { DisableScroll, Svg, cn, endpoints } from "@/app/utils";
 import { BurgerMenuProps } from "./burgerMenu.types";
 import { NavBar } from "../navBar";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { Button } from "../button";
 
 export default function BurgerMenu({isOpen, t, navT, lng}: Readonly<BurgerMenuProps>) {
     return (
-        <div className={cn(isOpen ? ' tablet:wk_-translate-x-[5.5rem] wk_-translate-x-[3rem]' : 'wk_translate-x-full', transition, 'wk_w-max wk_h-max wk_absolute wk_-top-10 desktop:wk_translate-x-full desktop:wk_hidden')}>
+        <div className={cn(isOpen ? 'wk_-translate-x-[0rem]' : 'wk_translate-x-full', transition, 'wk_w-max wk_h-max wk_fixed wk_top-0 wk_left-0 wk_z-30 desktop:wk_translate-x-full desktop:wk_hidden')}>
             {isOpen && (
                 <>
                     <DisableScroll />

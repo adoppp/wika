@@ -1,4 +1,4 @@
-import { Logo, NavBar, LanguageSwitcher, Button, BurgerMenu } from '@/app/components';
+import { Logo, NavBar, LanguageSwitcher, Button } from '@/app/components';
 
 import { useTranslation } from '@/app/i18n';
 import { PageProps } from '@/app/types';
@@ -9,7 +9,6 @@ import Link from 'next/link';
 export default async function Page({ params: { lng }, searchParams }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'header');
   const { t: navT } = await useTranslation(lng, 'navBar');
-  const showMobMenu: boolean = searchParams?.mobMenu ? true : false;
 
   return (
     <header
@@ -57,8 +56,6 @@ export default async function Page({ params: { lng }, searchParams }: Readonly<P
 
         <Button color="white" type="button" lng={lng} />
       </div>
-
-      <BurgerMenu isOpen={showMobMenu} navT={navT} t={t} lng={lng} />
     </header>
   );
 }
