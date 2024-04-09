@@ -4,10 +4,10 @@ import { useEffect } from "react";
 
 export default function DisableScroll() {
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    document.body.style.overflowY = "hidden";
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflowY = "auto";
     };
   }, []);
 
