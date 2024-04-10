@@ -66,7 +66,6 @@ export default function Layout({
 
       {header}
       
-      {burgerMenu}
 
       <main className="wk_mb-[12px]">
         {hero}
@@ -76,6 +75,7 @@ export default function Layout({
       </main>
 
       {footer}
+      {burgerMenu}
     </>
   );
 }

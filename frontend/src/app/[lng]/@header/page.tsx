@@ -18,7 +18,7 @@ export default async function Page({ params: { lng }, searchParams }: Readonly<P
         tablet:wk_top-[50px]
         desktop:wk_top-[40px]
         wk_left-[50%]
-        wk_translate-x-[-50%] wk_overflow-hidden
+        wk_translate-x-[-50%]
         
         wk_flex 
         wk_items-center

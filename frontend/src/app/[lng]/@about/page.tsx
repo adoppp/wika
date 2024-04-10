@@ -14,7 +14,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   return (
     <section
       id="about"
-      className="wk_max-w-[calc(100vw-24px)] desktop:wk_w-[1416px] wk_mx-auto wk_mb-[12px] wk_px-[16px] wk_py-[52px] tablet:wk_px-[68px] tablet:wk_pt-[56px] tablet:wk_pb-[68px] desktop:wk_py-[120px] wk_rounded-50 wk_bg-th_black wk_w-fit"
+      className="wk_mx-auto wk_mb-[12px] wk_px-[16px] wk_py-[52px] tablet:wk_px-[68px] tablet:wk_pt-[56px] tablet:wk_pb-[68px] desktop:wk_py-[120px] wk_rounded-50 wk_bg-th_black wk_w-auto"
     >
       <h2 className="wk_absolute wk_size-[1px] wk_m-[-1px] wk_p-0 wk_overflow-hidden wk_border-0">
         {t('title')}
@@ -38,7 +38,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
             </a>
           </li>
 
-          <li className={cn("wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]",
+          <li className={cn("wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]",
           transition
         )}>
             <a
@@ -50,7 +50,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
             </a>
           </li>
 
-          <li className={cn("wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]",
+          <li className={cn("wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]",
           transition
         )}>
             <a

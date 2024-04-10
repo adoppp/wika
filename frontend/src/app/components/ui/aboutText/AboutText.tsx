@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { AboutTextProps } from '../aboutText';
 
 import { useTranslation } from '@/app/i18n/client';
-import { Svg } from '@/app/utils';
+import { Svg, cn } from '@/app/utils';
 import { transition } from '@/app/constants';
 
 export default function AboutText({ lng }: Readonly<AboutTextProps>) {
@@ -41,7 +41,7 @@ export default function AboutText({ lng }: Readonly<AboutTextProps>) {
         onClick={() => setIsExpanded(value => !value)}
         className="wk_group wk_flex wk_items-center wk_gap-[24px] wk_text-th_accent hover:wk_text-th_white focus:wk_outline-none focus:wk_text-th_white"
       >
-        <span className={transition}>
+        <span className={cn('wk_transition-colors', transition)}>
           {isExpanded ? t('compressBtn') : t('extendBtn')}
         </span>
 

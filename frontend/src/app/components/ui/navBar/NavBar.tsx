@@ -37,7 +37,9 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           </Link>
           <Svg
             id="arrowCorner"
-            className=' desktop:wk_hidden wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500'
+            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500',
+              location !== 'mob_menu' && 'wk_hidden'
+            )}
           />
         </li>
 
@@ -50,7 +52,9 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           </Link>
           <Svg
             id="arrowCorner"
-            className=' desktop:wk_hidden wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500'
+            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500',
+              location !== 'mob_menu' && 'wk_hidden'
+            )}
           />
         </li>
 
@@ -63,7 +67,9 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           </Link>
           <Svg
             id="arrowCorner"
-            className=' desktop:wk_hidden wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500'
+            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500',
+              location !== 'mob_menu' && 'wk_hidden'
+            )}
           />
         </li>
 
@@ -76,7 +82,9 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           </Link>
           <Svg
             id="arrowCorner"
-            className=' desktop:wk_hidden wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500'
+            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500',
+              location !== 'mob_menu' && 'wk_hidden'
+            )}
           />
         </li>
       </ul>
