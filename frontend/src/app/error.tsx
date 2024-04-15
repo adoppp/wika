@@ -4,12 +4,12 @@ import { NextPageContext } from 'next';
 
 import { ErrorProps } from '@/app/types';
 import { useParams, useSearchParams } from 'next/navigation';
-import { Header, BurgerMenu, Button } from './components';
+import { Header, BurgerMenu, Button } from '@/app/components';
 import { Language } from './i18n/settings';
 import { useTranslation } from './i18n/client';
 import { cn } from '@/app/utils';
 import { transition } from '@/app/constants';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 ErrorPage.getInitialProps = ({ res, err }: Readonly<NextPageContext>) => {
     const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
@@ -35,7 +35,7 @@ export default function ErrorPage({ error, statusCode }: Readonly<ErrorProps>) {
                     {errorT('errorDescription')}
                     <a className={cn('wk_underline wk_text-th_accent hover:wk_text-hotPink_500 active:wk_text-hotPink_600 focus:wk_text-hotPink_600', transition)} href="https://www.instagram.com/viksi_fitness" target='_blank'>instagram</a>
                 </p>
-                <Button onClick={() => router.reload()} color='pink' lng={lng as Language} label='errorBtnRefresh' className='wk_w-fit tablet:wk_text-[24px]' />
+                <Button onClick={() => router.refresh()} color='pink' lng={lng as Language} label='errorBtnRefresh' className='wk_w-fit tablet:wk_text-[24px]' type='button' />
             </section>
                 
             <BurgerMenu lng={lng as Language} t={headerT} navT={navT} showMobMenu={showMobMenu} />
