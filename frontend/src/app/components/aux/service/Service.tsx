@@ -30,7 +30,7 @@ export default function Service({
             </span>
           </p>
 
-          <Button color="pink" lng={lng} />
+          <Button color="pink" lng={lng} label='label' />
         </div>
       </div>
     </li>

@@ -11,6 +11,7 @@ export default function Button({
   color,
   lng,
   className,
+  label,
   onClick,
 }: Readonly<ButtonProps>) {
   const { t } = useTranslation(lng, 'button');
@@ -32,7 +33,7 @@ export default function Button({
       )}
       onClick={onClick}
     >
-      {t('label')}
+      {t(label)}
     </button>
   );
 }

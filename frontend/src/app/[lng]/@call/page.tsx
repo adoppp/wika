@@ -20,7 +20,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         {t('text')}
       </p>
 
-      <Button color="pink" lng={lng} className="wk_mx-auto" />
+      <Button color="pink" lng={lng} className="wk_mx-auto" label='label' />
     </section>
   );
 }

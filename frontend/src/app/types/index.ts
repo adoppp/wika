@@ -1,1 +1,1 @@
-export type { PageProps } from '@/app/types/global';
+export type { PageProps, ErrorProps } from '@/app/types/global';

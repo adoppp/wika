@@ -66,7 +66,6 @@ export default function Layout({
 
       {header}
       
-
       <main className="wk_mb-[12px]">
         {hero}
         {about}

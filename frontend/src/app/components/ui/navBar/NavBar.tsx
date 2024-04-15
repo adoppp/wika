@@ -31,13 +31,13 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
         <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.about}`}
-            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition)}
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition, location === 'mob_menu' && 'group-active:wk_text-th_accent group-focus:wk_text-th_accent')}
           >
             {t('nav_1')}
           </Link>
           <Svg
             id="arrowCorner"
-            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500',
+            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent',
               location !== 'mob_menu' && 'wk_hidden'
             )}
           />
@@ -46,13 +46,13 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
         <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.services}`}
-            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition)}
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition, location === 'mob_menu' && 'group-active:wk_text-th_accent group-focus:wk_text-th_accent')}
           >
             {t('nav_2')}
           </Link>
           <Svg
             id="arrowCorner"
-            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500',
+            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent',
               location !== 'mob_menu' && 'wk_hidden'
             )}
           />
@@ -61,13 +61,13 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
         <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.photos}`}
-            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition)}
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition, location === 'mob_menu' && 'group-active:wk_text-th_accent group-focus:wk_text-th_accent')}
           >
             {t('nav_3')}
           </Link>
           <Svg
             id="arrowCorner"
-            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500',
+            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent',
               location !== 'mob_menu' && 'wk_hidden'
             )}
           />
@@ -76,13 +76,13 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
         <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.reviews} `}
-            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition)}
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition, location === 'mob_menu' && 'group-active:wk_text-th_accent group-focus:wk_text-th_accent')}
           >
             {t('nav_4')}
           </Link>
           <Svg
             id="arrowCorner"
-            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-focus:wk_text-gray_500',
+            className={cn(location === 'mob_menu' && 'wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent',
               location !== 'mob_menu' && 'wk_hidden'
             )}
           />

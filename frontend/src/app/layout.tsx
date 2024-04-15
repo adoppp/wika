@@ -12,13 +12,15 @@ const rubik = Rubik({
 
 interface LayoutProps {
   children: ReactNode;
+  header: ReactNode
 }
 
-export default async function RootLayout({ children }: Readonly<LayoutProps>) {
+export default async function RootLayout({ children, header }: Readonly<LayoutProps>) {
   return (
     <html className="wk_scroll-smooth">
       <body className={`${rubik.className} wk_bg-th_bg_primary wk_p-[12px]`}>
-          {children}
+        {header}
+        {children}
       </body>
     </html>
   );
