@@ -12,9 +12,9 @@ import {
   Tiktok,
   ArrowCorner,
   ArrowSide,
+  Close,
+  transition
 } from './imports';
-
-const transition = 'wk_ease-wk_quart wk_duration-400';
 
 const svg: Readonly<SvgTypes> = {
   burgerMenu: ({ className }) => (
@@ -47,6 +47,9 @@ const svg: Readonly<SvgTypes> = {
   arrowSide: ({ className }) => (
     <ArrowSide className={twMerge(transition, className)} />
   ),
+  close: ({ className }) => (
+    <Close className={twMerge(transition,className)} />
+  )
 };
 
 function Svg({ className, id }: Readonly<SvgProps>) {

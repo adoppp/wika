@@ -1,0 +1,1 @@
+export { default as Header } from '@/app/components/ui/header/header';

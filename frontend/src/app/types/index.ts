@@ -1,0 +1,1 @@
+export type { PageProps, ErrorProps } from '@/app/types/global';

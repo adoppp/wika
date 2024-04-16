@@ -5,7 +5,8 @@ interface ButtonProps {
   color: 'white' | 'pink';
   lng: Language;
   className?: string;
+  label: string;
   onClick?: () => void;
-}
+};
 
 export default ButtonProps;

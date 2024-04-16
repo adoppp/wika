@@ -1,0 +1,1 @@
+export const transition = 'wk_ease-wk_quart wk_duration-400';

@@ -1,3 +1,5 @@
 {
-  "label": "Записатися"
+  "label": "Записатися",
+  "errorBtnRefresh": "Оновити сторiнку",
+  "errorBtnNotFound": "Повернутися на головну"
 }

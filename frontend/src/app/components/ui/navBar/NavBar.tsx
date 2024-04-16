@@ -1,8 +1,9 @@
 import Link from 'next/link';
 
-import { cn, endpoints } from '@/app/utils';
+import { Svg, cn, endpoints } from '@/app/utils';
 
 import { NavBarProps } from '../navBar';
+import { transition } from '@/app/constants';
 
 export default function NavBar({ t, location }: Readonly<NavBarProps>) {
   return (
@@ -27,40 +28,68 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
             'desktop:wk_text-[20px] desktop:wk_leading-[calc(24/20)] wk_text-gray_200',
         )}
       >
-        <li>
+        <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.about}`}
-            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition, location === 'mob_menu' && 'group-active:wk_text-th_accent group-focus:wk_text-th_accent')}
           >
             {t('nav_1')}
           </Link>
+          {
+            location === 'mob_menu' && 
+            <Svg
+              id="arrowCorner"
+              className='wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent'
+            />
+          }
         </li>
 
-        <li>
+        <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.services}`}
-            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition, location === 'mob_menu' && 'group-active:wk_text-th_accent group-focus:wk_text-th_accent')}
           >
             {t('nav_2')}
           </Link>
+          {
+            location === 'mob_menu' && 
+            <Svg
+              id="arrowCorner"
+              className='wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent'
+            />
+          }
         </li>
 
-        <li>
+        <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.photos}`}
-            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition, location === 'mob_menu' && 'group-active:wk_text-th_accent group-focus:wk_text-th_accent')}
           >
             {t('nav_3')}
           </Link>
+          {
+            location === 'mob_menu' && 
+            <Svg
+              id="arrowCorner"
+              className='wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent'
+            />
+          }
         </li>
 
-        <li>
+        <li className='wk_group wk_cursor-pointer wk_w-fit'>
           <Link
             href={`${endpoints.reviews} `}
-            className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500"
+            className={cn("wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500", transition, location === 'mob_menu' && 'group-active:wk_text-th_accent group-focus:wk_text-th_accent')}
           >
             {t('nav_4')}
           </Link>
+          {
+            location === 'mob_menu' && 
+            <Svg
+              id="arrowCorner"
+              className='wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent'
+            />
+          }
         </li>
       </ul>
     </nav>
