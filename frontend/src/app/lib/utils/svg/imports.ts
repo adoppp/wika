@@ -9,6 +9,7 @@ import Tiktok from 'public/svg/tiktok.svg';
 import ArrowCorner from 'public/svg/arrowCorner.svg';
 import ArrowSide from 'public/svg/arrowSide.svg';
 import Close from 'public/svg/close.svg';
+import ModalStats from 'public/svg/modalStats.svg';
 import { transition } from '@/app/lib/constants';
 
 export {
@@ -23,5 +24,6 @@ export {
   ArrowCorner,
   ArrowSide,
   Close,
+  ModalStats,
   transition,
 };

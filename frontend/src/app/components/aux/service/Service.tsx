@@ -1,4 +1,7 @@
-import { Button } from '@/app/components/ui';
+'use client';
+
+import { Button, Modal } from '@/app/components';
+import { useRef } from 'react';
 import { ServiceProps } from '../service';
 
 export default function Service({
@@ -8,6 +11,13 @@ export default function Service({
   period,
   lng,
 }: Readonly<ServiceProps>) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const openModal = () => {
+    dialogRef?.current?.showModal();
+    document.body.style.overflow = 'hidden';
+  };
+
   return (
     <li className="wk_relative wk_ps-[46px] wk_pe-[16px] wk_py-[30px] desktop:wk_px-[80px] wk_rounded-25 wk_bg-th_bg_primary">
       <h3 className="wk_inline-block wk_max-w-[calc(100vw-174px)] wk_ms-[28px] desktop:wk_ms-[108px] wk_mb-[20px] wk_text-[24px] wk-leading-[calc(28/24)] wk_font-500 wk_text-th_whit">
@@ -30,9 +40,11 @@ export default function Service({
             </span>
           </p>
 
-          <Button color="pink" lng={lng} label='label' />
+          <Button color="pink" lng={lng} label="label" onClick={openModal} />
         </div>
       </div>
+
+      <Modal ref={dialogRef} serviceTitle={title} lng={lng} />
     </li>
   );
 }

@@ -13,7 +13,8 @@ import {
   ArrowCorner,
   ArrowSide,
   Close,
-  transition
+  ModalStats,
+  transition,
 } from './imports';
 
 const svg: Readonly<SvgTypes> = {
@@ -48,8 +49,11 @@ const svg: Readonly<SvgTypes> = {
     <ArrowSide className={twMerge(transition, className)} />
   ),
   close: ({ className }) => (
-    <Close className={twMerge(transition,className)} />
-  )
+    <Close className={twMerge(transition, className)} />
+  ),
+  modalStats: ({ className }) => (
+    <ModalStats className={twMerge(transition, className)} />
+  ),
 };
 
 function Svg({ className, id }: Readonly<SvgProps>) {

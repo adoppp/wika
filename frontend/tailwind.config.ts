@@ -40,58 +40,14 @@ const config: Config = {
       red_danger: '#ff073a',
       yellow_warning: '#ffa422',
       green_success: '#39ff14',
+      form_black: '#1C232C',
+
+      backdrop: 'rgba(0, 0, 0, 0.5)',
     },
     fontSize: {
       title_mob: ['32px', { lineHeight: `${40 / 32}` }],
       title_tab: ['56px', { lineHeight: `${68 / 56}` }],
       title_desk: ['60px', { lineHeight: `${72 / 60}` }],
-      //   text_xs: '12px',
-      //   text_10xs: [
-      //     '68px',
-      //     {
-      //       lineHeight: '100%',
-      //     },
-      //   ],
-      //   text_sm: '14px',
-      //   text_base: '16px',
-      //   text_lg: '18px',
-      //   text_xl: '20px',
-      //   text_xl_150lH: [
-      //     '20px',
-      //     {
-      //       lineHeight: '150%',
-      //     },
-      //   ],
-      //   text_2xl: '22px',
-      //   text_3xl: '24px',
-      //   text_4xl: '30px',
-      //   text_5xl: '36px',
-      //   text_6xl: '42px',
-      //   text_7xl: '44px',
-      //   text_8xl: '50px',
-      //   text_9xl: '56px',
-      //   title_xs: '32px',
-      //   title_sm: '57px',
-      //   title_base: '60px',
-      //   title_lg: '80px',
-      //   button_xs: [
-      //     '14px',
-      //     {
-      //       lineHeight: '100%',
-      //     },
-      //   ],
-      //   button_sm: [
-      //     '16px',
-      //     {
-      //       lineHeight: '100%',
-      //     },
-      //   ],
-      //   button_base: [
-      //     '34px',
-      //     {
-      //       lineHeight: '100%',
-      //     },
-      //   ],
     },
     fontWeight: {
       '300': '300',
