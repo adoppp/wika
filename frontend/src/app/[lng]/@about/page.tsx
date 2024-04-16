@@ -1,9 +1,9 @@
 import { AboutText, Statistics } from '@/app/components';
-import { transition } from '@/app/constants';
+import { transition } from '@/app/lib/constants';
 
 import { useTranslation } from '@/app/i18n';
-import { PageProps } from '@/app/types';
-import { cn } from '@/app/utils';
+import { PageProps } from '@/app/lib/types';
+import { cn } from '@/app/lib/utils';
 
 // import video_webm from 'public/video/about.webm';
 // import video_mp4 from 'public/video/about.mp4';

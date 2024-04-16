@@ -826,6 +826,7 @@ export interface ApiPhotoPhoto extends Schema.CollectionType {
     singularName: 'photo';
     pluralName: 'photos';
     displayName: 'Photo';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -855,6 +856,12 @@ export interface ApiPhotoPhoto extends Schema.CollectionType {
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
+        };
+      }>;
+    ruLocaleId: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
         };
       }>;
     createdAt: Attribute.DateTime;
@@ -887,6 +894,7 @@ export interface ApiReviewReview extends Schema.CollectionType {
     singularName: 'review';
     pluralName: 'reviews';
     displayName: 'Review';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -904,13 +912,6 @@ export interface ApiReviewReview extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    review: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     date: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -918,7 +919,27 @@ export interface ApiReviewReview extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    reviewerAvatarUrl: Attribute.String &
+    avatarUrl: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    ruLocaleId: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    review: Attribute.JSON &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    avatarId: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -955,6 +976,7 @@ export interface ApiServiceService extends Schema.CollectionType {
     singularName: 'service';
     pluralName: 'services';
     displayName: 'service';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -994,6 +1016,12 @@ export interface ApiServiceService extends Schema.CollectionType {
       >;
     period: Attribute.String &
       Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ruLocaleId: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

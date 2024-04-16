@@ -1,4 +1,4 @@
-import { Svg } from '@/app/utils';
+import { Svg } from '@/app/lib/utils';
 import { AdvantagesProps } from '../advantages';
 
 export default function Advantages({ t }: Readonly<AdvantagesProps>) {

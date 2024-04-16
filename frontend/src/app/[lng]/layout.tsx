@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { dir } from 'i18next';
 
 import { languages } from '../i18n/settings';
-import { MetadataHandler } from '../utils';
+import { MetadataHandler } from '../lib/utils';
 
 interface LayoutProps {
   header: ReactNode;
@@ -63,9 +63,8 @@ export default function Layout({
     <>
       <MetadataHandler lang={lng} dir={dir(lng)} />
 
-
       {header}
-      
+
       <main className="wk_mb-[12px]">
         {hero}
         {about}

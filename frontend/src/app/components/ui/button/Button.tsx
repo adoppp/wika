@@ -1,8 +1,8 @@
 'use client';
 
 import { useTranslation } from '@/app/i18n/client';
-import { cn } from '@/app/utils';
-import { transition } from '@/app/constants';
+import { cn } from '@/app/lib/utils';
+import { transition } from '@/app/lib/constants';
 
 import { ButtonProps } from '../button';
 

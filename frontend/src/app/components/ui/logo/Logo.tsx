@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { LogoProps } from '../logo';
-import { cn } from '@/app/utils';
+import { cn } from '@/app/lib/utils';
 
 export default function Logo({ lng, className }: Readonly<LogoProps>) {
   return (

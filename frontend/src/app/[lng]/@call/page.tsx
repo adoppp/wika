@@ -1,7 +1,6 @@
 import { Button } from '@/app/components';
 import { useTranslation } from '@/app/i18n';
-import { PageProps } from '@/app/types';
-
+import { PageProps } from '@/app/lib/types';
 
 export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'call');
@@ -22,7 +21,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         {t('text')}
       </p>
 
-      <Button color="pink" lng={lng} className="wk_mx-auto" label='label' />
+      <Button color="pink" lng={lng} className="wk_mx-auto" label="label" />
     </section>
   );
-};
+}

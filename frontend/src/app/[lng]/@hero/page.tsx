@@ -1,6 +1,6 @@
 import { Advantages, Button } from '@/app/components';
 import { useTranslation } from '@/app/i18n';
-import { PageProps } from '@/app/types';
+import { PageProps } from '@/app/lib/types';
 
 export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'hero');
@@ -21,7 +21,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
 
       <Button
         color="pink"
-        label='label'
+        label="label"
         lng={lng}
         type="button"
         className="wk_mb-[88px] tablet:wk_mb-[72px] desktop:wk_mb-[112px] tablet:wk_px-[48px] tablet:focus:wk_px-[46px] tablet:wk_py-[24px] tablet:focus:wk_py-[22px] tablet:wk_text-[24px] tablet:wk_rounded-20"

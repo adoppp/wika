@@ -2,13 +2,13 @@
 
 import { NextPageContext } from 'next';
 
-import { ErrorProps } from '@/app/types';
+import { ErrorProps } from '@/app/lib/types';
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { Header, BurgerMenu, Button } from '@/app/components';
 import { Language } from './i18n/settings';
 import { useTranslation } from './i18n/client';
-import { cn } from '@/app/utils';
-import { transition } from '@/app/constants';
+import { cn } from '@/app/lib/utils';
+import { transition } from '@/app/lib/constants';
 
 ErrorPage.getInitialProps = ({ res, err }: Readonly<NextPageContext>) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;

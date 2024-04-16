@@ -1,8 +1,8 @@
 import { Logo, NavBar } from '@/app/components';
-import { transition } from '@/app/constants';
+import { transition } from '@/app/lib/constants';
 import { useTranslation } from '@/app/i18n';
-import { PageProps } from '@/app/types';
-import { Svg, cn } from '@/app/utils';
+import { PageProps } from '@/app/lib/types';
+import { Svg, cn } from '@/app/lib/utils';
 
 export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'footer');

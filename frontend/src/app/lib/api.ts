@@ -1,0 +1,312 @@
+import { notFound } from 'next/navigation';
+import { Language } from '../i18n/settings';
+
+export interface PriceItem {
+  id: string;
+  attributes: PriceItemAttributes;
+}
+
+export interface PriceItemAttributes {
+  title: string;
+  price: number;
+  period: string;
+  description: string[];
+  ruLocaleId?: string;
+}
+
+export interface Contacts {
+  id: string;
+  attributes: ContactsAttributes;
+}
+
+export interface ContactsAttributes {
+  telegram: string;
+  tiktok: string;
+  instagram: string;
+}
+
+export interface ReviewResponse {
+  id: string;
+  attributes: ReviewAttributes;
+}
+
+export interface ReviewAttributes {
+  reviewerName: string;
+  review: string;
+  avatarUrl: string;
+  avatarId: string;
+  ruLocaleId?: string;
+}
+
+export interface LoginResponse {
+  jwt: string;
+  user: {
+    username: string;
+  };
+}
+
+export const PROJECT_API = process.env.NEXT_PUBLIC_API_URL;
+export const TELEGRAM_TOKEN = process.env.NEXT_PUBLIC_TELEGRAM_TOKEN;
+export const TELEGRAM_CHAT_ID = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+
+const buildUrl = (...paths: string[]) =>
+  `${PROJECT_API}/api/${paths.join('/')}`;
+
+const sendRequest = async <T>(url: string, init?: RequestInit) => {
+  const res = await fetch(url, init);
+
+  if (res.status === 404) {
+    notFound();
+  }
+
+  if (!res.ok) {
+    throw new Error(await res.json());
+  }
+
+  const response = await res.json();
+
+  return response.data || (response as T);
+};
+
+// Public fetches
+export const getPriceList = (lng: Language, init?: RequestInit) => {
+  return sendRequest<PriceItem[]>(buildUrl(`prices?locale=${lng}`), init);
+};
+
+export const getContacts = (
+  lng: Language,
+  init?: RequestInit,
+  populate?: true,
+) => {
+  return sendRequest<Contacts>(
+    buildUrl(`contact?locale=${lng}${populate ? '&populate=*' : ''}`),
+    init,
+  );
+};
+
+export const getReviews = (lng: Language, init?: RequestInit) => {
+  return sendRequest<ReviewResponse[]>(buildUrl(`reviews?locale=${lng}`), init);
+};
+
+// Private fetches
+export const getService = (id: string, token: string, init?: RequestInit) => {
+  return sendRequest<PriceItem>(buildUrl(`prices/${id}`), {
+    ...init,
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const addService = ({
+  data,
+  token,
+  init,
+}: {
+  data: PriceItemAttributes & { locale?: 'en' };
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PriceItem>(buildUrl('prices'), {
+    method: 'POST',
+    body: JSON.stringify({ data }),
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
+export const updateService = ({
+  id,
+  data,
+  token,
+  init,
+}: {
+  id: string;
+  data: PriceItemAttributes & { locale?: 'en' };
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PriceItem>(buildUrl(`prices/${id}`), {
+    method: 'PUT',
+    body: JSON.stringify({ data }),
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
+export const deleteService = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PriceItem>(buildUrl(`prices/${id}`), {
+    method: 'DELETE',
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const getReview = (id: string, token: string, init?: RequestInit) => {
+  return sendRequest<ReviewResponse>(buildUrl(`reviews/${id}?populate=*`), {
+    ...init,
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const uploadImage = (
+  formData: FormData,
+  token: string,
+  init?: RequestInit,
+) => {
+  return sendRequest(buildUrl('upload'), {
+    method: 'POST',
+    body: formData,
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const deleteImage = (id: string, token: string, init?: RequestInit) => {
+  return sendRequest(buildUrl('upload', 'files', id), {
+    method: 'DELETE',
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const addReview = ({
+  data,
+  token,
+  init,
+}: {
+  data: ReviewAttributes & { locale?: 'en' };
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<ReviewResponse>(buildUrl('reviews'), {
+    method: 'POST',
+    body: JSON.stringify({ data }),
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
+export const updateReview = ({
+  id,
+  data,
+  token,
+  init,
+}: {
+  id: string;
+  data: ReviewAttributes & { locale?: 'en' };
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<ReviewResponse>(buildUrl(`reviews/${id}`), {
+    method: 'PUT',
+    body: JSON.stringify({ data }),
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
+export const deleteReview = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<ReviewResponse>(buildUrl(`reviews/${id}`), {
+    method: 'DELETE',
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const updateContacts = ({
+  data,
+  token,
+  locale,
+}: {
+  data: Partial<ContactsAttributes>;
+  token: string;
+  locale: Language;
+}) => {
+  return sendRequest(buildUrl(`contact?locale=${locale}`), {
+    method: 'PUT',
+    body: JSON.stringify({ data }),
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
+// Form submit to Telegram
+export const submitForm = async (
+  serviceTitle: string | undefined,
+  values: any,
+) => {
+  const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
+
+  const obj = {
+    chat_id: TELEGRAM_CHAT_ID,
+    text: `
+    Нова відправка форми з сайту:
+
+${serviceTitle && `Послуга, яка цікавить: ${serviceTitle}`}
+
+Імʼя: ${values.name}
+Номер телефону: ${values.phoneNumber}
+
+Час та дні тижня, в які було б зручно займатись: ${values.text}
+    `,
+  };
+
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(obj),
+  });
+
+  const response = await res.json();
+
+  if (!res.ok) {
+    throw new Error(response.description);
+  }
+
+  return response;
+};
