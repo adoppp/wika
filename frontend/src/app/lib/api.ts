@@ -1,9 +1,13 @@
 import { notFound } from 'next/navigation';
 import { Language } from '../i18n/settings';
 
-export interface PriceItem {
+export interface VideoAttributes {
+  url: string;
+}
+
+export interface VideoResponse {
   id: string;
-  attributes: PriceItemAttributes;
+  attributes: VideoAttributes;
 }
 
 export interface PriceItemAttributes {
@@ -14,20 +18,21 @@ export interface PriceItemAttributes {
   ruLocaleId?: string;
 }
 
-export interface Contacts {
+export interface PriceItem {
   id: string;
-  attributes: ContactsAttributes;
+  attributes: PriceItemAttributes;
 }
 
-export interface ContactsAttributes {
-  telegram: string;
-  tiktok: string;
-  instagram: string;
+export interface ResultsAttributes {
+  description: string;
+  beforeUrl: string;
+  afterUrl: string;
+  ruLocaleId: string;
 }
 
-export interface ReviewResponse {
+export interface ResultsResponse {
   id: string;
-  attributes: ReviewAttributes;
+  attributes: ResultsAttributes;
 }
 
 export interface ReviewAttributes {
@@ -36,6 +41,22 @@ export interface ReviewAttributes {
   avatarUrl: string;
   avatarId: string;
   ruLocaleId?: string;
+}
+
+export interface ReviewResponse {
+  id: string;
+  attributes: ReviewAttributes;
+}
+
+export interface ContactsAttributes {
+  telegram: string;
+  tiktok: string;
+  instagram: string;
+}
+
+export interface Contacts {
+  id: string;
+  attributes: ContactsAttributes;
 }
 
 export interface LoginResponse {
@@ -69,8 +90,20 @@ const sendRequest = async <T>(url: string, init?: RequestInit) => {
 };
 
 // Public fetches
+export const getVideo = (init?: RequestInit) => {
+  return sendRequest<VideoResponse>(buildUrl('video'), init);
+};
+
 export const getPriceList = (lng: Language, init?: RequestInit) => {
   return sendRequest<PriceItem[]>(buildUrl(`prices?locale=${lng}`), init);
+};
+
+export const getResults = (lng: Language, init?: RequestInit) => {
+  return sendRequest(buildUrl(`photos?locale=${lng}`), init);
+};
+
+export const getReviews = (lng: Language, init?: RequestInit) => {
+  return sendRequest<ReviewResponse[]>(buildUrl(`reviews?locale=${lng}`), init);
 };
 
 export const getContacts = (
@@ -82,10 +115,6 @@ export const getContacts = (
     buildUrl(`contact?locale=${lng}${populate ? '&populate=*' : ''}`),
     init,
   );
-};
-
-export const getReviews = (lng: Language, init?: RequestInit) => {
-  return sendRequest<ReviewResponse[]>(buildUrl(`reviews?locale=${lng}`), init);
 };
 
 // Private fetches
