@@ -1,7 +1,9 @@
 'use client';
 
-import { Button, Modal } from '@/app/components';
-import { useRef } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { Button } from '@/app/components';
+
 import { ServiceProps } from '../service';
 
 export default function Service({
@@ -11,11 +13,10 @@ export default function Service({
   period,
   lng,
 }: Readonly<ServiceProps>) {
-  const dialogRef = useRef<HTMLDialogElement>(null);
+  const router = useRouter();
 
   const openModal = () => {
-    dialogRef?.current?.showModal();
-    document.body.style.overflow = 'hidden';
+    router.push(`?showModal=${title}`);
   };
 
   return (
@@ -43,8 +44,6 @@ export default function Service({
           <Button color="pink" lng={lng} label="label" onClick={openModal} />
         </div>
       </div>
-
-      <Modal ref={dialogRef} serviceTitle={title} lng={lng} />
     </li>
   );
 }

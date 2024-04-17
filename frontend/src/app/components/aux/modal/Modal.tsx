@@ -1,12 +1,16 @@
 'use client';
 
-import { ForwardedRef, forwardRef, RefObject } from 'react';
+import { ChangeEvent, RefObject, useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { Notify } from 'notiflix';
 
-import { useTranslation } from '@/app/i18n/client';
-import { Svg } from '@/app/lib/utils';
-import { Button } from '../button';
+import { Button } from '@/app/components/ui';
 import { ModalProps } from '../modal';
+
+import { notifyOptions, Svg } from '@/app/lib/utils';
+import { useTranslation } from '@/app/i18n/client';
+import { submitForm } from '@/app/lib/api';
 
 type Inputs = {
   name: string;
@@ -15,10 +19,17 @@ type Inputs = {
   consent: boolean;
 };
 
-const Modal = forwardRef(function Modal(
-  { serviceTitle, lng }: Readonly<ModalProps>,
-  ref: ForwardedRef<HTMLDialogElement>,
-) {
+export default function Modal({
+  serviceTitle,
+  lng,
+  isOpen,
+}: Readonly<ModalProps>) {
+  const [number, setNumber] = useState('');
+
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -28,18 +39,57 @@ const Modal = forwardRef(function Modal(
 
   const { t } = useTranslation(lng, 'modal');
 
+  useEffect(() => {
+    const handleOpenModal = () => {
+      dialogRef?.current?.showModal();
+      document.body.style.overflow = 'hidden';
+    };
+
+    if (isOpen) handleOpenModal();
+  }, [isOpen]);
+
   const handleCloseModal = () => {
-    (ref as RefObject<HTMLDialogElement>).current?.close();
+    reset();
+    setNumber('');
+
+    (dialogRef as RefObject<HTMLDialogElement>).current?.close();
     document.body.style.overflow = 'auto';
+    router.back();
   };
 
-  const onSubmit: SubmitHandler<Inputs> = async data => {
-    reset();
+  const onPhoneNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    const rawValue = value.replace(/\D/g, '');
+
+    let formattedValue = '';
+    if (rawValue.length > 0) {
+      formattedValue = '+(' + rawValue.slice(0, 3);
+      if (rawValue.length > 3) {
+        formattedValue += ') ' + rawValue.slice(3, 6);
+      }
+      if (rawValue.length > 6) {
+        formattedValue += '-' + rawValue.slice(6, 9);
+      }
+      if (rawValue.length > 9) {
+        formattedValue += '-' + rawValue.slice(9, 12);
+      }
+    }
+
+    setNumber(formattedValue);
+  };
+
+  const onSubmit: SubmitHandler<Inputs> = async values => {
+    try {
+      await submitForm({ serviceTitle, values });
+      handleCloseModal();
+    } catch (error) {
+      Notify.failure((error as any).message, notifyOptions);
+    }
   };
 
   return (
     <dialog
-      ref={ref}
+      ref={dialogRef}
       className="backdrop:wk_bg-backdrop wk_rounded-50 wk_bg-th_accent"
     >
       <button
@@ -90,10 +140,13 @@ const Modal = forwardRef(function Modal(
               type="tel"
               {...register('phoneNumber', {
                 required: true,
-                minLength: 10,
-                maxLength: 10,
+                minLength: 18,
+                maxLength: 18,
               })}
-              className="wk_w-[100%] wk_border-b-[1px] wk_text-[18px] wk_leading-[calc(28/18)] wk_text-form_black wk_bg-th_accent hover:wk_outline-none focus:wk_outline-none"
+              onChange={onPhoneNumberChange}
+              value={number}
+              placeholder="+(XXX) XXX-XXX-XXX"
+              className="wk_w-[100%] wk_border-b-[1px] wk_text-[18px] wk_leading-[calc(28/18)] wk_text-form_black placeholder:wk_text-form_black wk_bg-th_accent hover:wk_outline-none focus:wk_outline-none"
             />
 
             {errors.phoneNumber?.type === 'required' && (
@@ -155,6 +208,4 @@ const Modal = forwardRef(function Modal(
       </div>
     </dialog>
   );
-});
-
-export default Modal;
+}

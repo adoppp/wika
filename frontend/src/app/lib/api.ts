@@ -303,10 +303,13 @@ export const updateContacts = ({
 };
 
 // Form submit to Telegram
-export const submitForm = async (
-  serviceTitle: string | undefined,
-  values: any,
-) => {
+export const submitForm = async ({
+  serviceTitle,
+  values,
+}: {
+  serviceTitle: string | undefined;
+  values: any;
+}) => {
   const url = `https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`;
 
   const obj = {
@@ -314,10 +317,10 @@ export const submitForm = async (
     text: `
     Нова відправка форми з сайту:
 
-${serviceTitle && `Послуга, яка цікавить: ${serviceTitle}`}
+${serviceTitle ? `Послуга, яка цікавить: ${serviceTitle}` : ''}
 
 Імʼя: ${values.name}
-Номер телефону: ${values.phoneNumber}
+Номер телефону: ${values.phoneNumber.split(' ').join('')}
 
 Час та дні тижня, в які було б зручно займатись: ${values.text}
     `,

@@ -5,15 +5,18 @@ import { cn } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
 
 import { ButtonProps } from '../button';
+import { useRouter } from 'next/navigation';
 
 export default function Button({
   color,
   lng,
   className,
   label,
+  onClick,
   ...rest
 }: Readonly<ButtonProps>) {
   const { t } = useTranslation(lng, 'button');
+  const router = useRouter();
 
   return (
     <button
@@ -29,6 +32,7 @@ export default function Button({
 
         className,
       )}
+      onClick={onClick ? onClick : () => router.push('?showModal=true')}
       {...rest}
     >
       {t(label)}
