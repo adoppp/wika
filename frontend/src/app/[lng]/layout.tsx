@@ -14,6 +14,8 @@ interface LayoutProps {
   footer: ReactNode;
   burgerMenu: ReactNode;
   modal: ReactNode;
+  cookie: ReactNode;
+  privacyPolicy: ReactNode;
   params: {
     lng: string;
   };
@@ -59,6 +61,8 @@ export default function Layout({
   footer,
   burgerMenu,
   modal,
+  cookie,
+  privacyPolicy,
   params: { lng },
 }: Readonly<LayoutProps>) {
   return (
@@ -77,6 +81,8 @@ export default function Layout({
       {footer}
       {burgerMenu}
       {modal}
+      {cookie}
+      {privacyPolicy}
     </>
   );
 }

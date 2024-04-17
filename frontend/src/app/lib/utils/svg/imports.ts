@@ -10,6 +10,7 @@ import ArrowCorner from 'public/svg/arrowCorner.svg';
 import ArrowSide from 'public/svg/arrowSide.svg';
 import Close from 'public/svg/close.svg';
 import ModalStats from 'public/svg/modalStats.svg';
+import Cookie from 'public/svg/cookie.svg';
 import { transition } from '@/app/lib/constants';
 
 export {
@@ -25,5 +26,6 @@ export {
   ArrowSide,
   Close,
   ModalStats,
+  Cookie,
   transition,
 };

@@ -14,6 +14,7 @@ import {
   ArrowSide,
   Close,
   ModalStats,
+  Cookie,
   transition,
 } from './imports';
 
@@ -53,6 +54,9 @@ const svg: Readonly<SvgTypes> = {
   ),
   modalStats: ({ className }) => (
     <ModalStats className={twMerge(transition, className)} />
+  ),
+  cookie: ({ className }) => (
+    <Cookie className={twMerge(transition, className)} />
   ),
 };
 

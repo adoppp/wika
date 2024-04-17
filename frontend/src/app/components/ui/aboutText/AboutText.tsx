@@ -51,8 +51,8 @@ export default function AboutText({ lng }: Readonly<AboutTextProps>) {
             'wk_size-[22px]',
             isExpanded && 'wk_rotate-[-90deg]',
             isExpanded
-              ? 'group-hover:wk_rotate-[-135deg]'
-              : 'group-hover:wk_rotate-[45deg]',
+              ? 'group-hover:wk_rotate-[-135deg] group-focus:wk_rotate-[-135deg]'
+              : 'group-hover:wk_rotate-[45deg] group-focus:wk_rotate-[45deg]',
           )}
         />
       </button>

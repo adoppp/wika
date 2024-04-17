@@ -32,10 +32,10 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           <Link
             href={`${endpoints.about}`}
             className={cn(
-              'wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500',
+              'wk_transition-colors group-hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500',
               transition,
               location === 'mob_menu' &&
-                'group-active:wk_text-th_accent group-focus:wk_text-th_accent',
+                'group-active:wk_text-th_accent focus:wk_text-th_accent',
             )}
           >
             {t('nav_1')}
@@ -43,7 +43,7 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           {location === 'mob_menu' && (
             <Svg
               id="arrowCorner"
-              className="wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent"
+              className="wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent focus:wk_text-th_accent"
             />
           )}
         </li>
@@ -52,10 +52,10 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           <Link
             href={`${endpoints.services}`}
             className={cn(
-              'wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500',
+              'wk_transition-colors group-hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500',
               transition,
               location === 'mob_menu' &&
-                'group-active:wk_text-th_accent group-focus:wk_text-th_accent',
+                'group-active:wk_text-th_accent focus:wk_text-th_accent',
             )}
           >
             {t('nav_2')}
@@ -63,7 +63,7 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           {location === 'mob_menu' && (
             <Svg
               id="arrowCorner"
-              className="wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent"
+              className="wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent focus:wk_text-th_accent"
             />
           )}
         </li>
@@ -72,10 +72,10 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           <Link
             href={`${endpoints.photos}`}
             className={cn(
-              'wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500',
+              'wk_transition-colors group-hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500',
               transition,
               location === 'mob_menu' &&
-                'group-active:wk_text-th_accent group-focus:wk_text-th_accent',
+                'group-active:wk_text-th_accent focus:wk_text-th_accent',
             )}
           >
             {t('nav_3')}
@@ -83,7 +83,7 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           {location === 'mob_menu' && (
             <Svg
               id="arrowCorner"
-              className="wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent"
+              className="wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent focus:wk_text-th_accent"
             />
           )}
         </li>
@@ -92,10 +92,10 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           <Link
             href={`${endpoints.reviews} `}
             className={cn(
-              'wk_transition-colors group-hover:wk_text-gray_500 group-focus:wk_outline-none group-focus:wk_text-gray_500',
+              'wk_transition-colors group-hover:wk_text-gray_500 focus:wk_outline-none focus:wk_text-gray_500',
               transition,
               location === 'mob_menu' &&
-                'group-active:wk_text-th_accent group-focus:wk_text-th_accent',
+                'group-active:wk_text-th_accent focus:wk_text-th_accent',
             )}
           >
             {t('nav_4')}
@@ -103,7 +103,7 @@ export default function NavBar({ t, location }: Readonly<NavBarProps>) {
           {location === 'mob_menu' && (
             <Svg
               id="arrowCorner"
-              className="wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent group-focus:wk_text-th_accent"
+              className="wk_size-[40px] wk_inline wk_ml-[4px] group-hover:wk_rotate-[45deg] group-hover:wk_text-gray_500 group-active:wk_text-th_accent focus:wk_text-th_accent"
             />
           )}
         </li>

@@ -185,7 +185,10 @@ export default function Modal({
             >
               <span className="wk_w-[180px] tablet:wk_w-auto">
                 {t('consentText')}
-                <button className="wk_underline wk_text-left hover:wk_text-th_black focus:wk_text-th_black hover:wk_outline-none focus:wk_outline-none">
+                <button
+                  onClick={() => router.push('?privacyPolicy=true')}
+                  className="wk_underline wk_text-left hover:wk_text-th_black focus:wk_text-th_black hover:wk_outline-none focus:wk_outline-none"
+                >
                   {t('consentLink')}
                 </button>
               </span>

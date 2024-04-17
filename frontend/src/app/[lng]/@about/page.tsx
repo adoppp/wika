@@ -30,46 +30,40 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
 
       <div>
         <ul className="wk_flex wk_gap-[8px] tablet:wk_gap-[12px]">
-          <li
-            className={cn(
-              'wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]',
-              transition,
-            )}
-          >
+          <li>
             <a
               href="https://t.me/viksi_fitness"
               target="_blank"
-              className="focus:wk_outline-none"
+              className={cn(
+                'wk_block wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233] focus:wk_outline-none',
+                transition,
+              )}
             >
               Telegram
             </a>
           </li>
 
-          <li
-            className={cn(
-              'wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]',
-              transition,
-            )}
-          >
+          <li>
             <a
               href="https://www.instagram.com/viksi_fitness"
               target="_blank"
-              className="focus:wk_outline-none"
+              className={cn(
+                'wk_block wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233] focus:wk_outline-none',
+                transition,
+              )}
             >
               Instagram
             </a>
           </li>
 
-          <li
-            className={cn(
-              'wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]',
-              transition,
-            )}
-          >
+          <li>
             <a
               href="https://www.tiktok.com/@viksi_fitness"
               target="_blank"
-              className="focus:wk_outline-none"
+              className={cn(
+                'wk_block wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233] focus:wk_outline-none',
+                transition,
+              )}
             >
               TikTok
             </a>

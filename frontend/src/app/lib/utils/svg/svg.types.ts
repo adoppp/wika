@@ -10,7 +10,8 @@ type Svg =
   | 'arrowCorner'
   | 'arrowSide'
   | 'close'
-  | 'modalStats';
+  | 'modalStats'
+  | 'cookie';
 
 export type SvgTypes = {
   [K in Svg]: (props: { className?: string }) => JSX.Element;
