@@ -3,7 +3,7 @@ import { transition } from '@/app/lib/constants';
 
 import { useTranslation } from '@/app/i18n';
 import { PageProps } from '@/app/lib/types';
-import { cn } from '@/app/lib/utils';
+import { cn, endpoints } from '@/app/lib/utils';
 
 // import video_webm from 'public/video/about.webm';
 // import video_mp4 from 'public/video/about.mp4';
@@ -13,7 +13,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
 
   return (
     <section
-      id="about"
+      id={endpoints.about.replace('#', '')}
       className="wk_mx-auto wk_mb-[12px] wk_px-[16px] wk_py-[52px] tablet:wk_px-[68px] tablet:wk_pt-[56px] tablet:wk_pb-[68px] desktop:wk_py-[120px] wk_rounded-50 wk_bg-th_black"
     >
       <h2 className="wk_absolute wk_size-[1px] wk_m-[-1px] wk_p-0 wk_overflow-hidden wk_border-0">
