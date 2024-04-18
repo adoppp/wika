@@ -3,5 +3,8 @@ export { Service } from '@/app/components/aux/service';
 export { ServicesList } from '@/app/components/aux/servicesList';
 export { Statistics } from '@/app/components/aux/statistics';
 export { Modal } from '@/app/components/aux/modal';
+export { Review } from '@/app/components/aux/review';
+export { ReviewList } from '@/app/components/aux/review-list';
+export { Slider } from '@/app/components/aux/slider';
 export { CookieBanner } from '@/app/components/aux/cookie-banner';
 export { CookieSettings } from '@/app/components/aux/cookie-settings';

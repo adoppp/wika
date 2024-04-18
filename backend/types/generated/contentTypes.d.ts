@@ -932,18 +932,18 @@ export interface ApiReviewReview extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    review: Attribute.JSON &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     avatarId: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
+        };
+      }>;
+    review: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
         };
       }>;
     createdAt: Attribute.DateTime;

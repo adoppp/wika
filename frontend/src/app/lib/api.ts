@@ -36,6 +36,7 @@ export interface ResultsResponse {
 }
 
 export interface ReviewAttributes {
+  date: string;
   reviewerName: string;
   review: string;
   avatarUrl: string;
