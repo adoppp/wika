@@ -10,6 +10,7 @@ interface LayoutProps {
   hero: ReactNode;
   about: ReactNode;
   services: ReactNode;
+  photos: ReactNode;
   reviews: ReactNode;
   call: ReactNode;
   footer: ReactNode;
@@ -58,6 +59,7 @@ export default function Layout({
   hero,
   about,
   services,
+  photos,
   reviews,
   call,
   footer,
@@ -77,6 +79,7 @@ export default function Layout({
         {hero}
         {about}
         {services}
+        {photos}
         {reviews}
         {call}
       </main>

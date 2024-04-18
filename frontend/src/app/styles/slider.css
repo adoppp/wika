@@ -11,8 +11,10 @@
 .slider-nav {
   display: inline-block;
 
-  margin-right: auto;
-  margin-left: auto;
+  padding-right: auto;
+  padding-left: auto;
+  /* margin-right: auto;
+  margin-left: auto; */
 }
 
 .arrows_wrapper {
@@ -28,13 +30,18 @@
   align-items: center;
   justify-content: center;
 
-  width: 32px;
-  height: 32px;
+  width: 52px;
+  height: 52px;
 
   background-color: transparent;
   color: #fe59c2;
 
   transition: color 400ms cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.arrows_wrapper button svg {
+  width: 32px;
+  height: 32px;
 }
 
 .arrows_wrapper button:is(:hover, :focus, :target) {
@@ -48,11 +55,19 @@
 }
 
 .prev_button {
-  left: -604px;
+  left: -64px;
+}
+
+.reviews_slider-nav .prev_button {
+  left: 0;
 }
 
 .next_button {
-  right: -604px;
+  right: -64px;
+}
+
+.reviews_slider-nav .next_button {
+  right: 0;
 }
 
 .dots_wrapper {
@@ -87,5 +102,15 @@
 
 .dots_wrapper + .arrows_wrapper button {
   position: absolute;
-  top: -248px;
+  top: -424px;
+
+  padding: 180px 0;
+
+  background-color: black;
+}
+
+@media screen and (min-width: 1440px) {
+  .dots_wrapper + .arrows_wrapper button {
+    top: -444px;
+  }
 }

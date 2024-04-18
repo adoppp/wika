@@ -26,7 +26,7 @@ export default function Review({
       </div>
 
       <blockquote>
-        <p className="wk_max-w-[648px] wk_mx-[auto] wk_text-[24px] tablet:wk_text-[36px] desktop:wk_text-[42px] wk_leading-[calc(28/24)] tablet:wk_leading-[calc(50/36)] desktop:wk_leading-[calc(50/42)] wk_text-gray_200 wk_text-center before:wk_content-['\201C'] after:wk_content-['\201C']">
+        <p className="wk_max-w-[648px] wk_h-[200px] wk_mx-[auto] wk_text-[24px] tablet:wk_text-[36px] desktop:wk_text-[42px] wk_leading-[calc(28/24)] tablet:wk_leading-[calc(50/36)] desktop:wk_leading-[calc(50/42)] wk_text-gray_200 wk_text-center before:wk_content-['\201C'] after:wk_content-['\201C']">
           {reviewText}
         </p>
       </blockquote>

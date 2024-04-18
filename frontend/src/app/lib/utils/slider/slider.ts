@@ -13,8 +13,9 @@ export type Options = {
   mobileFirst?: boolean;
   pauseOnHover?: boolean;
   speed?: number;
-  // swipe?: boolean;          // Not yet implemented
+  swipe?: boolean;
   gap?: number;
+  itemWidth?: number;
   infinite?: boolean;
   responsive?: {
     breakpoint: number;
@@ -51,8 +52,9 @@ const slider = (
     // draggable = true,      // Not yet implemented
     pauseOnHover = false,
     speed = 300,
-    // swipe = true,          // Not yet implemented
+    swipe = false,
     gap = 0,
+    itemWidth,
     infinite = false,
   } = options;
 
@@ -73,7 +75,8 @@ const slider = (
   let totalSlides = Math.ceil(totalItems / itemsToSwipe);
 
   const sliderWidth = slider.clientWidth;
-  const elementWidth = (sliderWidth - gap * (itemsToShow - 1)) / itemsToShow;
+  const elementWidth =
+    itemWidth || (sliderWidth - gap * (itemsToShow - 1)) / itemsToShow;
 
   // Update slider if infinite mode set to true
   // Set current dot if infinite mode set to false
@@ -168,11 +171,13 @@ const slider = (
 
     // Go through all items inside list, cloning necessary items and pushing them to appropriate array
     for (let i = 0; i < items.length; i += 1) {
-      if (i >= 0 && i < itemsToShow) {
+      if (i < itemsToShow) {
         const clone = items[i].cloneNode(true) as HTMLLIElement;
         clone.classList.add('item-copy');
         beforeend.push(clone);
-      } else if (i >= items.length - itemsToShow && i < items.length) {
+      }
+
+      if (i >= items.length - itemsToShow) {
         const clone = items[i].cloneNode(true) as HTMLLIElement;
         clone.classList.add('item-copy');
         afterbegin.push(clone);
@@ -184,7 +189,10 @@ const slider = (
     list.append(...beforeend);
 
     // Update totalSlides after insertion of copies
-    totalSlides = Math.ceil(list.childElementCount / itemsToSwipe);
+    totalSlides = Math.ceil(
+      // list.childElementCount / itemsToSwipe - itemsToShow,
+      list.childElementCount / itemsToSwipe - (itemsToShow - itemsToSwipe),
+    );
   }
 
   /**
@@ -322,17 +330,19 @@ const slider = (
     setCurrentDot(currentSlide);
 
     // Disable appropriate arrow button if slider reached his beginning or end
-    const prevBtn = slider.getElementsByClassName(
-      'prev_button',
-    )[0] as HTMLButtonElement;
-    const nextBtn = slider.getElementsByClassName(
-      'next_button',
-    )[0] as HTMLButtonElement;
-    prevBtn.disabled = currentSlide === 1;
-    nextBtn.disabled =
-      (itemsToShow / itemsToSwipe) % 2 === 0
-        ? slideToShow === totalSlides - 1
-        : slideToShow === totalSlides;
+    if (arrows) {
+      const prevBtn = slider.getElementsByClassName(
+        'prev_button',
+      )[0] as HTMLButtonElement;
+      const nextBtn = slider.getElementsByClassName(
+        'next_button',
+      )[0] as HTMLButtonElement;
+      prevBtn.disabled = currentSlide === 1;
+      nextBtn.disabled =
+        (itemsToShow / itemsToSwipe) % 2 === 0
+          ? slideToShow === totalSlides - 1
+          : slideToShow === totalSlides;
+    }
   }
 
   /**
@@ -372,9 +382,7 @@ const slider = (
         // AS WELL AS WITH DIFFERENT AMOUNT OF ITEMS!!!
         if (slideToShow <= 1) {
           const slidesToSkip =
-            itemsToShow / itemsToSwipe === 1
-              ? 1
-              : itemsToShow / itemsToSwipe + 1;
+            itemsToShow / itemsToSwipe === 1 ? 1 : itemsToShow / itemsToSwipe;
 
           currentSlide = totalSlides - slidesToSkip;
         }

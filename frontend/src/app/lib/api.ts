@@ -23,16 +23,16 @@ export interface PriceItem {
   attributes: PriceItemAttributes;
 }
 
-export interface ResultsAttributes {
+export interface PhotosAttributes {
   description: string;
   beforeUrl: string;
   afterUrl: string;
-  ruLocaleId: string;
+  ruLocaleId?: string;
 }
 
-export interface ResultsResponse {
+export interface PhotosResponse {
   id: string;
-  attributes: ResultsAttributes;
+  attributes: PhotosAttributes;
 }
 
 export interface ReviewAttributes {
@@ -99,7 +99,7 @@ export const getPriceList = (lng: Language, init?: RequestInit) => {
   return sendRequest<PriceItem[]>(buildUrl(`prices?locale=${lng}`), init);
 };
 
-export const getResults = (lng: Language, init?: RequestInit) => {
+export const getPhotos = (lng: Language, init?: RequestInit) => {
   return sendRequest(buildUrl(`photos?locale=${lng}`), init);
 };
 
