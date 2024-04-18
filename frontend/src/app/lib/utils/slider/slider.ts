@@ -23,6 +23,7 @@ export type Options = {
       itemsToShow?: number;
       itemsToSwipe?: number;
       gap?: number;
+      arrows?: boolean;
     };
   }[];
 };

@@ -43,8 +43,15 @@ export default function ReviewList({ lng }: Readonly<ReviewListProps>) {
   const sliderOptions: Options = {
     itemsToShow: 1,
     itemsToSwipe: 1,
-    arrows: true,
     dots: true,
+    responsive: [
+      {
+        breakpoint: 1440,
+        settings: {
+          arrows: true,
+        },
+      },
+    ],
   };
 
   return (
