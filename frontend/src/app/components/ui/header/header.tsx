@@ -51,7 +51,7 @@ export default function Header({ lng, t, navT}: Readonly<HeaderProps>) {
                 />
             </Link>
 
-            <div className="smallMobile:wk_hidden tablet:wk_flex wk_items-center wk_gap-[20px]">
+            <div className="wk_hidden tablet:wk_flex wk_items-center wk_gap-[20px]">
                 <LanguageSwitcher lng={lng} location="header" />
 
                 <Button color="white" type="button" lng={lng} label="label" />
