@@ -7,10 +7,7 @@ import { Button } from '@/app/components';
 import { ServiceProps } from '../service';
 
 export default function Service({
-  title,
-  description,
-  price,
-  period,
+  data: { title, description },
   lng,
 }: Readonly<ServiceProps>) {
   const router = useRouter();
@@ -32,17 +29,13 @@ export default function Service({
           ))}
         </ul>
 
-        <div className="mobile:wk_flex mobile:wk_justify-between mobile:wk_items-center desktop:wk_flex-col desktop:wk_justify-start desktop:wk_gap-[48px]">
-          <p className="wk_flex wk_flex-col wk_mb-[20px] mobile:wk_mb-[0] wk_text-[44px] wk_leading-[calc(52/44)] wk_text-th_white">
-            {price}
-
-            <span className="wk_text-[18px] wk_leading-[calc(20/18)] wk_text-gray_200">
-              грн/{period}
-            </span>
-          </p>
-
-          <Button color="pink" lng={lng} label="label" onClick={openModal} />
-        </div>
+        <Button
+          color="pink"
+          lng={lng}
+          label="label"
+          onClick={openModal}
+          className="desktop:wk_self-start wk_ml-auto"
+        />
       </div>
     </li>
   );

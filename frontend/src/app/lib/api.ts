@@ -12,8 +12,6 @@ export interface VideoResponse {
 
 export interface PriceItemAttributes {
   title: string;
-  price: number;
-  period: string;
   description: string[];
   ruLocaleId?: string;
 }
