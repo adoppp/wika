@@ -3,8 +3,6 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { Header, BurgerMenu, Button } from './components';
 import { useTranslation } from './i18n/client';
-import { cn } from '@/app/lib/utils';
-import { transition } from '@/app/lib/constants';
 
 export default function NotFound() {
   const pathname = usePathname();
