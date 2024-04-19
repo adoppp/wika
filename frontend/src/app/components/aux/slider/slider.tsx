@@ -4,16 +4,17 @@ import { useEffect } from 'react';
 
 import { slider } from '@/app/lib/utils';
 import { SliderProps } from '../slider';
+import { TSliderReturn } from '@/app/lib/utils/slider/slider';
 
 export default function Slider({ className, options }: Readonly<SliderProps>) {
   useEffect(() => {
-    let id: NodeJS.Timeout | undefined;
+    let clear: TSliderReturn;
 
     if (document) {
-      id = slider(className, options);
+      clear = slider(className, options);
     }
 
-    return () => clearInterval(id);
+    return () => clear();
   }, [className, options]);
 
   return <></>;

@@ -9,7 +9,7 @@ export type Options = {
   itemsToSwipe?: number;
   prevArrow?: string | Element;
   nextArrow?: string | Element;
-  // draggable?: boolean;      // Not yet implemented
+  draggable?: boolean;
   mobileFirst?: boolean;
   pauseOnHover?: boolean;
   speed?: number;
@@ -30,10 +30,9 @@ export type Options = {
   }[];
 };
 
-const slider = (
-  className: string,
-  options: Options,
-): NodeJS.Timeout | undefined => {
+export type TSliderReturn = () => void;
+
+const slider = (className: string, options: Options): TSliderReturn => {
   // Update options depends on current screen width if responsive configured
   const { responsive = [], mobileFirst = true } = options;
   if (responsive) updateOptions();
@@ -50,7 +49,7 @@ const slider = (
     itemsToSwipe = 1,
     prevArrow,
     nextArrow,
-    // draggable = true,      // Not yet implemented
+    draggable = false,
     pauseOnHover = false,
     speed = 300,
     swipe = false,
@@ -63,7 +62,7 @@ const slider = (
   let currentSlide: number = 1;
 
   // Disable slider if configured
-  if (disable) return;
+  if (disable) return () => {};
 
   const list = document.getElementsByClassName(
     className,
@@ -110,35 +109,56 @@ const slider = (
   const arrowsWrapper = slider.getElementsByClassName('arrows_wrapper');
   if (arrows && !arrowsWrapper.length) sliderNav?.append(addArrows());
 
+  // Set listeners to handle swipes on mobile and tablet screens
+  let xPos: number;
+  if (swipe) {
+    list.addEventListener('touchstart', touchStart);
+    list.addEventListener('touchend', touchEnd);
+  }
+
+  // Set listener to handle dragging on mobile and tablet screens
+  if (draggable) list.addEventListener('touchmove', touchMove);
+
   // Set autoplay if configured. Use infinite swipe mode or normal depends on configurations
+  let id: NodeJS.Timeout;
+  let intervalCallback: () => void;
   if (autoplay) {
-    let id: NodeJS.Timeout;
     const step = autoplayDirection === 'right' ? 1 : -1;
 
-    id = setInterval(
-      () =>
-        infinite
-          ? infiniteSwipeItems(currentSlide + step)
-          : swipeItems(currentSlide + step),
-      autoplaySpeed,
-    );
+    intervalCallback = () =>
+      infinite
+        ? infiniteSwipeItems(currentSlide + step)
+        : swipeItems(currentSlide + step);
+
+    id = setInterval(intervalCallback, autoplaySpeed);
 
     if (pauseOnHover) {
       list.addEventListener('mouseover', () => clearInterval(id));
 
       list.addEventListener('mouseleave', () => {
-        id = setInterval(
-          () =>
-            infinite
-              ? infiniteSwipeItems(currentSlide + step)
-              : swipeItems(currentSlide + step),
-          autoplaySpeed,
-        );
+        id = setInterval(intervalCallback, autoplaySpeed);
+      });
+    }
+  }
+
+  return () => {
+    if (autoplay) clearInterval(id);
+
+    if (pauseOnHover) {
+      list.removeEventListener('mouseover', () => clearInterval(id));
+
+      list.removeEventListener('mouseleave', () => {
+        id = setInterval(intervalCallback, autoplaySpeed);
       });
     }
 
-    return id;
-  }
+    if (swipe) {
+      list.removeEventListener('touchstart', touchStart);
+      list.removeEventListener('touchend', touchEnd);
+    }
+
+    if (draggable) list.removeEventListener('touchmove', touchMove);
+  };
 
   /**
    * Looking for new configs depends on screen width and update options for slider.
@@ -424,9 +444,9 @@ const slider = (
   /**
    * Moves slider to the current slide
    */
-  function setTransform() {
+  function setTransform(drag = 0) {
     list.style.transform = `translateX(-${
-      (elementWidth + gap) * (currentSlide - 1) * itemsToSwipe
+      (elementWidth + gap) * (currentSlide - 1) * itemsToSwipe + drag
     }px)`;
   }
 
@@ -442,6 +462,41 @@ const slider = (
    */
   function clearTransition() {
     list.style.transition = '';
+  }
+
+  /**
+   * Set initial cursor position on start of swiping
+   *
+   * @param event TouchEvent
+   */
+  function touchStart(event: TouchEvent) {
+    xPos = event.changedTouches[0].pageX;
+  }
+
+  /**
+   * Check cursor position on end of swiping and swiping slider in appropriate direction
+   *
+   * @param event TouchEvent
+   */
+  function touchEnd(event: TouchEvent) {
+    if (event.changedTouches[0].pageX < xPos) {
+      infinite
+        ? infiniteSwipeItems(currentSlide + 1)
+        : swipeItems(currentSlide + 1);
+    } else {
+      infinite
+        ? infiniteSwipeItems(currentSlide - 1)
+        : swipeItems(currentSlide - 1);
+    }
+  }
+
+  /**
+   * Updating slider position on dragging on mobile and tablet screens
+   *
+   * @param event TouchEvent
+   */
+  function touchMove(event: TouchEvent) {
+    setTransform(xPos - event.changedTouches[0].pageX);
   }
 };
 

@@ -45,6 +45,7 @@ export default function ReviewList({ lng }: Readonly<ReviewListProps>) {
     itemsToSwipe: 1,
     dots: true,
     swipe: true,
+    draggable: true,
     responsive: [
       {
         breakpoint: 1440,

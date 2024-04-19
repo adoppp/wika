@@ -63,6 +63,7 @@ export default function PhotoList({ lng }: Readonly<PhotoListProps>) {
     gap: 12,
     infinite: true,
     swipe: true,
+    draggable: true,
     responsive: [
       {
         breakpoint: 434,
