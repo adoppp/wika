@@ -55,7 +55,7 @@
 }
 
 .prev_button {
-  left: -64px;
+  left: calc((50vw - 50% - 88px) * -1);
 }
 
 .reviews_slider-nav .prev_button {
@@ -63,7 +63,7 @@
 }
 
 .next_button {
-  right: -64px;
+  right: calc((50vw - 50% - 88px) * -1);
 }
 
 .reviews_slider-nav .next_button {
@@ -112,5 +112,13 @@
 @media screen and (min-width: 1440px) {
   .dots_wrapper + .arrows_wrapper button {
     top: -444px;
+  }
+
+  .prev_button {
+    left: calc((50vw - 50% - 78px) * -1);
+  }
+
+  .next_button {
+    right: calc((50vw - 50% - 78px) * -1);
   }
 }

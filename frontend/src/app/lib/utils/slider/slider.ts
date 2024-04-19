@@ -25,6 +25,7 @@ export type Options = {
       itemsToSwipe?: number;
       gap?: number;
       arrows?: boolean;
+      itemWidth?: number;
     };
   }[];
 };
@@ -143,13 +144,22 @@ const slider = (
    * Looking for new configs depends on screen width and update options for slider.
    */
   function updateOptions() {
-    const updatedConfigs = responsive.find(({ breakpoint }) =>
-      mobileFirst
-        ? breakpoint <= window.screen.width
-        : breakpoint >= window.screen.width,
-    );
+    const updatedConfigs = responsive.reduce((prevValue, config) => {
+      if (
+        mobileFirst
+          ? config.breakpoint <= window.screen.width
+          : config.breakpoint >= window.screen.width
+      ) {
+        return { ...prevValue, ...config.settings };
+      } else {
+        return prevValue;
+      }
+    }, {});
 
-    options = { ...options, ...updatedConfigs?.settings };
+    options = {
+      ...options,
+      ...updatedConfigs,
+    };
   }
 
   /**

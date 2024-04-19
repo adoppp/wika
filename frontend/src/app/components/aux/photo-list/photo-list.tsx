@@ -37,18 +37,40 @@ const photos = [
       afterUrl: '',
     },
   },
+  {
+    id: '5',
+    attributes: {
+      description: 'End + 1',
+      beforeUrl: '',
+      afterUrl: '',
+    },
+  },
+  {
+    id: '6',
+    attributes: {
+      description: 'End + 2',
+      beforeUrl: '',
+      afterUrl: '',
+    },
+  },
 ];
 
 export default function PhotoList({ lng }: Readonly<PhotoListProps>) {
   const sliderOptions: Options = {
-    itemsToShow: 3,
+    itemsToShow: 1,
     itemsToSwipe: 1,
     dots: true,
     gap: 12,
-    itemWidth: 378,
     infinite: true,
     swipe: true,
     responsive: [
+      {
+        breakpoint: 434,
+        settings: {
+          itemsToShow: 3,
+          itemWidth: 378,
+        },
+      },
       {
         breakpoint: 768,
         settings: {
@@ -60,7 +82,7 @@ export default function PhotoList({ lng }: Readonly<PhotoListProps>) {
 
   return (
     <>
-      <div className="wk_px-[62px]">
+      <div className="tablet:wk_px-[calc(50%-189px)]">
         <ul className="photos">
           {photos?.map((photo: PhotosResponse) => (
             <Photo key={photo.id} data={photo.attributes} />
