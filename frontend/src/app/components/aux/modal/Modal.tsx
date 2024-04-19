@@ -43,19 +43,27 @@ export default function Modal({
     const handleOpenModal = () => {
       dialogRef?.current?.showModal();
       document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', onKeydown);
     };
 
     if (isOpen) handleOpenModal();
   }, [isOpen]);
 
-  const handleCloseModal = () => {
+  function onKeydown(e: KeyboardEvent): void {
+    if (e.code === 'Escape') {
+      handleCloseModal();
+    }
+  }
+
+  function handleCloseModal() {
     reset();
     setNumber('');
 
     (dialogRef as RefObject<HTMLDialogElement>).current?.close();
     document.body.style.overflow = 'auto';
+    window.removeEventListener('keydown', onKeydown);
     router.back();
-  };
+  }
 
   const onPhoneNumberChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;

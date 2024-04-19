@@ -19,22 +19,20 @@ export default function Page({
   useEffect(() => {
     if (searchParams?.privacyPolicy === 'true') {
       (dialog?.current as HTMLDialogElement | null)?.showModal();
-      // document.body.classList.add('disabled-scroll');
-      // window.addEventListener("keydown", onKeydown);
+      window.addEventListener('keydown', onKeydown);
     } else {
       (dialog?.current as HTMLDialogElement | null)?.close();
-      // document.body.classList.remove('disabled-scroll');
-      // window.removeEventListener("keydown", onKeydown);
+      window.removeEventListener('keydown', onKeydown);
     }
 
-    // return () => window.removeEventListener("keydown", onKeydown);
+    return () => window.removeEventListener('keydown', onKeydown);
   });
 
-  // const onKeydown = (e: KeyboardEvent): void => {
-  //   if (e.code === "Escape") {
-  //     closePrivacyPolicy();
-  //   }
-  // };
+  const onKeydown = (e: KeyboardEvent): void => {
+    if (e.code === 'Escape') {
+      closePrivacyPolicy();
+    }
+  };
 
   const closePrivacyPolicy = (): void => {
     if (window.history.length <= 2) {

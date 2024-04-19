@@ -8,6 +8,7 @@ import { CookieBanner, CookieSettings } from '@/app/components';
 import { PageProps } from '@/app/lib/types';
 import { cn, Svg } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
+import { useTranslation } from '@/app/i18n/client';
 
 export const allRejectedCookies = {
   necessary: true,
@@ -27,6 +28,7 @@ export const allAcceptedCookies = {
 
 export default function Page({ params: { lng } }: Readonly<PageProps>) {
   const [showConsent, setShowConsent] = useState(false);
+  const { t } = useTranslation(lng, 'cookie');
 
   useEffect(() => {
     setShowConsent(!hasCookie('cookieConsent'));
@@ -56,7 +58,7 @@ export default function Page({ params: { lng } }: Readonly<PageProps>) {
       <button
         type="button"
         onClick={openCookieSettings}
-        aria-label="Open cookies consent settings"
+        aria-label={t('cookieSettingsTitle')}
         className={cn(
           'wk_fixed wk_bottom-[20px] wk_left-[20px] wk_z-[1000] wk_flex wk_justify-center wk_items-center wk_size-[40px] wk_p-[8px] wk_rounded-[50%] wk_bg-th_accent wk_transition-shadow hover:wk_shadow-[0px_0px_50px_0px_#FE59C280] focus:wk_shadow-[0px_0px_50px_0px_#FE59C280] focus:wk_outline-none',
           transition,
