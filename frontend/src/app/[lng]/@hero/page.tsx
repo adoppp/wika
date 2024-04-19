@@ -6,7 +6,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'hero');
 
   return (
-    <section className="wk_mx-auto wk_mb-[12px] wk_pt-[384px] tablet:wk_pt-[364px] desktop:wk_pt-[308px] wk_pb-[40px] tablet:wk_pb-[86px] desktop:wk_pb-[30px] wk_px-[12px] tablet:wk_px-[52px] desktop:wk_px-[60px] wk_rounded-50 wk_bg-hero_pattern_smallMob mobile:wk_bg-hero_pattern_mob tablet:wk_bg-hero_pattern_tab wk_bg-center wk_bg-cover">
+    <section className="desktop:wk_w-[1428px] wk_mx-auto wk_mb-[12px] wk_pt-[384px] tablet:wk_pt-[364px] desktop:wk_pt-[308px] wk_pb-[40px] tablet:wk_pb-[86px] desktop:wk_pb-[30px] wk_px-[12px] tablet:wk_px-[52px] desktop:wk_px-[60px] wk_rounded-50 wk_bg-hero_pattern_smallMob mobile:wk_bg-hero_pattern_mob tablet:wk_bg-hero_pattern_tab wk_bg-center wk_bg-cover">
       <h1 className="mobile:wk_w-[314px] tablet:wk_w-[432px] desktop:wk_w-[608px] wk_mb-[52px] desktop:wk_mb-[48px] wk_text-th_white wk_font-500 wk_text-title_mob tablet:wk_text-title_tab desktop:wk_text-[80px] desktop:wk_leading-[calc(96/80)]">
         {t('title')}
       </h1>

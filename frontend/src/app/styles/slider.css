@@ -30,7 +30,7 @@
   align-items: center;
   justify-content: center;
 
-  width: 52px;
+  width: 66px;
   height: 52px;
 
   background-color: transparent;
@@ -115,10 +115,10 @@
   }
 
   .prev_button {
-    left: calc((50vw - 50% - 78px) * -1);
+    left: -460px;
   }
 
   .next_button {
-    right: calc((50vw - 50% - 78px) * -1);
+    right: -460px;
   }
 }
