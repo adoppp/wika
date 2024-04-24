@@ -1,4 +1,4 @@
-import { Title } from '@/app/components';
+import { Paragraph, Title } from '@/app/components';
 import { useTranslation } from '@/app/i18n';
 import { PageProps } from '@/app/types';
 
@@ -12,7 +12,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
                 <span className='wk_text-th_accent wk_hidden desktop:wk_inline wk_text-[68px] wk_absolute wk_right-[6.5px] wk_-top-[10px]'>.</span>
             </Title>
 
-            
+            <Paragraph>
+                {t('description')}
+            </Paragraph>
         </section>
     );
 };

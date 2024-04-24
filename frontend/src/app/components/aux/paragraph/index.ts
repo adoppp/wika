@@ -1,0 +1,1 @@
+export { default as Paragraph } from '@/app/components/aux/paragraph/paragraph';
