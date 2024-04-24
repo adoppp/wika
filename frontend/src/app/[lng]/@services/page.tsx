@@ -1,4 +1,4 @@
-import { ServicesList, Title } from '@/app/components';
+import { Paragraph, ServicesList, Title } from '@/app/components';
 import { useTranslation } from '@/app/i18n';
 import { PageProps } from '@/app/types';
 
@@ -15,9 +15,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         <span className='wk_text-th_accent wk_hidden desktop:wk_inline wk_text-[68px]'>.</span>
       </Title>
 
-      <p className="wk_max-w-[492px] wk_mx-auto wk_mb-[40px] tablet:wk_mb-[52px] desktop:wk_mb-[80px] wk_text-[20px] wk_leading-[calc(32/20)] wk_font-300 wk_text-center wk_text-gray_300">
+      <Paragraph mb={{ mobile: 40, tablet: 50, dekstop: 80}}>
         {t('text')}
-      </p>
+      </Paragraph>
 
       <ServicesList lng={lng} />
     </section>

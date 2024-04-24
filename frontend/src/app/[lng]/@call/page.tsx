@@ -1,4 +1,4 @@
-import { Button, Title } from '@/app/components';
+import { Button, Paragraph, Title } from '@/app/components';
 import { useTranslation } from '@/app/i18n';
 import { PageProps } from '@/app/types';
 
@@ -12,14 +12,10 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         {t('title')}
       </Title>
 
-      <p
-        className={`wk_mb-[60px] wk_text-[20px] wk_leading-[${
-          32 / 20
-        }] wk_font-300 wk_text-center wk_text-gray_300`}
-      >
+      <Paragraph mb={{ mobile: 60, tablet: 60, dekstop: 60}}>
         {t('text')}
-      </p>
-
+      </Paragraph>
+      
       <Button color="pink" lng={lng} className="wk_mx-auto" label='label' />
     </section>
   );
