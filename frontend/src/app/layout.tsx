@@ -7,7 +7,6 @@ const rubik = Rubik({
   subsets: ['latin'],
   weight: ['300', '400', '500', '700'],
   display: 'swap',
-  variable: '--font-rubik',
 });
 
 interface LayoutProps {

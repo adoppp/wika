@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
 
-import { SvgTypes, SvgProps } from './svg.types';
+import { SvgTypes, SvgProps } from '@/app/utils/svg/svg.types';
 import {
   BurgerMenu,
   Globe,
@@ -13,8 +13,9 @@ import {
   ArrowCorner,
   ArrowSide,
   Close,
-  transition
-} from './imports';
+  transition,
+  Dot
+} from '@/app/utils/svg/imports';
 
 const svg: Readonly<SvgTypes> = {
   burgerMenu: ({ className }) => (
@@ -49,6 +50,9 @@ const svg: Readonly<SvgTypes> = {
   ),
   close: ({ className }) => (
     <Close className={twMerge(transition,className)} />
+  ),
+  dot: ({ className }) => (
+    <Dot className={twMerge(transition,className)} />
   )
 };
 

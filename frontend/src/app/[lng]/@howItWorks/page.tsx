@@ -1,4 +1,4 @@
-import { Paragraph, Title } from '@/app/components';
+import { Paragraph, Title, WayMap } from '@/app/components';
 import { useTranslation } from '@/app/i18n';
 import { PageProps } from '@/app/types';
 
@@ -15,6 +15,8 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
             <Paragraph mb={{ mobile: 93, tablet: 50, dekstop: 80}}>
                 {t('description')}
             </Paragraph>
+
+            <WayMap />
         </section>
     );
 };
