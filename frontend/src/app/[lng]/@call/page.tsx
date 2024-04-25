@@ -12,7 +12,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         {t('title')}
       </Title>
 
-      <Paragraph mb={{ mobile: 60, tablet: 60, dekstop: 60}}>
+      <Paragraph styles='wk_mb-[60px] tablet:wk_mb-[60px] desktop:wk_mb-[60px]'>
         {t('text')}
       </Paragraph>
       

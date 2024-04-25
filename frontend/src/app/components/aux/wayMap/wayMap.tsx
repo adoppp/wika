@@ -7,7 +7,7 @@ export default function WayMap() {
     const isTablet = useMediaQuery({ query: 'min-width: 768px' })
     
     return (
-        <ul className="wk_text-gray_50 wk_font-400 wk_max-w-[430px] wk_mx-auto">
+        <ul className="wk_text-gray_50 wk_font-400 wk_max-w-[430px] wk_mx-auto wk_bg-stepLine_pattern wk_bg-center wk_bg-cover">
             <li className="wk_flex wk_flex-row wk_relative wk_justify-end wk_mb-[51px]">
                 <Svg id="dot" className="wk_size-[120px] wk_absolute wk_-top-[40px] wk_right-[92px]" />
                 <span className="wk_mr-[15px] wk_text-[24px]">

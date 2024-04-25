@@ -146,6 +146,8 @@ const config: Config = {
           'image-set(url(../../public/images/hero_tablet.webp) 1x type("image/webp"), url(../../public/images/hero_tablet@2x.webp) 2x type("image/webp"), url(../../public/images/hero_tablet@3x.webp) 3x type("image/webp"), url(../../public/images/hero_tablet.jpg) 1x type("image/jpeg"), url(../../public/images/hero_tablet@2x.jpg) 2x type("image/jpeg"), url(../../public/images/hero_tablet@3x.jpg) 3x type("image/jpeg"))',
         hero_pattern_tab:
           'image-set(url(../../public/images/hero_desktop.webp) 1x type("image/webp"), url(../../public/images/hero_desktop@2x.webp) 2x type("image/webp"), url(../../public/images/hero_desktop@3x.webp) 3x type("image/webp"), url(../../public/images/hero_desktop.jpg) 1x type("image/jpeg"), url(../../public/images/hero_desktop@2x.jpg) 2x type("image/jpeg"), url(../../public/images/hero_desktop@3x.jpg) 3x type("image/jpeg"))',
+        stepLine_pattern: 
+          'image-set(url(../../public/images/stepsLine.webp) 1x type ("image/webp"), url(../../public/images/stepsLine.png) 1x type("image/png"), url(../../public/images/stepsLine@2x.png) 2x type("image/png"), url(../../public/images/stepsLine@3x.png) 3x type("image/png")'
       },
     },
   },

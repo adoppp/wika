@@ -12,7 +12,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
                 <span className='wk_text-th_accent wk_hidden desktop:wk_inline wk_text-[68px] wk_absolute wk_right-[6.5px] wk_-top-[10px]'>.</span>
             </Title>
 
-            <Paragraph mb={{ mobile: 93, tablet: 50, dekstop: 80}}>
+            <Paragraph styles='wk_mb-[93px] tablet:wk_mb-[50px] desktop:wk_mb-[80px]'>
                 {t('description')}
             </Paragraph>
 
