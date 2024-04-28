@@ -23,7 +23,6 @@
     "react-cookie": "^7.1.0",
     "react-dom": "^18",
     "react-i18next": "^14.0.1",
-    "react-responsive": "^10.0.0",
     "reset-css": "^5.0.2",
     "tailwind-merge": "^2.2.2"
   },
