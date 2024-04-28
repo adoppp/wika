@@ -1,1 +1,0 @@
-export { default as WayMap } from '@/app/components/aux/wayMap/wayMap';
