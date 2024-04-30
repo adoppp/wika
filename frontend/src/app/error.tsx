@@ -1,15 +1,15 @@
 'use client';
 
 import { NextPageContext } from 'next';
-import { useParams, useSearchParams, useRouter } from 'next/navigation';
-
-import { Header, BurgerMenu, Button } from '@/app/components';
 
 import { ErrorProps } from '@/app/lib/types';
+import { useParams, useSearchParams } from 'next/navigation';
+import { Header, BurgerMenu, Button } from './components';
 import { Language } from './i18n/settings';
 import { useTranslation } from './i18n/client';
 import { cn } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
+import { useRouter } from 'next/router';
 
 ErrorPage.getInitialProps = ({ res, err }: Readonly<NextPageContext>) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
@@ -33,7 +33,6 @@ export default function ErrorPage({ error, statusCode }: Readonly<ErrorProps>) {
         <h1 className="wk_font-300 wk_text-[150px] wk_text-th_accent tablet:wk_text-[239px] wk_mb-[78px] tablet:wk_mb-[32px] desktop:wk_mb-[40px]">
           {statusCode ? statusCode : error.message}
         </h1>
-
         <p className="wk_font-400 wk_text-[20px] wk_text-gray_400 tablet:wk_text-[40px] wk_mb-[156px] tablet:wk_mb-[66px] desktop:wk_mb-[80px]">
           {errorT('errorDescription')}
           <a
@@ -47,14 +46,12 @@ export default function ErrorPage({ error, statusCode }: Readonly<ErrorProps>) {
             instagram
           </a>
         </p>
-
         <Button
-          onClick={() => router.refresh()}
+          onClick={() => router.reload()}
           color="pink"
           lng={lng as Language}
           label="errorBtnRefresh"
           className="wk_w-fit tablet:wk_text-[24px]"
-          type="button"
         />
       </section>
 
