@@ -7,7 +7,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
     const { t } = await useTranslation(lng, 'howItWorks');
 
     return (
-        <section className='wk_mx-auto wk_px-[16px] wk_py-[52px] tablet:wk_px-[68px] tablet:wk_pt-[56px] tablet:wk_pb-[68px] desktop:wk_pt-[120px] desktop:wk_pb-[108px] wk_rounded-50 wk_bg-th_black wk_mb-[12px]'>
+        <section className='wk_mx-auto wk_px-[8px] wk_py-[52px] tablet:wk_px-[8px] tablet:wk_pt-[56px] tablet:wk_pb-[68px] desktop:wk_pt-[120px] desktop:wk_pb-[108px] wk_rounded-50 wk_bg-th_black wk_mb-[12px]'>
             <Title relative styles=' wk_w-fit wk_mx-auto'>
                 {t('title')}
                 <span className='wk_text-th_accent wk_hidden desktop:wk_inline wk_text-[68px] wk_absolute wk_right-[6.5px] wk_-top-[10px]'>.</span>
@@ -17,8 +17,8 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
                 {t('description')}
             </Paragraph>
 
-            <ul className="wk_text-gray_50 wk_font-400 wk_mx-auto wk_relative tablet:wk_text-center wk_max-w-[351px] mobile:wk_max-w-[367px] tablet:wk_max-w-[705px] middleMobile:wk_max-w-[419px] desktop:wk_max-w-[1140px] tablet:wk_flex tablet:wk_justify-between tablet:wk_h-[258px] desktop:wk_max-h-[225px]">
-                <li className="wk_flex wk_flex-row tablet:wk_flex-col tablet:wk_w-fit wk_relative wk_justify-end wk_mb-[51px] wk_z-10 tablet:wk_mb-0 tablet:wk_justify-normal tablet:wk_mr-[11px]">
+            <ul className="wk_text-gray_50 wk_font-400 wk_mx-auto wk_relative tablet:wk_text-center wk_max-w-[351px] mobile:wk_max-w-[367px] tablet:wk_max-w-[700px] middleMobile:wk_max-w-[419px] desktop:wk_max-w-[1140px] tablet:wk_flex tablet:wk_justify-between tablet:wk_h-[258px] desktop:wk_max-h-[225px]">
+                <li className="wk_flex wk_flex-row tablet:wk_flex-col tablet:wk_w-fit wk_relative wk_justify-end wk_mb-[51px] wk_z-10 tablet:wk_mb-0 tablet:wk_justify-normal tablet:wk_mr-[20px]">
                     <Svg id="dot" className="wk_size-[120px] wk_absolute wk_-top-[40px] wk_right-[92px] wk_z-10 tablet:wk_top-[16px] tablet:wk_left-[10px] desktop:wk_top-[13px]" />
                     <span className="wk_mr-[15px] wk_text-[24px] tablet:wk_mb-[68px] tablet:wk_mr-0">
                         1
@@ -37,12 +37,12 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
                         {t('step_2_2')}
                     </p>
                 </li>
-                <li className="wk_flex wk_flex-row tablet:wk_flex-col tablet:wk_w-fit wk_relative wk_justify-end wk_mb-[97px] tablet:wk_mb-0 tablet:wk_justify-normal tablet:wk_mr-[26px] tablet:wk_ml-[12px] desktop:wk_ml-[16px]">
+                <li className="wk_flex wk_flex-row tablet:wk_flex-col tablet:wk_w-fit wk_relative wk_justify-end wk_mb-[97px] tablet:wk_mb-0 tablet:wk_justify-normal tablet:wk_mr-[26px] desktop:wk_ml-[16px]">
                     <Svg id="dot" className="wk_size-[120px] wk_absolute wk_-top-[43px] wk_right-[96px] wk_z-10 tablet:wk_top-[8px] tablet:wk_-right-[13.5px]" />
-                    <span className="wk_mr-[15px] wk_text-[24px] tablet:wk_mb-[68px] tablet:wk_mr-0">
+                    <span className="wk_mr-[15px] wk_text-[24px] tablet:wk_mb-[68px] tablet:wk_mr-[8px] desktop:wk_mr-0">
                         3
                     </span>
-                    <p className="wk_max-w-[92px] wk_text-[12px] wk_mt-[4px]">
+                    <p className="wk_max-w-[92px] wk_text-[12px] wk_mt-[4px] tablet:wk_mr-[8px] desktop:wk_mr-0">
                         {t('step_3')}
                     </p>
                 </li>
