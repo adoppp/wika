@@ -20,7 +20,7 @@ export default function NotFound() {
     <>
       <Header lng={lng} t={headerT} navT={navT} />
 
-      <section className="wk_mt-[280px] tablet:wk_mt-[320px] desktop:wk_mt-[180px] wk_mx-auto wk_w-fit wk_text-center wk_flex wk_flex-col wk_items-center">
+      <section className="wk_mt-[140px] tablet:wk_mt-[180px] desktop:wk_mt-[240px] wk_mx-auto wk_w-fit wk_text-center wk_flex wk_flex-col wk_items-center">
         <h1 className="wk_font-300 wk_text-[150px] wk_text-th_accent tablet:wk_text-[239px] wk_mb-[78px] tablet:wk_mb-[32px] desktop:wk_mb-[40px]">
           404
         </h1>
