@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { transition } from '@/app/lib/constants';
-import { DisableScroll, Svg, cn, endpoints } from '@/app/lib/utils';
+import { DisableScroll, Svg, cn } from '@/app/lib/utils';
 import { Button, LanguageSwitcher, NavBar } from '@/app/components';
 import { BurgerMenuProps } from '@/app/components/ui/burgerMenu/burgerMenu.types';
 
@@ -23,7 +23,7 @@ export default function BurgerMenu({
 
       <div className="wk_bg-th_bg_secondary wk_rounded-50 wk_pr-[44px] wk_pl-[44px] wk_pt-[50px] wk_flex wk_flex-col wk_w-screen wk_h-screen">
         <Link
-          href={`/${lng.includes('ru') ? endpoints.homeRu : endpoints.homeUa}`}
+          href={`/${lng}`}
           aria-label={t('burger_close_aria_label')}
           className="wk_w-fit wk_mb-[110px] tablet:wk_mb-[98px]"
         >
