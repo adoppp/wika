@@ -14,7 +14,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   return (
     <section
       id="about"
-      className="wk_mx-auto wk_mb-[12px] wk_px-[16px] wk_py-[52px] tablet:wk_px-[68px] tablet:wk_pt-[56px] tablet:wk_pb-[68px] desktop:wk_py-[120px] wk_rounded-50 wk_bg-th_black"
+      className="wk_mx-auto wk_mb-[12px] wk_px-[16px] wk_py-[52px] tablet:wk_px-[68px] tablet:wk_pt-[56px] tablet:wk_pb-[68px] desktop:wk_w-[1416px] desktop:wk_py-[120px] wk_rounded-50 wk_bg-th_black"
     >
       <h2 className="wk_absolute wk_size-[1px] wk_m-[-1px] wk_p-0 wk_overflow-hidden wk_border-0">
         {t('title')}1 211212
@@ -30,17 +30,23 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
 
       <div>
         <ul className="wk_flex wk_gap-[8px] tablet:wk_gap-[12px]">
-          <li className={cn("wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]",
-          transition
-        )}>
+          <li
+            className={cn(
+              'wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]',
+              transition,
+            )}
+          >
             <a href="#" target="_blank" className="focus:wk_outline-none">
               Telegram
             </a>
           </li>
 
-          <li className={cn("wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]",
-          transition
-        )}>
+          <li
+            className={cn(
+              'wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]',
+              transition,
+            )}
+          >
             <a
               href="https://www.instagram.com/viksi_fitness"
               target="_blank"
@@ -50,9 +56,12 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
             </a>
           </li>
 
-          <li className={cn("wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]",
-          transition
-        )}>
+          <li
+            className={cn(
+              'wk_px-[20px] wk_py-[10px] wk_rounded-25 wk_leading-[calc(18/16)] tablet:wk_text-[20px] tablet:wk_leading-[calc(24/20)] wk_text-th_white wk_bg-[#FFFFFF33] wk_transition-colors hover:wk_text-th_accent hover:wk_bg-[#FE59C233] focus:wk_text-th_accent focus:wk_bg-[#FE59C233]',
+              transition,
+            )}
+          >
             <a
               href="https://www.tiktok.com/@viksi_fitness"
               target="_blank"

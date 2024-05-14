@@ -1,7 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export default interface TitleProps {
-    children: ReactNode;
-    relative?: boolean;
-    styles?: string;
-};
+  children: ReactNode;
+  className?: string;
+}

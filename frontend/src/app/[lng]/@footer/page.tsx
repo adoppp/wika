@@ -9,7 +9,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t: navT } = await useTranslation(lng, 'navBar');
 
   return (
-    <footer className="wk_mx-auto wk_px-[12px] wk_py-[48px] desktop:wk_px-[68px] desktop:wk_py-[100px] wk_rounded-50 wk_bg-th_black">
+    <footer className="wk_mx-auto wk_px-[12px] wk_py-[48px] desktop:wk_w-[1416px] desktop:wk_px-[68px] desktop:wk_py-[100px] wk_rounded-50 wk_bg-th_black">
       <div className="wk_flex wk_flex-col wk_items-center wk_gap-[40px] wk_mb-[40px] tablet:wk_mb-[48px] desktop:wk_flex-row desktop:wk_justify-between">
         <Logo lng={lng} className="desktop:wk_w-[152px]" />
 
@@ -21,8 +21,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
               href="#"
               target="_blank"
               aria-label={t('ariaLabelTg')}
-              className={cn("wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none",
-                transition
+              className={cn(
+                'wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none',
+                transition,
               )}
             >
               <Svg id="telegram" />
@@ -34,8 +35,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
               href="https://www.instagram.com/viksi_fitness"
               target="_blank"
               aria-label={t('ariaLabelIg')}
-              className={cn("wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none",
-                transition
+              className={cn(
+                'wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none',
+                transition,
               )}
             >
               <Svg id="instagram" />
@@ -47,8 +49,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
               href="https://www.tiktok.com/@viksi_fitness"
               target="_blank"
               aria-label={t('ariaLabelTt')}
-              className={cn("wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none",
-                transition
+              className={cn(
+                'wk_flex wk_justify-center wk_items-center wk_size-[35px] tablet:wk_size-[30px] wk_rounded-[4px] wk_bg-th_white wk_transition-colors hover:wk_bg-th_accent focus:wk_bg-th_accent focus:wk_outline-none',
+                transition,
               )}
             >
               <Svg id="tiktok" />
@@ -63,8 +66,9 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         <a
           href="https://www.instagram.com/d1g1talsolut1ons"
           target="_blank"
-          className={cn("wk_transition-colors hover:wk_text-th_white focus:wk_text-th_white focus:wk_outline-none",
-            transition
+          className={cn(
+            'wk_transition-colors hover:wk_text-th_white focus:wk_text-th_white focus:wk_outline-none',
+            transition,
           )}
         >
           &#169; Digital Solutions 2024.

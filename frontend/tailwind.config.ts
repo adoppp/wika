@@ -45,53 +45,6 @@ const config: Config = {
       title_mob: ['32px', { lineHeight: `${40 / 32}` }],
       title_tab: ['56px', { lineHeight: `${68 / 56}` }],
       title_desk: ['60px', { lineHeight: `${72 / 60}` }],
-      //   text_xs: '12px',
-      //   text_10xs: [
-      //     '68px',
-      //     {
-      //       lineHeight: '100%',
-      //     },
-      //   ],
-      //   text_sm: '14px',
-      //   text_base: '16px',
-      //   text_lg: '18px',
-      //   text_xl: '20px',
-      //   text_xl_150lH: [
-      //     '20px',
-      //     {
-      //       lineHeight: '150%',
-      //     },
-      //   ],
-      //   text_2xl: '22px',
-      //   text_3xl: '24px',
-      //   text_4xl: '30px',
-      //   text_5xl: '36px',
-      //   text_6xl: '42px',
-      //   text_7xl: '44px',
-      //   text_8xl: '50px',
-      //   text_9xl: '56px',
-      //   title_xs: '32px',
-      //   title_sm: '57px',
-      //   title_base: '60px',
-      //   title_lg: '80px',
-      //   button_xs: [
-      //     '14px',
-      //     {
-      //       lineHeight: '100%',
-      //     },
-      //   ],
-      //   button_sm: [
-      //     '16px',
-      //     {
-      //       lineHeight: '100%',
-      //     },
-      //   ],
-      //   button_base: [
-      //     '34px',
-      //     {
-      //       lineHeight: '100%',
-      //     },
-      //   ],
     },
     fontWeight: {
       '300': '300',
@@ -148,11 +101,11 @@ const config: Config = {
         hero_pattern_tab:
           'image-set(url(../../public/images/hero_desktop.webp) 1x type("image/webp"), url(../../public/images/hero_desktop@2x.webp) 2x type("image/webp"), url(../../public/images/hero_desktop@3x.webp) 3x type("image/webp"), url(../../public/images/hero_desktop.jpg) 1x type("image/jpeg"), url(../../public/images/hero_desktop@2x.jpg) 2x type("image/jpeg"), url(../../public/images/hero_desktop@3x.jpg) 3x type("image/jpeg"))',
         stepLine_pattern_mob:
-          'image-set(url(../../public/images/stepline_mob.png) 1x type("image/png"), url(../../public/images/stepline_mob@2x.png) 2x type("image/png"), url(../../public/images/stepline_mob@3x.png) 3x type("image/png"), url(../../public/images/stepline_mob.webp) 1x type("image/webp"), url(../../public/images/stepline_mob@2x.webp) 2x type("image/webp"), url(../../public/images/stepline_mob@3x.webp) 3x type("image/webp"))',
-        stepLine_pattern_tablet: 
-          'image-set(url(../../public/images/stepsline_tablet.png) 1x type("image/png"), url(../../public/images/stepsline_tablet@2x.png) 2x type("image/png"), url(../../public/images/stepsline_tablet@3x.png) 3x type("image/png"), url(../../public/images/stepsline_tablet.webp) 1x type("image/webp"), url(../../public/images/stepsline_tablet@2x.webp) 2x type("image/webp"), url(../../public/images/stepsline_tablet@3x.webp) 3x type("image/webp"))',
-        stepLine_pattern_dekstop: 
-          'image-set(url(../../public/images/stepsLine.webp) 1x type("image/webp"), url(../../public/images/stepsLine@2x.webp) 2x type("image/webp"), url(../../public/images/stepsLine@3x.webp) 3x type("image/webp"), url(../../public/images/stepsLine.png) 1x type("image/png"), url(../../public/images/stepsLine@2x.png) 2x type("image/png"), url(../../public/images/stepsLine@3x.png) 3x type("image/png"))'
+          'image-set(url(../../public/images/stepline_mob.webp) 1x type("image/webp"), url(../../public/images/stepline_mob@2x.webp) 2x type("image/webp"), url(../../public/images/stepline_mob@3x.webp) 3x type("image/webp"), url(../../public/images/stepline_mob.png) 1x type("image/png"), url(../../public/images/stepline_mob@2x.png) 2x type("image/png"), url(../../public/images/stepline_mob@3x.png) 3x type("image/png"))',
+        stepLine_pattern_tablet:
+          'image-set(url(../../public/images/stepsLine_tablet.webp) 1x type("image/webp"), url(../../public/images/stepsLine_tablet@2x.webp) 2x type("image/webp"), url(../../public/images/stepsLine_tablet@3x.webp) 3x type("image/webp"), url(../../public/images/stepsLine_tablet.png) 1x type("image/png"), url(../../public/images/stepsLine_tablet@2x.png) 2x type("image/png"), url(../../public/images/stepsLine_tablet@3x.png) 3x type("image/png"))',
+        stepLine_pattern_desktop:
+          'image-set(url(../../public/images/stepsLine.webp) 1x type("image/webp"), url(../../public/images/stepsLine@2x.webp) 2x type("image/webp"), url(../../public/images/stepsLine@3x.webp) 3x type("image/webp"), url(../../public/images/stepsLine.png) 1x type("image/png"), url(../../public/images/stepsLine@2x.png) 2x type("image/png"), url(../../public/images/stepsLine@3x.png) 3x type("image/png"))',
       },
     },
   },

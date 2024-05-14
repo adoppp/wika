@@ -1,7 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export default interface ParagraphProps {
-    children: ReactNode;
-    maxW?: string;
-    styles?: string
-};
+  children: string;
+  className?: string;
+}
