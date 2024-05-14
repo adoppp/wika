@@ -1,5 +1,5 @@
 import TitleProps from '@/app/components/aux/title/title.types';
-import { cn } from '@/app/utils';
+import { cn } from '@/app/lib/utils';
 
 export default function Title({ children, className }: Readonly<TitleProps>) {
   return (
