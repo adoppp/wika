@@ -1,13 +1,21 @@
-import { Button } from '@/app/components/ui';
+'use client';
+
+import { useRouter } from 'next/navigation';
+
+import { Button } from '@/app/components';
+
 import { ServiceProps } from '../service';
 
 export default function Service({
-  title,
-  description,
-  price,
-  period,
+  data: { title, description },
   lng,
 }: Readonly<ServiceProps>) {
+  const router = useRouter();
+
+  const openModal = () => {
+    router.push(`?showModal=${title}`);
+  };
+
   return (
     <li className="wk_relative wk_ps-[46px] wk_pe-[16px] wk_py-[30px] desktop:wk_px-[80px] wk_rounded-25 wk_bg-th_bg_primary">
       <h3 className="wk_inline-block wk_max-w-[calc(100vw-174px)] wk_ms-[28px] desktop:wk_ms-[108px] wk_mb-[20px] wk_text-[24px] wk-leading-[calc(28/24)] wk_font-500 wk_text-th_whit">
@@ -21,17 +29,13 @@ export default function Service({
           ))}
         </ul>
 
-        <div className="mobile:wk_flex mobile:wk_justify-between mobile:wk_items-center desktop:wk_flex-col desktop:wk_justify-start desktop:wk_gap-[48px]">
-          <p className="wk_flex wk_flex-col wk_mb-[20px] mobile:wk_mb-[0] wk_text-[44px] wk_leading-[calc(52/44)] wk_text-th_white">
-            {price}
-
-            <span className="wk_text-[18px] wk_leading-[calc(20/18)] wk_text-gray_200">
-              грн/{period}
-            </span>
-          </p>
-
-          <Button color="pink" lng={lng} label='label' />
-        </div>
+        <Button
+          color="pink"
+          lng={lng}
+          label="label"
+          onClick={openModal}
+          className="desktop:wk_self-start wk_ml-auto"
+        />
       </div>
     </li>
   );

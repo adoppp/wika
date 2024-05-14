@@ -1,10 +1,8 @@
 import { Language } from '@/app/i18n/settings';
+import { PriceItemAttributes } from '@/app/lib/api';
 
 interface ServiceProps {
-  title: string;
-  description: string[];
-  price: number;
-  period: string;
+  data: PriceItemAttributes;
   lng: Language;
 }
 

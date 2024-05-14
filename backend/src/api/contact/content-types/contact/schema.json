@@ -1,0 +1,27 @@
+{
+  "kind": "singleType",
+  "collectionName": "contacts",
+  "info": {
+    "singularName": "contact",
+    "pluralName": "contacts",
+    "displayName": "Contact"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "instagram": {
+      "type": "string",
+      "required": true
+    },
+    "telegram": {
+      "type": "string",
+      "required": true
+    },
+    "tiktok": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

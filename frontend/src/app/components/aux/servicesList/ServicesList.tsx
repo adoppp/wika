@@ -9,7 +9,7 @@ export default function ServicesList({ lng }: Readonly<ServicesListProps>) {
   return (
     <ol className="wk_flex wk_flex-col wk_gap-[12px] wk_text-gray_200 wk_list-decimal wk_list-inside marker:wk_text-[24px] marker:wk_leading-[calc(28/24)] marker:wk_font-500">
       {data.map(service => (
-        <Service key={service.title} {...service} lng={lng} />
+        <Service key={service.id} data={service.attributes} lng={lng} />
       ))}
     </ol>
   );

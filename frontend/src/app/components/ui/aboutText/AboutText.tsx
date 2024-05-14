@@ -6,8 +6,8 @@ import clsx from 'clsx';
 import { AboutTextProps } from '../aboutText';
 
 import { useTranslation } from '@/app/i18n/client';
-import { Svg, cn } from '@/app/utils';
-import { transition } from '@/app/constants';
+import { Svg, cn } from '@/app/lib/utils';
+import { transition } from '@/app/lib/constants';
 
 export default function AboutText({ lng }: Readonly<AboutTextProps>) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -51,8 +51,8 @@ export default function AboutText({ lng }: Readonly<AboutTextProps>) {
             'wk_size-[22px]',
             isExpanded && 'wk_rotate-[-90deg]',
             isExpanded
-              ? 'group-hover:wk_rotate-[-135deg]'
-              : 'group-hover:wk_rotate-[45deg]',
+              ? 'group-hover:wk_rotate-[-135deg] group-focus:wk_rotate-[-135deg]'
+              : 'group-hover:wk_rotate-[45deg] group-focus:wk_rotate-[45deg]',
           )}
         />
       </button>

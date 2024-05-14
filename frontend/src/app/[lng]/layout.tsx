@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { dir } from 'i18next';
 
 import { languages } from '../i18n/settings';
-import { MetadataHandler } from '../utils';
+import { MetadataHandler } from '../lib/utils';
 
 interface LayoutProps {
   header: ReactNode;
@@ -11,9 +11,14 @@ interface LayoutProps {
   about: ReactNode;
   services: ReactNode;
   howItWorks: ReactNode;
+  photos: ReactNode;
+  reviews: ReactNode;
   call: ReactNode;
   footer: ReactNode;
   burgerMenu: ReactNode;
+  modal: ReactNode;
+  cookie: ReactNode;
+  privacyPolicy: ReactNode;
   params: {
     lng: string;
   };
@@ -55,29 +60,38 @@ export default function Layout({
   hero,
   about,
   services,
+  photos,
+  reviews,
   call,
   howItWorks,
   footer,
   burgerMenu,
+  modal,
+  cookie,
+  privacyPolicy,
   params: { lng },
 }: Readonly<LayoutProps>) {
   return (
     <>
       <MetadataHandler lang={lng} dir={dir(lng)} />
 
-
       {header}
-      
+
       <main className="wk_mb-[12px]">
         {hero}
         {about}
         {services}
         {howItWorks}
+        {photos}
+        {reviews}
         {call}
       </main>
 
       {footer}
       {burgerMenu}
+      {modal}
+      {cookie}
+      {privacyPolicy}
     </>
   );
 }

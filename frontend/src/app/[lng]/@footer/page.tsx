@@ -1,8 +1,8 @@
 import { Logo, NavBar } from '@/app/components';
-import { transition } from '@/app/constants';
+import { transition } from '@/app/lib/constants';
 import { useTranslation } from '@/app/i18n';
-import { PageProps } from '@/app/types';
-import { Svg, cn } from '@/app/utils';
+import { PageProps } from '@/app/lib/types';
+import { Svg, cn } from '@/app/lib/utils';
 
 export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'footer');
@@ -18,7 +18,7 @@ export default async function Page({ params: { lng } }: Readonly<PageProps>) {
         <ul className="wk_flex wk_gap-[44px] tablet:wk_gap-[52px] desktop:wk_gap-[32px]">
           <li>
             <a
-              href="#"
+              href="https://t.me/viksi_fitness"
               target="_blank"
               aria-label={t('ariaLabelTg')}
               className={cn(

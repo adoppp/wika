@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { transition } from '@/app/constants';
-import { DisableScroll, Svg, cn } from '@/app/utils';
+import { transition } from '@/app/lib/constants';
+import { DisableScroll, Svg, cn } from '@/app/lib/utils';
 import { Button, LanguageSwitcher, NavBar } from '@/app/components';
 import { BurgerMenuProps } from '@/app/components/ui/burgerMenu/burgerMenu.types';
 

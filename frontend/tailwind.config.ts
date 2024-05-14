@@ -40,6 +40,9 @@ const config: Config = {
       red_danger: '#ff073a',
       yellow_warning: '#ffa422',
       green_success: '#39ff14',
+      form_black: '#1C232C',
+
+      backdrop: 'rgba(0, 0, 0, 0.5)',
     },
     fontSize: {
       title_mob: ['32px', { lineHeight: `${40 / 32}` }],
@@ -50,6 +53,7 @@ const config: Config = {
       '300': '300',
       '400': '400',
       '500': '500',
+      '600': '600',
       '700': '700',
     },
     fontFamily: {
