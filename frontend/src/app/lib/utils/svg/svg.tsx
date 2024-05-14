@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge';
 
-import { SvgTypes, SvgProps } from '@/app/utils/svg/svg.types';
+import { SvgTypes, SvgProps } from '@/app/lib/utils/svg/svg.types';
 import {
   BurgerMenu,
   Globe,

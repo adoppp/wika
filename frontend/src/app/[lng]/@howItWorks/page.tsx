@@ -1,8 +1,8 @@
 import { Paragraph, Title } from '@/app/components';
 
 import { useTranslation } from '@/app/i18n';
-import { PageProps } from '@/app/types';
-import { Svg } from '@/app/utils';
+import { PageProps } from '@/app/lib/types';
+import { Svg } from '@/app/lib/utils';
 
 export default async function Page({ params: { lng } }: Readonly<PageProps>) {
   const { t } = await useTranslation(lng, 'howItWorks');
