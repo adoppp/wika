@@ -16,6 +16,9 @@ import {
   ModalStats,
   Cookie,
   Dot,
+  Google,
+  EyeHide,
+  EyeShow,
   transition,
 } from './imports';
 
@@ -60,6 +63,15 @@ const svg: Readonly<SvgTypes> = {
     <Cookie className={twMerge(transition, className)} />
   ),
   dot: ({ className }) => <Dot className={twMerge(transition, className)} />,
+  google: ({ className }) => (
+    <Google className={twMerge(transition, className)} />
+  ),
+  eyeHide: ({ className }) => (
+    <EyeHide className={twMerge(transition, className)} />
+  ),
+  eyeShow: ({ className }) => (
+    <EyeShow className={twMerge(transition, className)} />
+  ),
 };
 
 function Svg({ className, id }: Readonly<SvgProps>) {

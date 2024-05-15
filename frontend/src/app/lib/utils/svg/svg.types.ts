@@ -12,7 +12,10 @@ type Svg =
   | 'close'
   | 'modalStats'
   | 'cookie'
-  | 'dot';
+  | 'dot'
+  | 'google'
+  | 'eyeShow'
+  | 'eyeHide';
 
 export type SvgTypes = {
   [K in Svg]: (props: { className?: string }) => JSX.Element;

@@ -12,6 +12,9 @@ import Close from 'public/svg/close.svg';
 import ModalStats from 'public/svg/modalStats.svg';
 import Cookie from 'public/svg/cookie.svg';
 import Dot from 'public/svg/dot.svg';
+import Google from 'public/svg/google.svg';
+import EyeHide from 'public/svg/eye-hide.svg';
+import EyeShow from 'public/svg/eye-show.svg';
 import { transition } from '@/app/lib/constants';
 
 export {
@@ -29,5 +32,8 @@ export {
   ModalStats,
   Cookie,
   Dot,
+  Google,
+  EyeHide,
+  EyeShow,
   transition,
 };
