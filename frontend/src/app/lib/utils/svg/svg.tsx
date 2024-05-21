@@ -19,6 +19,12 @@ import {
   Google,
   EyeHide,
   EyeShow,
+  Columns,
+  Contacts,
+  Heart,
+  Logout,
+  Review,
+  Youtube,
   transition,
 } from './imports';
 
@@ -71,6 +77,24 @@ const svg: Readonly<SvgTypes> = {
   ),
   eyeShow: ({ className }) => (
     <EyeShow className={twMerge(transition, className)} />
+  ),
+  columns: ({ className }) => (
+    <Columns className={twMerge(transition, className)} />
+  ),
+  contacts: ({ className }) => (
+    <Contacts className={twMerge(transition, className)} />
+  ),
+  heart: ({ className }) => (
+    <Heart className={twMerge(transition, className)} />
+  ),
+  logout: ({ className }) => (
+    <Logout className={twMerge(transition, className)} />
+  ),
+  review: ({ className }) => (
+    <Review className={twMerge(transition, className)} />
+  ),
+  youtube: ({ className }) => (
+    <Youtube className={twMerge(transition, className)} />
   ),
 };
 

@@ -3,18 +3,9 @@
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-// import { Field, Form, Formik } from 'formik';
-import clsx from 'clsx';
 import { Notify } from 'notiflix';
 
 import { notifyOptions, Svg } from '@/app/lib/utils';
-
-// import ValidationSchema from './validation-schema';
-// import Google from 'public/icons/google.svg';
-// import EyeHide from 'public/icons/eye-hide.svg';
-// import EyeShow from 'public/icons/eye-show.svg';
-
-// import styles from './styles.module.scss';
 
 type Inputs = {
   identifier: string;
@@ -47,7 +38,7 @@ export default function LoginForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="wk_flex wk_flex-col wk_items-start wk_w-[486px] wk_pt-[38px] wk_px-[60px] wk_pb-[46px] wk_rounded-14"
+      className="wk_flex wk_flex-col wk_items-start wk_w-[486px] wk_pt-[38px] wk_px-[60px] wk_pb-[46px] wk_rounded-14 wk_bg-th_white"
     >
       {/* <Formik
         initialValues={initialValues}
@@ -67,7 +58,7 @@ export default function LoginForm() {
       <button
         type="button"
         onClick={() => signIn('google')}
-        className="wk_flex wk_justify-center wk_items-center wk_gap-[10px] wk_w-[100%] wk_p-[9px] wk_mb-[26px] wk_rounded-14 wk_text-[18px] wk_font-500 wk_leading-[calc(28/18)] wk_text-[#13183a] wk_bg-th_white wk_transition-colors hover:wk_bg-th_accent hover:wk_text-th_white focus:wk_bg-th_accent focus:wk_text-th_white focus:outline-none"
+        className="wk_flex wk_justify-center wk_items-center wk_gap-[10px] wk_w-[100%] wk_p-[9px] wk_mb-[26px] wk_rounded-14 wk_text-[18px] wk_font-500 wk_leading-[calc(28/18)] wk_text-[#13183a] wk_bg-gray_50 wk_transition-colors hover:wk_bg-th_accent hover:wk_text-th_white focus:wk_bg-th_accent focus:wk_text-th_white focus:outline-none"
       >
         <Svg id="google" />
         Google
@@ -88,9 +79,10 @@ export default function LoginForm() {
         <input
           id="name"
           type="text"
-          name="identifier"
+          {...register('identifier')}
           placeholder="Your name"
-          className="wk_w-[100%] wk_p-[10px] wk_rounded-[8px] wk_text-[16px] wk_border wk_border-solid wk_border-transparent focus:wk_outline-none focus-visible:wk_border-[#04D9FF] placeholder:wk_text-gray_400"
+          className="wk_w-[100%] wk_py-[10px] wk_pr-[54px] wk_pl-[10px] wk_rounded-[8px] wk_text-[16px] wk_bg-gray_50 focus:wk_outline-none focus-visible:wk_border focus-visible:wk_border-solid focus-visible:wk_border-[#04D9FF] focus-visible:wk_bg-th_white placeholder:wk_text-gray_400"
+
           // className={clsx(
           //   errors.identifier && touched.identifier && styles.isError,
           //   !errors.identifier && touched.identifier && styles.isValid,
@@ -113,9 +105,9 @@ export default function LoginForm() {
         <input
           id="password"
           type={isPasswordVisible ? 'text' : 'password'}
-          name="password"
+          {...register('password')}
           placeholder="Введіть мінімум 8 символів"
-          className="wk_w-[100%] wk_py-[10px] wk_pr-[54px] wk_pl-[10px] wk_rounded-[8px] wk_text-[16px] wk_border wk_border-solid wk_border-transparent focus:wk_outline-none focus-visible:wk_border-[#04D9FF] placeholder:wk_text-gray_400"
+          className="wk_w-[100%] wk_py-[10px] wk_pr-[54px] wk_pl-[10px] wk_rounded-[8px] wk_text-[16px] wk_bg-gray_50 focus:wk_outline-none focus-visible:wk_border focus-visible:wk_border-solid focus-visible:wk_border-[#04D9FF] focus-visible:wk_bg-th_white placeholder:wk_text-gray_400"
           // className={clsx(
           //   errors.password && touched.password && styles.isError,
           //   !errors.password && touched.password && styles.isValid,

@@ -15,7 +15,13 @@ type Svg =
   | 'dot'
   | 'google'
   | 'eyeShow'
-  | 'eyeHide';
+  | 'eyeHide'
+  | 'columns'
+  | 'contacts'
+  | 'heart'
+  | 'logout'
+  | 'review'
+  | 'youtube';
 
 export type SvgTypes = {
   [K in Svg]: (props: { className?: string }) => JSX.Element;

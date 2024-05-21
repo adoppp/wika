@@ -15,6 +15,13 @@ import Dot from 'public/svg/dot.svg';
 import Google from 'public/svg/google.svg';
 import EyeHide from 'public/svg/eye-hide.svg';
 import EyeShow from 'public/svg/eye-show.svg';
+import Columns from 'public/svg/columns.svg';
+import Contacts from 'public/svg/contacts.svg';
+import Heart from 'public/svg/heart.svg';
+import Logout from 'public/svg/logout.svg';
+import Review from 'public/svg/review.svg';
+import Youtube from 'public/svg/youtube.svg';
+
 import { transition } from '@/app/lib/constants';
 
 export {
@@ -35,5 +42,11 @@ export {
   Google,
   EyeHide,
   EyeShow,
+  Columns,
+  Contacts,
+  Heart,
+  Logout,
+  Review,
+  Youtube,
   transition,
 };
