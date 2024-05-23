@@ -21,6 +21,7 @@ import Heart from 'public/svg/heart.svg';
 import Logout from 'public/svg/logout.svg';
 import Review from 'public/svg/review.svg';
 import Youtube from 'public/svg/youtube.svg';
+import AdminArrow from 'public/svg/adminArrow.svg';
 
 import { transition } from '@/app/lib/constants';
 
@@ -48,5 +49,6 @@ export {
   Logout,
   Review,
   Youtube,
+  AdminArrow,
   transition,
 };

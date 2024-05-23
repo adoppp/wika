@@ -21,7 +21,8 @@ type Svg =
   | 'heart'
   | 'logout'
   | 'review'
-  | 'youtube';
+  | 'youtube'
+  | 'adminArrow';
 
 export type SvgTypes = {
   [K in Svg]: (props: { className?: string }) => JSX.Element;

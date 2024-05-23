@@ -25,6 +25,7 @@ import {
   Logout,
   Review,
   Youtube,
+  AdminArrow,
   transition,
 } from './imports';
 
@@ -95,6 +96,9 @@ const svg: Readonly<SvgTypes> = {
   ),
   youtube: ({ className }) => (
     <Youtube className={twMerge(transition, className)} />
+  ),
+  adminArrow: ({ className }) => (
+    <AdminArrow className={twMerge(transition, className)} />
   ),
 };
 

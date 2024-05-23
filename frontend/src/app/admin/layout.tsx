@@ -10,13 +10,5 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    // <html lang="uk">
-    //   <body className="">
-    <>
-      <AdminProviders>{children}</AdminProviders>
-    </>
-    //   </body>
-    // </html>
-  );
+  return <AdminProviders>{children}</AdminProviders>;
 }
