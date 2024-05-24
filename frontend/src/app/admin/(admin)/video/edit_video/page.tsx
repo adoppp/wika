@@ -1,7 +1,5 @@
 import { EditVideoFrom } from '@/app/components';
 
-interface PageProps {}
-
-export default function Page(props: Readonly<PageProps>) {
+export default function Page() {
   return <EditVideoFrom />;
 }
