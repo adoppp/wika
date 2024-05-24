@@ -22,6 +22,9 @@ import Logout from 'public/svg/logout.svg';
 import Review from 'public/svg/review.svg';
 import Youtube from 'public/svg/youtube.svg';
 import AdminArrow from 'public/svg/adminArrow.svg';
+import Edit from 'public/svg/edit.svg';
+import Trash from 'public/svg/trash.svg';
+import Upload from 'public/svg/upload.svg';
 
 import { transition } from '@/app/lib/constants';
 
@@ -50,5 +53,8 @@ export {
   Review,
   Youtube,
   AdminArrow,
+  Edit,
+  Trash,
+  Upload,
   transition,
 };

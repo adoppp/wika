@@ -22,7 +22,10 @@ type Svg =
   | 'logout'
   | 'review'
   | 'youtube'
-  | 'adminArrow';
+  | 'adminArrow'
+  | 'edit'
+  | 'trash'
+  | 'upload';
 
 export type SvgTypes = {
   [K in Svg]: (props: { className?: string }) => JSX.Element;

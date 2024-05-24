@@ -26,6 +26,9 @@ import {
   Review,
   Youtube,
   AdminArrow,
+  Edit,
+  Trash,
+  Upload,
   transition,
 } from './imports';
 
@@ -97,9 +100,12 @@ const svg: Readonly<SvgTypes> = {
   youtube: ({ className }) => (
     <Youtube className={twMerge(transition, className)} />
   ),
-  adminArrow: ({ className }) => (
-    <AdminArrow className={twMerge(transition, className)} />
+  adminArrow: ({ className }) => <AdminArrow className={className} />,
+  edit: ({ className }) => <Edit className={className} />,
+  trash: ({ className }) => (
+    <Trash className={twMerge(transition, className)} />
   ),
+  upload: ({ className }) => <Upload className={className} />,
 };
 
 function Svg({ className, id }: Readonly<SvgProps>) {

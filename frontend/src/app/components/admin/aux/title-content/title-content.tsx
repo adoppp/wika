@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 import { AdminTitle } from '@/app/components';
-import { Svg } from '@/app/lib/utils';
+import { cn, Svg } from '@/app/lib/utils';
+import { transition } from '@/app/lib/constants';
 
 export default function AdminTitleContent() {
   const pathname = usePathname();
@@ -23,7 +24,10 @@ export default function AdminTitleContent() {
       {pathname.endsWith('/video') && (
         <Link
           href="video/edit_video"
-          className="wk_p-[12px] wk_rounded-[999px] wk_text-th_white wk_text-[12px] wk_bg-th_accent"
+          className={cn(
+            'wk_p-[12px] wk_rounded-[999px] wk_text-th_white wk_text-[12px] wk_bg-th_accent hover:wk_text-[#0D1017] hover:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_text-[#0D1017] focus:wk_outline-none wk_transition',
+            transition,
+          )}
         >
           Замінити відео
         </Link>
@@ -32,7 +36,10 @@ export default function AdminTitleContent() {
       {pathname.endsWith('/services') && (
         <Link
           href="services/new"
-          className="wk_p-[12px] wk_rounded-[999px] wk_text-th_white wk_text-[12px] wk_bg-th_accent"
+          className={cn(
+            'wk_p-[12px] wk_rounded-[999px] wk_text-th_white wk_text-[12px] wk_bg-th_accent hover:wk_text-[#0D1017] hover:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_text-[#0D1017] focus:wk_outline-none wk_transition',
+            transition,
+          )}
         >
           + Додати послугу
         </Link>
@@ -41,7 +48,10 @@ export default function AdminTitleContent() {
       {pathname.endsWith('/photos') && (
         <Link
           href="photos/new"
-          className="wk_p-[12px] wk_rounded-[999px] wk_text-th_white wk_text-[12px] wk_bg-th_accent"
+          className={cn(
+            'wk_p-[12px] wk_rounded-[999px] wk_text-th_white wk_text-[12px] wk_bg-th_accent hover:wk_text-[#0D1017] hover:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_text-[#0D1017] focus:wk_outline-none wk_transition',
+            transition,
+          )}
         >
           + Додати фото до/після
         </Link>
@@ -50,7 +60,10 @@ export default function AdminTitleContent() {
       {pathname.endsWith('/reviews') && (
         <Link
           href="reviews/new"
-          className="wk_p-[12px] wk_rounded-[999px] wk_text-th_white wk_text-[12px] wk_bg-th_accent"
+          className={cn(
+            'wk_p-[12px] wk_rounded-[999px] wk_text-th_white wk_text-[12px] wk_bg-th_accent hover:wk_text-[#0D1017] hover:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_text-[#0D1017] focus:wk_outline-none wk_transition',
+            transition,
+          )}
         >
           + Додати відгук
         </Link>
@@ -59,7 +72,10 @@ export default function AdminTitleContent() {
       {isSubtitle && (
         <Link
           href="./"
-          className="wk_flex wk_items-center wk_gap-[8px] wk_p-[12px] wk_rounded-[999px] wk_text-th_white wk_text-[12px] wk_bg-th_accent"
+          className={cn(
+            'wk_flex wk_items-center wk_gap-[8px] wk_p-[12px] wk_rounded-[999px] wk_text-th_white wk_text-[12px] wk_bg-th_accent hover:wk_text-[#0D1017] hover:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_text-[#0D1017] focus:wk_outline-none wk_transition',
+            transition,
+          )}
         >
           <Svg id="adminArrow" />
           Назад

@@ -19,7 +19,7 @@ export default async function Layout({ children }: Readonly<LayoutProps>) {
     <div className="wk_flex wk_gap-[12px]">
       <Sidebar />
 
-      <div className="wk_w-[calc(100%-228px)] wk_p-[12px]">
+      <div className="wk_w-[calc(100%-228px)] wk_p-[12px] wk_pb-0">
         <TitleContent />
 
         <div>{children}</div>

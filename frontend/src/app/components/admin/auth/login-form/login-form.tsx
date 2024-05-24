@@ -22,10 +22,10 @@ export default function LoginForm() {
     reset,
   } = useForm<Inputs>();
 
-  const initialValues = {
-    identifier: '',
-    password: '',
-  };
+  // const initialValues = {
+  //   identifier: '',
+  //   password: '',
+  // };
 
   const onSubmit: SubmitHandler<Inputs> = async values => {
     try {
@@ -129,7 +129,7 @@ export default function LoginForm() {
 
       <button
         // disabled={!isValid}
-        className="wk_w-[100%] wk_rounded-14 wk_mb-[16px] wk_p-[14px] wk_text-th_white wk_bg-th_accent wk_transition-colors hover:wk_text-th_black hover:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_text-th_black focus:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_outline-none disabled:wk_text-[#535A62] disabled:wk_cursor-not-allowed disabled:wk_bg-th_black"
+        className="wk_w-[100%] wk_rounded-14 wk_mb-[16px] wk_p-[14px] wk_text-th_white wk_bg-th_accent wk_transition hover:wk_text-th_black hover:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_text-th_black focus:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_outline-none disabled:wk_text-[#535A62] disabled:wk_cursor-not-allowed disabled:wk_bg-th_black"
       >
         Увійти
       </button>
