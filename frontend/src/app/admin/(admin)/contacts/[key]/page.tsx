@@ -1,5 +1,5 @@
-interface PageProps {}
+import { ContactForm } from '@/app/components';
 
-export default function Page(props: Readonly<PageProps>) {
-  return <></>;
+export default function Page() {
+  return <ContactForm />;
 }

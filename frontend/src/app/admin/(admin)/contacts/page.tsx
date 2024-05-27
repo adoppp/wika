@@ -26,7 +26,7 @@ export default function Page() {
           <td className="wk_w-[80px] wk_rounded-r-[16px] wk_align-middle">
             <div className="wk_flex wk_justify-evenly wk_items-center">
               <Link
-                href="reviews/edit_instagram"
+                href="contacts/edit_instagram"
                 className={cn(
                   'wk_text-th_accent hover:wk_scale-125 focus:wk_scale-125 focus:wk_outline-none wk_transition-transform',
                   transition,
@@ -49,7 +49,7 @@ export default function Page() {
           <td className="wk_w-[80px] wk_rounded-r-[16px] wk_align-middle">
             <div className="wk_flex wk_justify-evenly wk_items-center">
               <Link
-                href="reviews/edit_instagram"
+                href="contacts/edit_instagram"
                 className={cn(
                   'wk_text-th_accent hover:wk_scale-125 focus:wk_scale-125 focus:wk_outline-none wk_transition-transform',
                   transition,
@@ -72,7 +72,7 @@ export default function Page() {
           <td className="wk_w-[80px] wk_rounded-r-[16px] wk_align-middle">
             <div className="wk_flex wk_justify-evenly wk_items-center">
               <Link
-                href="reviews/edit_instagram"
+                href="contacts/edit_instagram"
                 className={cn(
                   'wk_text-th_accent hover:wk_scale-125 focus:wk_scale-125 focus:wk_outline-none wk_transition-transform',
                   transition,
