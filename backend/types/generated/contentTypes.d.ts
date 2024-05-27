@@ -1057,12 +1057,14 @@ export interface ApiVideoVideo extends Schema.SingleType {
     singularName: 'video';
     pluralName: 'videos';
     displayName: 'Video';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    url: Attribute.String;
+    url: Attribute.String & Attribute.Required & Attribute.Unique;
+    mediaId: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

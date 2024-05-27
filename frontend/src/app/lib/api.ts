@@ -3,6 +3,7 @@ import { Language } from '../i18n/settings';
 
 export interface VideoAttributes {
   url: string;
+  mediaId: string;
 }
 
 export interface VideoResponse {
@@ -117,6 +118,59 @@ export const getContacts = (
 };
 
 // Private fetches
+export const uploadMedia = (
+  formData: FormData,
+  token: string,
+  init?: RequestInit,
+) => {
+  return sendRequest(buildUrl('upload'), {
+    method: 'POST',
+    body: formData,
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const deleteMedia = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest(buildUrl('upload', 'files', id), {
+    method: 'DELETE',
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const updateVideo = ({
+  data,
+  token,
+  init,
+}: {
+  data: VideoAttributes;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest(buildUrl('video'), {
+    method: 'PUT',
+    body: JSON.stringify({ data }),
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
 export const getService = (id: string, token: string, init?: RequestInit) => {
   return sendRequest<PriceItem>(buildUrl(`prices/${id}`), {
     ...init,
@@ -197,30 +251,30 @@ export const getReview = (id: string, token: string, init?: RequestInit) => {
   });
 };
 
-export const uploadImage = (
-  formData: FormData,
-  token: string,
-  init?: RequestInit,
-) => {
-  return sendRequest(buildUrl('upload'), {
-    method: 'POST',
-    body: formData,
-    headers: {
-      ...init?.headers,
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
+// export const uploadImage = (
+//   formData: FormData,
+//   token: string,
+//   init?: RequestInit,
+// ) => {
+//   return sendRequest(buildUrl('upload'), {
+//     method: 'POST',
+//     body: formData,
+//     headers: {
+//       ...init?.headers,
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
+// };
 
-export const deleteImage = (id: string, token: string, init?: RequestInit) => {
-  return sendRequest(buildUrl('upload', 'files', id), {
-    method: 'DELETE',
-    headers: {
-      ...init?.headers,
-      Authorization: `Bearer ${token}`,
-    },
-  });
-};
+// export const deleteImage = (id: string, token: string, init?: RequestInit) => {
+//   return sendRequest(buildUrl('upload', 'files', id), {
+//     method: 'DELETE',
+//     headers: {
+//       ...init?.headers,
+//       Authorization: `Bearer ${token}`,
+//     },
+//   });
+// };
 
 export const addReview = ({
   data,
