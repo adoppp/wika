@@ -13,6 +13,7 @@ import {
   ArrowCorner,
   ArrowSide,
   Close,
+  CloseSmall,
   ModalStats,
   Cookie,
   Dot,
@@ -66,6 +67,9 @@ const svg: Readonly<SvgTypes> = {
   close: ({ className }) => (
     <Close className={twMerge(transition, className)} />
   ),
+  closeSmall: ({ className }) => (
+    <CloseSmall className={twMerge(transition, className)} />
+  ),
   modalStats: ({ className }) => (
     <ModalStats className={twMerge(transition, className)} />
   ),
@@ -102,9 +106,7 @@ const svg: Readonly<SvgTypes> = {
   ),
   adminArrow: ({ className }) => <AdminArrow className={className} />,
   edit: ({ className }) => <Edit className={className} />,
-  trash: ({ className }) => (
-    <Trash className={twMerge(transition, className)} />
-  ),
+  trash: ({ className }) => <Trash className={className} />,
   upload: ({ className }) => <Upload className={className} />,
 };
 

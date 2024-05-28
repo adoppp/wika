@@ -10,9 +10,11 @@ export default async function Page() {
 
   await queryClient.prefetchQuery({
     queryKey: ['services'],
-    queryFn: () => getServices('uk'),
+    queryFn: () => getServices('uk', { cache: 'no-store' }),
     staleTime: 10 * 1000,
   });
+
+  queryClient.invalidateQueries({ queryKey: ['services'] });
 
   const services = queryClient.getQueryData(['services']) as ServiceResponse[];
 
@@ -25,8 +27,11 @@ export default async function Page() {
           <thead className="wk_sticky wk_top-[8px] wk_bg-gray_100">
             <tr>
               <th className="wk_py-[20px] wk_rounded-l-[16px]">No</th>
+
               <th className="wk_py-[20px] wk_text-left">Заголовок</th>
+
               <th className="wk_py-[20px] wk_text-left">Опис</th>
+
               <th className="wk_py-[20px] wk_rounded-r-[16px]">Дія</th>
             </tr>
           </thead>
@@ -38,32 +43,36 @@ export default async function Page() {
                   <td className="wk_w-[72px] wk_py-[20px] wk_rounded-l-[16px] wk_text-center">
                     {index + 1}
                   </td>
+
                   <td className="wk_w-[260px] wk_py-[20px]">
                     {attributes.title}
                   </td>
+
                   <td className="wk_max-w-[754px] wk_py-[20px] wk_truncate">
                     {attributes.description.join('; ')}
                   </td>
+
                   <td className="wk_w-[92px] wk_rounded-r-[16px] wk_align-middle">
                     <div className="wk_flex wk_justify-evenly wk_items-center">
                       <Link
                         href={`services/${id}/edit`}
                         className={cn(
-                          'wk_text-th_accent hover:wk_scale-125 focus:wk_scale-125 focus:wk_outline-none wk_transition-transform',
+                          'wk_text-th_accent wk_rounded-[4px] hover:wk_text-th_black hover:wk_bg-th_accent focus:wk_text-th_black focus:wk_bg-th_accent focus:wk_outline-none wk_transition-colors',
                           transition,
                         )}
                       >
                         <Svg id="edit" />
                       </Link>
 
-                      <button
+                      <Link
+                        href={`services?deleteService=${id},${attributes.ruLocaleId}`}
                         className={cn(
-                          'wk_text-red_danger hover:wk_scale-125 focus:wk_scale-125 focus:wk_outline-none wk_transition-transform',
+                          'wk_flex wk_justify-center wk_items-center wk_size-[32px] wk_text-red_danger wk_rounded-[4px] hover:wk_text-th_black hover:wk_bg-red_danger focus:wk_text-th_black focus:wk_bg-red_danger focus:wk_outline-none wk_transition-colors',
                           transition,
                         )}
                       >
                         <Svg id="trash" />
-                      </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>

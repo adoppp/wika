@@ -8,12 +8,7 @@ import { cn, loadingOptions, notifyOptions } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
 import { Loading, Notify } from 'notiflix';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import {
-  addService,
-  ServiceAttributes,
-  ServiceResponse,
-  updateService,
-} from '@/app/lib/api';
+import { addService, ServiceAttributes, updateService } from '@/app/lib/api';
 import { useSession } from 'next-auth/react';
 import { useParams, useRouter } from 'next/navigation';
 

@@ -7,7 +7,7 @@ export default async function Page() {
 
   await queryClient.prefetchQuery({
     queryKey: ['video'],
-    queryFn: getVideo,
+    queryFn: () => getVideo({ cache: 'no-store' }),
     staleTime: 10 * 1000,
   });
 

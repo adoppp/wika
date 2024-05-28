@@ -9,6 +9,7 @@ import Tiktok from 'public/svg/tiktok.svg';
 import ArrowCorner from 'public/svg/arrowCorner.svg';
 import ArrowSide from 'public/svg/arrowSide.svg';
 import Close from 'public/svg/close.svg';
+import CloseSmall from 'public/svg/close_small.svg';
 import ModalStats from 'public/svg/modalStats.svg';
 import Cookie from 'public/svg/cookie.svg';
 import Dot from 'public/svg/dot.svg';
@@ -40,6 +41,7 @@ export {
   ArrowCorner,
   ArrowSide,
   Close,
+  CloseSmall,
   ModalStats,
   Cookie,
   Dot,

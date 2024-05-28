@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth/next';
 
-import { Sidebar, TitleContent } from '@/app/components';
+import { AdminModal, Sidebar, TitleContent } from '@/app/components';
 
 import { authOptions } from '@/app/api/auth/[...nextauth]/auth';
 import { AdminBodyStyles } from '@/app/lib/utils';
@@ -24,6 +24,8 @@ export default async function Layout({ children }: Readonly<LayoutProps>) {
 
         <div>{children}</div>
       </div>
+
+      <AdminModal />
 
       <AdminBodyStyles />
     </div>

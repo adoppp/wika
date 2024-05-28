@@ -10,6 +10,7 @@ type Svg =
   | 'arrowCorner'
   | 'arrowSide'
   | 'close'
+  | 'closeSmall'
   | 'modalStats'
   | 'cookie'
   | 'dot'
