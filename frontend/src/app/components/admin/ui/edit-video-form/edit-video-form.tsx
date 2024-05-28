@@ -48,7 +48,7 @@ export default function EditVideoFrom(props: Readonly<EditVideoFromProps>) {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    Loading.circle('Оеовлюємо відео', loadingOptions);
+    Loading.circle('Оновлюємо відео', loadingOptions);
 
     try {
       let data: VideoAttributes = { url: '', mediaId: '' };

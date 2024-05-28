@@ -8,3 +8,5 @@ export { default as DisableScroll } from '@/app/lib/utils/disableScroll/disableS
 export { default as ModalEventHandlers } from '@/app/lib/utils/modalEventHandlers/modalEventHandlers';
 export * from '@/app/lib/utils/notifyOptions/notifyOptions';
 export * from '@/app/lib/utils/slider';
+export * from '@/app/lib/utils/getQueryClient';
+export * from '@/app/lib/utils/generateServiceValues';

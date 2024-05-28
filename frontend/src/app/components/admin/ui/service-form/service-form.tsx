@@ -4,8 +4,18 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { AdminFormsProps } from '@/app/lib/types/global';
-import { cn } from '@/app/lib/utils';
+import { cn, loadingOptions, notifyOptions } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
+import { Loading, Notify } from 'notiflix';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import {
+  addService,
+  ServiceAttributes,
+  ServiceResponse,
+  updateService,
+} from '@/app/lib/api';
+import { useSession } from 'next-auth/react';
+import { useParams, useRouter } from 'next/navigation';
 
 export type Form = {
   titleUk: string;
@@ -28,6 +38,12 @@ export default function ServiceForm({
   const [form, setForm] = useState(values || initialValues);
   const [isBtnDisabled, setIsBtnDisabled] = useState(true);
 
+  const queryClient = useQueryClient();
+  const { data: session } = useSession();
+  const token = (session?.user as any)?.jwt;
+  const router = useRouter();
+  const { id } = useParams();
+
   useEffect(() => {
     if (
       !form.titleUk ||
@@ -40,7 +56,7 @@ export default function ServiceForm({
     } else {
       setIsBtnDisabled(false);
     }
-  }, [form, values]);
+  }, [form]);
 
   const {
     register,
@@ -48,6 +64,42 @@ export default function ServiceForm({
     formState: { errors },
     reset,
   } = useForm<Form>();
+
+  const { mutateAsync: createAsync } = useMutation({
+    mutationFn: addService,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['services'],
+      });
+    },
+  });
+
+  const { mutateAsync: updateAsync } = useMutation({
+    mutationFn: updateService,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['services'],
+      });
+    },
+  });
+
+  let loadingMessage = '';
+  let successMessage = '';
+
+  switch (action) {
+    case 'create':
+      loadingMessage = 'Додаємо новий відгук';
+      successMessage = 'Відгук успішно додано';
+      break;
+
+    case 'update':
+      loadingMessage = 'Редагуємо відгук';
+      successMessage = 'Відгук успішно відредаговано';
+      break;
+
+    default:
+      break;
+  }
 
   const handleInput = (
     e: ChangeEvent<HTMLInputElement & HTMLTextAreaElement>,
@@ -58,7 +110,78 @@ export default function ServiceForm({
     }));
   };
 
-  function onSubmit() {}
+  async function onSubmit(data: Form) {
+    Loading.circle(loadingMessage, loadingOptions);
+
+    try {
+      switch (action) {
+        case 'create':
+          await createService(data);
+          break;
+
+        case 'update':
+          await editService(data);
+          break;
+
+        default:
+          break;
+      }
+
+      Notify.success(successMessage, notifyOptions);
+
+      setTimeout(() => {
+        router.replace('/admin/services');
+        router.refresh();
+      }, 2000);
+    } catch (error) {
+      Notify.failure(`Виникла помилка. ${error}`, notifyOptions);
+    } finally {
+      Loading.remove();
+    }
+  }
+
+  async function createService(data: Form) {
+    const { id: ruLocaleId }: { id: string } = await createAsync({
+      data: {
+        title: data.titleRu,
+        description: data.descriptionRu.split('; '),
+        locale: 'ru',
+      },
+      token,
+    });
+
+    await createAsync({
+      data: {
+        title: data.titleUk,
+        description: data.descriptionUk.split('; '),
+        ruLocaleId: `${ruLocaleId}`,
+      },
+      token,
+    });
+  }
+
+  async function editService(data: Form) {
+    const { attributes }: { attributes: ServiceAttributes } = await updateAsync(
+      {
+        id: id as string,
+        data: {
+          title: data.titleUk,
+          description: data.descriptionUk.split('; '),
+        },
+        token,
+      },
+    );
+
+    await updateAsync({
+      id: attributes.ruLocaleId as string,
+      data: {
+        title: data.titleRu,
+        description: data.descriptionRu.split('; '),
+        locale: 'ru',
+      },
+      token,
+    });
+  }
 
   return (
     <form

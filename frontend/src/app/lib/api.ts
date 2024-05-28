@@ -11,15 +11,15 @@ export interface VideoResponse {
   attributes: VideoAttributes;
 }
 
-export interface PriceItemAttributes {
+export interface ServiceAttributes {
   title: string;
   description: string[];
   ruLocaleId?: string;
 }
 
-export interface PriceItem {
+export interface ServiceResponse {
   id: string;
-  attributes: PriceItemAttributes;
+  attributes: ServiceAttributes;
 }
 
 export interface PhotosAttributes {
@@ -94,8 +94,11 @@ export const getVideo = (init?: RequestInit) => {
   return sendRequest<VideoResponse>(buildUrl('video'), init);
 };
 
-export const getPriceList = (lng: Language, init?: RequestInit) => {
-  return sendRequest<PriceItem[]>(buildUrl(`prices?locale=${lng}`), init);
+export const getServices = (lng: Language, init?: RequestInit) => {
+  return sendRequest<ServiceResponse[]>(
+    buildUrl(`services?locale=${lng}`),
+    init,
+  );
 };
 
 export const getPhotos = (lng: Language, init?: RequestInit) => {
@@ -171,8 +174,16 @@ export const updateVideo = ({
   });
 };
 
-export const getService = (id: string, token: string, init?: RequestInit) => {
-  return sendRequest<PriceItem>(buildUrl(`prices/${id}`), {
+export const getService = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<ServiceResponse>(buildUrl(`services/${id}`), {
     ...init,
     headers: {
       ...init?.headers,
@@ -186,11 +197,11 @@ export const addService = ({
   token,
   init,
 }: {
-  data: PriceItemAttributes & { locale?: 'en' };
+  data: ServiceAttributes & { locale?: 'ru' };
   token: string;
   init?: RequestInit;
 }) => {
-  return sendRequest<PriceItem>(buildUrl('prices'), {
+  return sendRequest<ServiceResponse>(buildUrl('services'), {
     method: 'POST',
     body: JSON.stringify({ data }),
     headers: {
@@ -208,11 +219,11 @@ export const updateService = ({
   init,
 }: {
   id: string;
-  data: PriceItemAttributes & { locale?: 'en' };
+  data: ServiceAttributes & { locale?: 'ru' };
   token: string;
   init?: RequestInit;
 }) => {
-  return sendRequest<PriceItem>(buildUrl(`prices/${id}`), {
+  return sendRequest<ServiceResponse>(buildUrl(`services/${id}`), {
     method: 'PUT',
     body: JSON.stringify({ data }),
     headers: {
@@ -232,7 +243,7 @@ export const deleteService = ({
   token: string;
   init?: RequestInit;
 }) => {
-  return sendRequest<PriceItem>(buildUrl(`prices/${id}`), {
+  return sendRequest<ServiceResponse>(buildUrl(`services/${id}`), {
     method: 'DELETE',
     headers: {
       ...init?.headers,
