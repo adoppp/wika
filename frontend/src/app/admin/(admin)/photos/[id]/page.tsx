@@ -1,5 +1,14 @@
-interface PageProps {}
+import { PhotoForm } from '@/app/components';
+import { generatePhotoValues } from '@/app/lib/utils';
 
-export default function Page(props: Readonly<PageProps>) {
-  return <></>;
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function Page({ params }: Readonly<PageProps>) {
+  const values = await generatePhotoValues(params.id);
+
+  return <PhotoForm action="read" values={values} />;
 }

@@ -5,17 +5,38 @@ import { useForm } from 'react-hook-form';
 import Dropzone from 'react-dropzone';
 
 import { AdminFormsProps } from '@/app/lib/types/global';
-import { cn, Svg } from '@/app/lib/utils';
+import { cn, loadingOptions, notifyOptions, Svg } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useSession } from 'next-auth/react';
+import { useParams, useRouter } from 'next/navigation';
+import {
+  addPhoto,
+  deleteMedia,
+  PhotosAttributes,
+  PROJECT_API,
+  updatePhoto,
+  uploadMedia,
+} from '@/app/lib/api';
+import { Loading, Notify } from 'notiflix';
+import Image from 'next/image';
 
 export type Form = {
   descriptionUk: string;
   descriptionRu: string;
+  beforeUrl: string;
+  beforeMediaId: string;
+  afterUrl: string;
+  afterMediaId: string;
 };
 
 const initialValues: Form = {
   descriptionUk: '',
   descriptionRu: '',
+  beforeUrl: '',
+  beforeMediaId: '',
+  afterUrl: '',
+  afterMediaId: '',
 };
 
 export default function PhotoForm({
@@ -29,17 +50,27 @@ export default function PhotoForm({
   const [fileAfter, setFileAfter] = useState<File | undefined>();
   const [previewAfter, setPreviewAfter] = useState<string | undefined>();
 
+  const queryClient = useQueryClient();
+  const { data: session } = useSession();
+  const token = (session?.user as any)?.jwt;
+  const router = useRouter();
+  const { id } = useParams();
+
   useEffect(() => {
     if (
       !form.descriptionUk ||
       !form.descriptionRu ||
-      JSON.stringify(values) === JSON.stringify(form)
+      (!form.beforeUrl && !fileBefore) ||
+      (!form.afterUrl && !fileAfter) ||
+      (JSON.stringify(values) === JSON.stringify(form) &&
+        !fileBefore &&
+        !fileAfter)
     ) {
       setIsBtnDisabled(true);
     } else {
       setIsBtnDisabled(false);
     }
-  }, [form, values]);
+  }, [form, values, fileBefore, fileAfter]);
 
   const {
     register,
@@ -47,6 +78,42 @@ export default function PhotoForm({
     formState: { errors },
     reset,
   } = useForm<Form>();
+
+  const { mutateAsync: createAsync } = useMutation({
+    mutationFn: addPhoto,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['photos'],
+      });
+    },
+  });
+
+  const { mutateAsync: updateAsync } = useMutation({
+    mutationFn: updatePhoto,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['photos'],
+      });
+    },
+  });
+
+  let loadingMessage = '';
+  let successMessage = '';
+
+  switch (action) {
+    case 'create':
+      loadingMessage = 'Додаємо новий кейс';
+      successMessage = 'Кейс успішно додано';
+      break;
+
+    case 'update':
+      loadingMessage = 'Редагуємо кейс';
+      successMessage = 'Кейс успішно відредаговано';
+      break;
+
+    default:
+      break;
+  }
 
   const handleInput = (
     e: ChangeEvent<HTMLInputElement & HTMLTextAreaElement>,
@@ -57,7 +124,166 @@ export default function PhotoForm({
     }));
   };
 
-  function onSubmit() {}
+  async function onSubmit(data: Form) {
+    Loading.circle(loadingMessage, loadingOptions);
+
+    try {
+      switch (action) {
+        case 'create':
+          await createPhoto(data);
+          break;
+
+        case 'update':
+          await editPhoto(data);
+          break;
+
+        default:
+          break;
+      }
+
+      Notify.success(successMessage, notifyOptions);
+
+      setTimeout(() => {
+        router.replace('/admin/photos');
+        router.refresh();
+      }, 2000);
+    } catch (error) {
+      Notify.failure(`Виникла помилка. ${error}`, notifyOptions);
+    } finally {
+      Loading.remove();
+    }
+  }
+
+  async function createPhoto(formData: Form) {
+    let data = {
+      beforeUrl: '',
+      beforeMediaId: '',
+      afterUrl: '',
+      afterMediaId: '',
+    };
+
+    const formDataBefore = new FormData();
+    const formDataAfter = new FormData();
+
+    formDataBefore.append(
+      'files',
+      fileBefore as File,
+      (fileBefore as File).name,
+    );
+    formDataAfter.append('files', fileAfter as File, (fileAfter as File).name);
+
+    const [{ value: responseBefore }, { value: responseAfter }] =
+      (await Promise.allSettled([
+        uploadMedia(formDataBefore, token),
+        uploadMedia(formDataAfter, token),
+      ])) as {
+        status: 'fulfilled' | 'rejected';
+        value: { url: string; id: number }[];
+      }[];
+
+    const { url: beforeUrl, id: beforeMediaId } = responseBefore[0];
+    const { url: afterUrl, id: afterMediaId } = responseAfter[0];
+
+    data = {
+      beforeUrl,
+      beforeMediaId: `${beforeMediaId}`,
+      afterUrl,
+      afterMediaId: `${afterMediaId}`,
+    };
+
+    const { id: ruLocaleId } = await createAsync({
+      data: { description: formData.descriptionRu, locale: 'ru', ...data },
+      token,
+    });
+
+    await createAsync({
+      data: {
+        description: formData.descriptionUk,
+        ruLocaleId: `${ruLocaleId}`,
+        ...data,
+      },
+      token,
+    });
+  }
+
+  async function editPhoto(data: Form) {
+    let beforeUrl = (values as Form).beforeUrl;
+    let beforeMediaId = (values as Form).beforeMediaId;
+    let afterUrl = (values as Form).afterUrl;
+    let afterMediaId = (values as Form).afterMediaId;
+
+    if (fileBefore || fileAfter) {
+      const formDataBefore = new FormData();
+      const formDataAfter = new FormData();
+
+      if (fileBefore) {
+        formDataBefore.append(
+          'files',
+          fileBefore as File,
+          (fileBefore as File).name,
+        );
+      }
+
+      if (fileAfter) {
+        formDataAfter.append(
+          'files',
+          fileAfter as File,
+          (fileAfter as File).name,
+        );
+      }
+
+      const [
+        { value: uploadResponseBefore },
+        _,
+        { value: uploadResponseAfter },
+        __,
+      ] = (await Promise.allSettled([
+        fileBefore && uploadMedia(formDataBefore, token),
+        fileBefore &&
+          deleteMedia({ id: (values as Form).beforeMediaId, token }),
+        fileAfter && uploadMedia(formDataAfter, token),
+        fileAfter && deleteMedia({ id: (values as Form).afterMediaId, token }),
+      ])) as {
+        status: 'fulfilled' | 'rejected';
+        value: { url: string; id: number }[];
+      }[];
+
+      if (fileBefore) {
+        beforeUrl = uploadResponseBefore[0].url;
+        beforeMediaId = `${uploadResponseBefore[0].id}`;
+      }
+
+      if (fileAfter) {
+        afterUrl = uploadResponseAfter[0].url;
+        afterMediaId = `${uploadResponseAfter[0].id}`;
+      }
+    }
+
+    const { attributes }: { attributes: PhotosAttributes } = await updateAsync({
+      id: id as string,
+      data: {
+        description: data.descriptionUk,
+        beforeUrl,
+        beforeMediaId,
+        afterUrl,
+        afterMediaId,
+      },
+      token,
+    });
+
+    await updateAsync({
+      id: attributes.ruLocaleId as string,
+      data: {
+        description: data.descriptionRu,
+        beforeUrl,
+        beforeMediaId,
+        afterUrl,
+        afterMediaId,
+        locale: 'ru',
+      },
+      token,
+    });
+  }
 
   return (
     <form
@@ -100,6 +326,7 @@ export default function PhotoForm({
                 setPreviewBefore(URL.createObjectURL(acceptedFiles[0]));
               }}
               accept={{ 'image/*': [] }}
+              disabled={action === 'read'}
             >
               {({ getRootProps, getInputProps, isDragActive }) => {
                 return (
@@ -117,17 +344,39 @@ export default function PhotoForm({
                       {...getInputProps({
                         type: 'file',
                         name: 'photoBefore',
-                        required: true,
                       })}
                     />
-                    <span>
-                      <Svg
-                        id="upload"
-                        className="wk_mx-auto wk_mb-[12px] wk_border-none"
+                    {action !== 'read' ? (
+                      previewBefore || values?.beforeUrl ? (
+                        <Image
+                          src={
+                            previewBefore ||
+                            `${PROJECT_API}${values?.beforeUrl}`
+                          }
+                          alt="Before preview"
+                          width={578}
+                          height={376}
+                          className="wk_max-w-[578px] wk_max-h-[376px] wk_object-contain"
+                        />
+                      ) : (
+                        <span>
+                          <Svg
+                            id="upload"
+                            className="wk_mx-auto wk_mb-[12px] wk_border-none"
+                          />
+                          Натисніть, щоб завантажити або перетягніть відповідний
+                          файл
+                        </span>
+                      )
+                    ) : (
+                      <Image
+                        src={`${PROJECT_API}${values?.beforeUrl}`}
+                        alt="Before preview"
+                        width={578}
+                        height={376}
+                        className="wk_max-w-[578px] wk_max-h-[376px] wk_object-contain"
                       />
-                      Натисніть, щоб завантажити або перетягніть відповідний
-                      файл
-                    </span>
+                    )}
                   </div>
                 );
               }}
@@ -138,10 +387,11 @@ export default function PhotoForm({
             Фото після *
             <Dropzone
               onDrop={acceptedFiles => {
-                setFileBefore(acceptedFiles[0]);
-                setPreviewBefore(URL.createObjectURL(acceptedFiles[0]));
+                setFileAfter(acceptedFiles[0]);
+                setPreviewAfter(URL.createObjectURL(acceptedFiles[0]));
               }}
               accept={{ 'image/*': [] }}
+              disabled={action === 'read'}
             >
               {({ getRootProps, getInputProps, isDragActive }) => {
                 return (
@@ -159,17 +409,38 @@ export default function PhotoForm({
                       {...getInputProps({
                         type: 'file',
                         name: 'photoAfter',
-                        required: true,
                       })}
                     />
-                    <span>
-                      <Svg
-                        id="upload"
-                        className="wk_mx-auto wk_mb-[12px] wk_border-none"
+                    {action !== 'read' ? (
+                      previewAfter || values?.afterUrl ? (
+                        <Image
+                          src={
+                            previewAfter || `${PROJECT_API}${values?.afterUrl}`
+                          }
+                          alt="After preview"
+                          width={578}
+                          height={376}
+                          className="wk_max-w-[578px] wk_max-h-[376px] wk_object-contain"
+                        />
+                      ) : (
+                        <span>
+                          <Svg
+                            id="upload"
+                            className="wk_mx-auto wk_mb-[12px] wk_border-none"
+                          />
+                          Натисніть, щоб завантажити або перетягніть відповідний
+                          файл
+                        </span>
+                      )
+                    ) : (
+                      <Image
+                        src={`${PROJECT_API}${values?.afterUrl}`}
+                        alt="Before preview"
+                        width={578}
+                        height={376}
+                        className="wk_max-w-[578px] wk_max-h-[376px] wk_object-contain"
                       />
-                      Натисніть, щоб завантажити або перетягніть відповідний
-                      файл
-                    </span>
+                    )}
                   </div>
                 );
               }}

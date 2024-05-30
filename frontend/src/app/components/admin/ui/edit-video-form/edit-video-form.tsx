@@ -29,13 +29,6 @@ export default function EditVideoFrom(props: Readonly<EditVideoFromProps>) {
 
   const video = queryClient.getQueryData(['video']) as VideoResponse;
 
-  useEffect(() => {
-    if (file) {
-      const blobUrl = URL.createObjectURL(file);
-      setPreview(blobUrl);
-    }
-  }, [file]);
-
   const { mutateAsync: updateAsync } = useMutation({
     mutationFn: updateVideo,
     onSuccess: () => {

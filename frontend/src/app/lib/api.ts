@@ -25,7 +25,9 @@ export interface ServiceResponse {
 export interface PhotosAttributes {
   description: string;
   beforeUrl: string;
+  beforeMediaId: string;
   afterUrl: string;
+  afterMediaId: string;
   ruLocaleId?: string;
 }
 
@@ -244,6 +246,84 @@ export const deleteService = ({
   init?: RequestInit;
 }) => {
   return sendRequest<ServiceResponse>(buildUrl(`services/${id}`), {
+    method: 'DELETE',
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const getPhoto = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PhotosResponse>(buildUrl(`photos/${id}`), {
+    ...init,
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const addPhoto = ({
+  data,
+  token,
+  init,
+}: {
+  data: PhotosAttributes & { locale?: 'ru' };
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PhotosResponse>(buildUrl('photos'), {
+    method: 'POST',
+    body: JSON.stringify({ data }),
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
+export const updatePhoto = ({
+  id,
+  data,
+  token,
+  init,
+}: {
+  id: string;
+  data: PhotosAttributes & { locale?: 'ru' };
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PhotosResponse>(buildUrl(`photos/${id}`), {
+    method: 'PUT',
+    body: JSON.stringify({ data }),
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
+export const deletePhoto = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PhotosResponse>(buildUrl(`photos/${id}`), {
     method: 'DELETE',
     headers: {
       ...init?.headers,

@@ -10,7 +10,12 @@ import {
 } from '@tanstack/react-query';
 import clsx from 'clsx';
 import { Loading, Notify } from 'notiflix';
-import { deleteReview, deleteService } from '@/app/lib/api';
+import {
+  deleteMedia,
+  deletePhoto,
+  deleteReview,
+  deleteService,
+} from '@/app/lib/api';
 import {
   cn,
   DisableScroll,
@@ -32,7 +37,11 @@ export default function AdminModal() {
 
   useEffect(() => {
     setIsOpen(
-      !!(searchParams.get('deleteService') || searchParams.get('deleteReview')),
+      !!(
+        searchParams.get('deleteService') ||
+        searchParams.get('deletePhoto') ||
+        searchParams.get('deleteReview')
+      ),
     );
   }, [searchParams]);
 
@@ -47,6 +56,8 @@ export default function AdminModal() {
   const cancelLink = `/admin${
     searchParams.get('deleteService')
       ? '/services'
+      : searchParams.get('deletePhoto')
+      ? '/photos'
       : searchParams.get('deleteReview')
       ? '/reviews'
       : ''
@@ -56,6 +67,8 @@ export default function AdminModal() {
 
   const mutationFn = searchParams.get('deleteService')
     ? (deleteService as MutationFunction<any, any>)
+    : searchParams.get('deletePhoto')
+    ? (deletePhoto as MutationFunction<any, any>)
     : searchParams.get('deleteReview')
     ? (deleteReview as MutationFunction<any, any>)
     : undefined;
@@ -63,6 +76,8 @@ export default function AdminModal() {
   const queryKey = [
     searchParams.get('deleteService')
       ? 'services'
+      : searchParams.get('deletePhoto')
+      ? 'photos'
       : searchParams.get('deleteReview')
       ? 'reviews'
       : '',
@@ -83,6 +98,8 @@ export default function AdminModal() {
       `Видаляємо ${
         searchParams.get('deleteService')
           ? 'послугу'
+          : searchParams.get('deletePhoto')
+          ? 'кейс'
           : searchParams.get('deleteReview')
           ? 'відгук'
           : ''
@@ -92,16 +109,25 @@ export default function AdminModal() {
 
     try {
       if (searchParams.get('deleteService')) {
-        searchParams
-          .get('deleteService')
-          ?.split(',')
-          .map(async id => {
-            await mutateAsync({ id, token });
-          });
+        await Promise.allSettled([
+          ...(searchParams.get('deleteService') as string)
+            .split(',')
+            .map(id => {
+              mutateAsync({ id, token });
+            }),
+        ]);
+      } else if (searchParams.get('deletePhoto')) {
+        await Promise.allSettled([
+          ...(searchParams.get('media') as string)
+            .split(',')
+            .map(id => deleteMedia({ id, token })),
+          ...(searchParams.get('deletePhoto') as string)
+            .split(',')
+            .map(id => deletePhoto({ id, token })),
+        ]);
       } else if (searchParams.get('deleteReview')) {
-        searchParams
-          .get('deleteReview')
-          ?.split(',')
+        (searchParams.get('deleteReview') as string)
+          .split(',')
           .map(async id => {
             await mutateAsync({ id, token });
           });
@@ -112,6 +138,8 @@ export default function AdminModal() {
       Notify.success(
         searchParams.get('deleteService')
           ? 'Послугу успішно видалено'
+          : searchParams.get('deletePhoto')
+          ? 'Кейс успішно видалено'
           : searchParams.get('deleteReview')
           ? 'Відгук успішно видалено'
           : '',
@@ -121,7 +149,7 @@ export default function AdminModal() {
       setTimeout(() => {
         router.replace(cancelLink);
       }, 2000);
-      // router.refresh();
+      router.refresh();
     } catch (error) {
       Notify.failure(`Виникла помилка. ${error}`, notifyOptions);
     } finally {
@@ -155,6 +183,8 @@ export default function AdminModal() {
           {`${
             searchParams.get('deleteService')
               ? ' послугу'
+              : searchParams.get('deletePhoto')
+              ? ' кейс'
               : searchParams.get('deleteReview')
               ? ' відгук'
               : ''
