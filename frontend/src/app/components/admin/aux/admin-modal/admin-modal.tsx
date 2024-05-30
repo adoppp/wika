@@ -8,7 +8,6 @@ import {
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query';
-import clsx from 'clsx';
 import { Loading, Notify } from 'notiflix';
 import {
   deleteMedia,
@@ -126,13 +125,12 @@ export default function AdminModal() {
             .map(id => deletePhoto({ id, token })),
         ]);
       } else if (searchParams.get('deleteReview')) {
-        (searchParams.get('deleteReview') as string)
-          .split(',')
-          .map(async id => {
-            await mutateAsync({ id, token });
-          });
-
-        // deleteImage(searchParams.avatarId, token);
+        await Promise.allSettled([
+          ...(searchParams.get('deleteReview') as string)
+            .split(',')
+            .map(id => mutateAsync({ id, token })),
+          deleteMedia({ id: searchParams.get('avatar') as string, token }),
+        ]);
       }
 
       Notify.success(

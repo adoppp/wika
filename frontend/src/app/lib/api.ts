@@ -37,7 +37,7 @@ export interface PhotosResponse {
 }
 
 export interface ReviewAttributes {
-  date: string;
+  date: Date;
   reviewerName: string;
   review: string;
   avatarUrl: string;
@@ -332,8 +332,16 @@ export const deletePhoto = ({
   });
 };
 
-export const getReview = (id: string, token: string, init?: RequestInit) => {
-  return sendRequest<ReviewResponse>(buildUrl(`reviews/${id}?populate=*`), {
+export const getReview = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<ReviewResponse>(buildUrl(`reviews/${id}`), {
     ...init,
     headers: {
       ...init?.headers,
@@ -342,37 +350,12 @@ export const getReview = (id: string, token: string, init?: RequestInit) => {
   });
 };
 
-// export const uploadImage = (
-//   formData: FormData,
-//   token: string,
-//   init?: RequestInit,
-// ) => {
-//   return sendRequest(buildUrl('upload'), {
-//     method: 'POST',
-//     body: formData,
-//     headers: {
-//       ...init?.headers,
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-// };
-
-// export const deleteImage = (id: string, token: string, init?: RequestInit) => {
-//   return sendRequest(buildUrl('upload', 'files', id), {
-//     method: 'DELETE',
-//     headers: {
-//       ...init?.headers,
-//       Authorization: `Bearer ${token}`,
-//     },
-//   });
-// };
-
 export const addReview = ({
   data,
   token,
   init,
 }: {
-  data: ReviewAttributes & { locale?: 'en' };
+  data: ReviewAttributes & { locale?: 'ru' };
   token: string;
   init?: RequestInit;
 }) => {
@@ -394,7 +377,7 @@ export const updateReview = ({
   init,
 }: {
   id: string;
-  data: ReviewAttributes & { locale?: 'en' };
+  data: ReviewAttributes & { locale?: 'ru' };
   token: string;
   init?: RequestInit;
 }) => {

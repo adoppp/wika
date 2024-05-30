@@ -9,22 +9,38 @@ import { uk } from 'date-fns/locale';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { AdminFormsProps } from '@/app/lib/types/global';
-import { cn, Svg } from '@/app/lib/utils';
+import { cn, loadingOptions, notifyOptions, Svg } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
-import { format } from 'date-fns';
+import Image from 'next/image';
+import {
+  addReview,
+  deleteMedia,
+  PROJECT_API,
+  ReviewAttributes,
+  updateReview,
+  uploadMedia,
+} from '@/app/lib/api';
+import { Loading, Notify } from 'notiflix';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useSession } from 'next-auth/react';
+import { useParams, useRouter } from 'next/navigation';
 
 export type Form = {
   reviewerName: string;
-  date: string;
+  date: Date | null;
   reviewUk: string;
   reviewRu: string;
+  avatarUrl: string;
+  avatarId: string;
 };
 
 const initialValues: Form = {
   reviewerName: '',
-  date: '',
+  date: null,
   reviewUk: '',
   reviewRu: '',
+  avatarUrl: '',
+  avatarId: '',
 };
 
 export default function ReviewForm({
@@ -36,19 +52,26 @@ export default function ReviewForm({
   const [file, setFile] = useState<File | undefined>();
   const [preview, setPreview] = useState<string | undefined>();
 
+  const queryClient = useQueryClient();
+  const { data: session } = useSession();
+  const token = (session?.user as any)?.jwt;
+  const router = useRouter();
+  const { id } = useParams();
+
   useEffect(() => {
     if (
       !form.reviewerName ||
       !form.date ||
       !form.reviewUk ||
       !form.reviewRu ||
-      JSON.stringify(values) === JSON.stringify(form)
+      (!form.avatarUrl && !form.avatarId && !file) ||
+      (JSON.stringify(values) === JSON.stringify(form) && !file)
     ) {
       setIsBtnDisabled(true);
     } else {
       setIsBtnDisabled(false);
     }
-  }, [form, values]);
+  }, [form, values, file]);
 
   const {
     register,
@@ -56,6 +79,42 @@ export default function ReviewForm({
     formState: { errors },
     reset,
   } = useForm<Form>();
+
+  const { mutateAsync: createAsync } = useMutation({
+    mutationFn: addReview,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['reviews'],
+      });
+    },
+  });
+
+  const { mutateAsync: updateAsync } = useMutation({
+    mutationFn: updateReview,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['reviews'],
+      });
+    },
+  });
+
+  let loadingMessage = '';
+  let successMessage = '';
+
+  switch (action) {
+    case 'create':
+      loadingMessage = 'Додаємо новий відгук';
+      successMessage = 'Відгук успішно додано';
+      break;
+
+    case 'update':
+      loadingMessage = 'Редагуємо відгук';
+      successMessage = 'Відгук успішно відредаговано';
+      break;
+
+    default:
+      break;
+  }
 
   const handleInput = (
     e: ChangeEvent<HTMLInputElement & HTMLTextAreaElement>,
@@ -66,7 +125,119 @@ export default function ReviewForm({
     }));
   };
 
-  function onSubmit() {}
+  async function onSubmit(data: Form) {
+    Loading.circle(loadingMessage, loadingOptions);
+
+    try {
+      switch (action) {
+        case 'create':
+          await createReview(data);
+          break;
+
+        case 'update':
+          await editReview(data);
+          break;
+
+        default:
+          break;
+      }
+
+      Notify.success(successMessage, notifyOptions);
+
+      setTimeout(() => {
+        router.replace('/admin/reviews');
+        router.refresh();
+      }, 2000);
+    } catch (error) {
+      Notify.failure(`Виникла помилка. ${error}`, notifyOptions);
+    } finally {
+      Loading.remove();
+    }
+  }
+
+  async function createReview(formData: Form) {
+    let data = {
+      reviewerName: formData.reviewerName,
+      date: form.date as Date,
+      avatarUrl: '',
+      avatarId: '',
+    };
+
+    if (file) {
+      const formDataAvatar = new FormData();
+      formDataAvatar.append('files', file, file.name);
+
+      const response = await uploadMedia(formDataAvatar, token);
+      const { url, id } = response[0];
+
+      data.avatarUrl = url;
+      data.avatarId = `${id}`;
+    }
+
+    const { id: ruLocaleId } = await createAsync({
+      data: {
+        review: formData.reviewRu,
+        locale: 'ru',
+        ...data,
+      },
+      token,
+    });
+
+    await createAsync({
+      data: {
+        review: formData.reviewUk,
+        ruLocaleId: `${ruLocaleId}`,
+        ...data,
+      },
+      token,
+    });
+  }
+
+  async function editReview(formData: Form) {
+    let data = {
+      reviewerName: formData.reviewerName,
+      date: form.date as Date,
+      avatarUrl: (values as Form).avatarUrl,
+      avatarId: (values as Form).avatarId,
+    };
+
+    if (file) {
+      const formDataAvatar = new FormData();
+      formDataAvatar.append('files', file, file.name);
+
+      const [{ value: response }, _] = (await Promise.allSettled([
+        uploadMedia(formDataAvatar, token),
+        deleteMedia({ id: data.avatarId, token }),
+      ])) as {
+        status: 'fulfilled' | 'rejected';
+        value: { url: string; id: number }[];
+      }[];
+
+      const { url, id } = response[0];
+
+      data.avatarUrl = url;
+      data.avatarId = `${id}`;
+    }
+
+    const { attributes }: { attributes: ReviewAttributes } = await updateAsync({
+      id: id as string,
+      data: {
+        review: formData.reviewUk,
+        ...data,
+      },
+      token,
+    });
+
+    await updateAsync({
+      id: attributes.ruLocaleId as string,
+      data: {
+        review: formData.reviewUk,
+        locale: 'ru',
+        ...data,
+      },
+      token,
+    });
+  }
 
   return (
     <form
@@ -88,22 +259,13 @@ export default function ReviewForm({
 
           <div>
             <DatePicker
-              selected={
-                form.date
-                  ? new Date(
-                      +form.date.split('-')[0],
-                      +form.date.split('-')[1] + 1,
-                      +form.date.split('-')[2],
-                    )
-                  : null
-              }
-              onChange={(date: Date) =>
-                setForm(prev => ({ ...prev, date: format(date, 'yyyy-MM-dd') }))
-              }
+              selected={form.date}
+              onChange={(date: Date) => setForm(prev => ({ ...prev, date }))}
               disabled={action === 'read'}
               placeholderText="дд.мм.рррр *"
               className="wk_block wk_w-[calc((100vw-276px)/2)] wk_px-[20px] wk_py-[12px] wk_rounded-[12px] wk_bg-gray_50 placeholder:wk_text-gray_400 focus:wk_outline-[#04D9FF]"
               locale={uk}
+              dateFormat="dd.MM.yyyy"
             />
           </div>
         </div>
@@ -148,7 +310,7 @@ export default function ReviewForm({
                 <div
                   {...getRootProps()}
                   className={cn(
-                    'wk_flex wk_justify-center wk_items-center wk_h-[340px] wk_max-h-[calc(100vh-492px)] wk_mt-[8px] wk_text-[14px] wk_text-gray_400 wk_border-[2px] wk_border-dashed wk_rounded-[8px] wk_cursor-pointer wk_transition-colors hover:wk_text-gray_700 focus:wk_text-gray_700',
+                    'wk_relative wk_flex wk_justify-center wk_items-center wk_h-[340px] wk_max-h-[calc(100vh-492px)] wk_mt-[8px] wk_text-[14px] wk_text-gray_400 wk_border-[2px] wk_border-dashed wk_rounded-[8px] wk_cursor-pointer wk_transition-colors hover:wk_text-gray_700 focus:wk_text-gray_700',
                     isDragActive
                       ? 'wk_border-[#535A62] wk_bg-gray_100'
                       : 'wk_border-gray_200 wk_bg-gray_50',
@@ -158,20 +320,38 @@ export default function ReviewForm({
                   <input
                     {...getInputProps({
                       type: 'file',
-                      name: 'photoAfter',
-                      required: true,
+                      name: 'reviewerAvatar',
                     })}
                   />
 
-                  {action !== 'read' && (
-                    <span>
-                      <Svg
-                        id="upload"
-                        className="wk_mx-auto wk_mb-[12px] wk_border-none"
+                  {!values?.avatarUrl || preview ? (
+                    preview ? (
+                      <Image
+                        src={preview}
+                        alt="Reviewer avatar preview"
+                        fill={true}
+                        onLoad={() => {
+                          URL.revokeObjectURL(preview);
+                        }}
+                        className="wk_object-contain"
                       />
-                      Натисніть, щоб завантажити або перетягніть відповідний
-                      файл
-                    </span>
+                    ) : (
+                      <span>
+                        <Svg
+                          id="upload"
+                          className="wk_mx-auto wk_mb-[12px] wk_border-none"
+                        />
+                        Натисніть, щоб завантажити або перетягніть відповідний
+                        файл
+                      </span>
+                    )
+                  ) : (
+                    <Image
+                      src={`${PROJECT_API}${values.avatarUrl}`}
+                      alt="Reviewer avatar"
+                      fill={true}
+                      className="wk_object-contain"
+                    />
                   )}
                 </div>
               );
@@ -189,9 +369,9 @@ export default function ReviewForm({
           )}
         >
           {action === 'create'
-            ? 'Додати послугу'
+            ? 'Додати відгук'
             : action === 'update'
-            ? 'Редагувати послугу'
+            ? 'Редагувати відгук'
             : ''}
         </button>
       )}

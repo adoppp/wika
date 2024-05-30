@@ -11,3 +11,4 @@ export * from '@/app/lib/utils/slider';
 export * from '@/app/lib/utils/getQueryClient';
 export * from '@/app/lib/utils/generateServiceValues';
 export * from '@/app/lib/utils/generatePhotoValues';
+export * from '@/app/lib/utils/generateReviewValues';

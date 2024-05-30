@@ -60,25 +60,23 @@ export default async function Page() {
                     <td>{description}</td>
 
                     <td className="wk_w-[76px] wk_align-middle">
-                      <div className="wk_w-[56px] wk_h-[36px] wk_mx-auto wk_border wk_border-dashed wk_border-[#535A62] wk_rounded-[4px] wk_bg-[#22262D]">
+                      <div className="wk_relative wk_w-[56px] wk_h-[36px] wk_mx-auto wk_border wk_border-dashed wk_border-[#535A62] wk_rounded-[4px] wk_bg-[#22262D]">
                         <Image
                           src={`${PROJECT_API}${beforeUrl}`}
                           alt="Before photo"
-                          width={54}
-                          height={34}
-                          className="wk_max-w-[54px] wk_max-h-[34px] wk_object-contain"
+                          fill={true}
+                          className="wk_object-contain"
                         />
                       </div>
                     </td>
 
                     <td className="wk_w-[76px] wk_align-middle">
-                      <div className="wk_w-[56px] wk_h-[36px] wk_mx-auto wk_border wk_border-dashed wk_border-[#535A62] wk_rounded-[4px] wk_bg-[#22262D]">
+                      <div className="wk_relative wk_w-[56px] wk_h-[36px] wk_mx-auto wk_border wk_border-dashed wk_border-[#535A62] wk_rounded-[4px] wk_bg-[#22262D]">
                         <Image
                           src={`${PROJECT_API}${afterUrl}`}
                           alt="After photo"
-                          width={54}
-                          height={34}
-                          className="wk_max-w-[54px] wk_max-h-[34px] wk_object-contain"
+                          fill={true}
+                          className="wk_object-contain"
                         />
                       </div>
                     </td>

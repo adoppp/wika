@@ -926,13 +926,6 @@ export interface ApiReviewReview extends Schema.CollectionType {
           localized: false;
         };
       }>;
-    date: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
     avatarUrl: Attribute.String &
       Attribute.Required &
       Attribute.SetPluginOptions<{
@@ -958,6 +951,13 @@ export interface ApiReviewReview extends Schema.CollectionType {
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
+        };
+      }>;
+    date: Attribute.Date &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
         };
       }>;
     createdAt: Attribute.DateTime;

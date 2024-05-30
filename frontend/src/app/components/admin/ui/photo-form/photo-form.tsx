@@ -62,9 +62,8 @@ export default function PhotoForm({
       !form.descriptionRu ||
       (!form.beforeUrl && !fileBefore) ||
       (!form.afterUrl && !fileAfter) ||
-      (JSON.stringify(values) === JSON.stringify(form) &&
-        !fileBefore &&
-        !fileAfter)
+      (JSON.stringify(values) === JSON.stringify(form) && !fileBefore) ||
+      (JSON.stringify(values) === JSON.stringify(form) && !fileAfter)
     ) {
       setIsBtnDisabled(true);
     } else {
@@ -217,19 +216,11 @@ export default function PhotoForm({
       const formDataAfter = new FormData();
 
       if (fileBefore) {
-        formDataBefore.append(
-          'files',
-          fileBefore as File,
-          (fileBefore as File).name,
-        );
+        formDataBefore.append('files', fileBefore, fileBefore.name);
       }
 
       if (fileAfter) {
-        formDataAfter.append(
-          'files',
-          fileAfter as File,
-          (fileAfter as File).name,
-        );
+        formDataAfter.append('files', fileAfter, fileAfter.name);
       }
 
       const [
@@ -239,10 +230,9 @@ export default function PhotoForm({
         __,
       ] = (await Promise.allSettled([
         fileBefore && uploadMedia(formDataBefore, token),
-        fileBefore &&
-          deleteMedia({ id: (values as Form).beforeMediaId, token }),
+        fileBefore && deleteMedia({ id: beforeMediaId, token }),
         fileAfter && uploadMedia(formDataAfter, token),
-        fileAfter && deleteMedia({ id: (values as Form).afterMediaId, token }),
+        fileAfter && deleteMedia({ id: afterMediaId, token }),
       ])) as {
         status: 'fulfilled' | 'rejected';
         value: { url: string; id: number }[];
@@ -333,7 +323,7 @@ export default function PhotoForm({
                   <div
                     {...getRootProps()}
                     className={cn(
-                      'wk_flex wk_justify-center wk_items-center wk_h-[380px] wk_max-h-[calc(100vh-440px)] wk_mt-[8px] wk_text-[14px] wk_text-gray_400 wk_border-[2px] wk_border-dashed wk_rounded-[8px] wk_cursor-pointer wk_transition-colors hover:wk_text-gray_700 focus:wk_text-gray_700',
+                      'wk_relative wk_flex wk_justify-center wk_items-center wk_h-[380px] wk_max-h-[calc(100vh-440px)] wk_mt-[8px] wk_text-[14px] wk_text-gray_400 wk_border-[2px] wk_border-dashed wk_rounded-[8px] wk_cursor-pointer wk_transition-colors hover:wk_text-gray_700 focus:wk_text-gray_700',
                       isDragActive
                         ? 'wk_border-[#535A62] wk_bg-gray_100'
                         : 'wk_border-gray_200 wk_bg-gray_50',
@@ -346,17 +336,16 @@ export default function PhotoForm({
                         name: 'photoBefore',
                       })}
                     />
-                    {action !== 'read' ? (
-                      previewBefore || values?.beforeUrl ? (
+                    {previewBefore || !values?.beforeUrl ? (
+                      previewBefore ? (
                         <Image
-                          src={
-                            previewBefore ||
-                            `${PROJECT_API}${values?.beforeUrl}`
-                          }
+                          src={previewBefore}
                           alt="Before preview"
-                          width={578}
-                          height={376}
-                          className="wk_max-w-[578px] wk_max-h-[376px] wk_object-contain"
+                          fill={true}
+                          onLoad={() => {
+                            URL.revokeObjectURL(previewBefore);
+                          }}
+                          className="wk_object-contain"
                         />
                       ) : (
                         <span>
@@ -371,10 +360,9 @@ export default function PhotoForm({
                     ) : (
                       <Image
                         src={`${PROJECT_API}${values?.beforeUrl}`}
-                        alt="Before preview"
-                        width={578}
-                        height={376}
-                        className="wk_max-w-[578px] wk_max-h-[376px] wk_object-contain"
+                        alt="Before image"
+                        fill={true}
+                        className="wk_object-contain"
                       />
                     )}
                   </div>
@@ -398,7 +386,7 @@ export default function PhotoForm({
                   <div
                     {...getRootProps()}
                     className={cn(
-                      'wk_flex wk_justify-center wk_items-center wk_h-[380px] wk_max-h-[calc(100vh-440px)] wk_mt-[8px] wk_text-[14px] wk_text-gray_400 wk_border-[2px] wk_border-dashed wk_rounded-[8px] wk_cursor-pointer wk_transition-colors hover:wk_text-gray_700 focus:wk_text-gray_700',
+                      'wk_relative wk_flex wk_justify-center wk_items-center wk_h-[380px] wk_max-h-[calc(100vh-440px)] wk_mt-[8px] wk_text-[14px] wk_text-gray_400 wk_border-[2px] wk_border-dashed wk_rounded-[8px] wk_cursor-pointer wk_transition-colors hover:wk_text-gray_700 focus:wk_text-gray_700',
                       isDragActive
                         ? 'wk_border-[#535A62] wk_bg-gray_100'
                         : 'wk_border-gray_200 wk_bg-gray_50',
@@ -411,16 +399,16 @@ export default function PhotoForm({
                         name: 'photoAfter',
                       })}
                     />
-                    {action !== 'read' ? (
-                      previewAfter || values?.afterUrl ? (
+                    {previewAfter || !values?.afterUrl ? (
+                      previewAfter ? (
                         <Image
-                          src={
-                            previewAfter || `${PROJECT_API}${values?.afterUrl}`
-                          }
+                          src={previewAfter}
                           alt="After preview"
-                          width={578}
-                          height={376}
-                          className="wk_max-w-[578px] wk_max-h-[376px] wk_object-contain"
+                          fill={true}
+                          onLoad={() => {
+                            URL.revokeObjectURL(previewAfter);
+                          }}
+                          className="wk_object-contain"
                         />
                       ) : (
                         <span>
@@ -435,10 +423,9 @@ export default function PhotoForm({
                     ) : (
                       <Image
                         src={`${PROJECT_API}${values?.afterUrl}`}
-                        alt="Before preview"
-                        width={578}
-                        height={376}
-                        className="wk_max-w-[578px] wk_max-h-[376px] wk_object-contain"
+                        alt="Before image"
+                        fill={true}
+                        className="wk_object-contain"
                       />
                     )}
                   </div>

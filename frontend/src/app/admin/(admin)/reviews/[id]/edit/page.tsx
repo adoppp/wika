@@ -1,7 +1,14 @@
 import { ReviewForm } from '@/app/components';
+import { generateReviewValues } from '@/app/lib/utils';
 
-interface PageProps {}
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
 
-export default function Page(props: Readonly<PageProps>) {
-  return <ReviewForm action="update" />;
+export default async function Page({ params }: Readonly<PageProps>) {
+  const values = await generateReviewValues(params.id);
+
+  return <ReviewForm action="update" values={values} />;
 }
