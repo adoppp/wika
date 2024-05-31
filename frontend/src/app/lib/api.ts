@@ -51,9 +51,9 @@ export interface ReviewResponse {
 }
 
 export interface ContactsAttributes {
+  instagram: string;
   telegram: string;
   tiktok: string;
-  instagram: string;
 }
 
 export interface Contacts {
@@ -111,15 +111,8 @@ export const getReviews = (lng: Language, init?: RequestInit) => {
   return sendRequest<ReviewResponse[]>(buildUrl(`reviews?locale=${lng}`), init);
 };
 
-export const getContacts = (
-  lng: Language,
-  init?: RequestInit,
-  populate?: true,
-) => {
-  return sendRequest<Contacts>(
-    buildUrl(`contact?locale=${lng}${populate ? '&populate=*' : ''}`),
-    init,
-  );
+export const getContacts = (init?: RequestInit) => {
+  return sendRequest<Contacts>(buildUrl('contact'), init);
 };
 
 // Private fetches
@@ -413,13 +406,11 @@ export const deleteReview = ({
 export const updateContacts = ({
   data,
   token,
-  locale,
 }: {
   data: Partial<ContactsAttributes>;
   token: string;
-  locale: Language;
 }) => {
-  return sendRequest(buildUrl(`contact?locale=${locale}`), {
+  return sendRequest(buildUrl('contact'), {
     method: 'PUT',
     body: JSON.stringify({ data }),
     headers: {

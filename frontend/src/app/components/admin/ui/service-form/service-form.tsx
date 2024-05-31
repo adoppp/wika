@@ -139,7 +139,7 @@ export default function ServiceForm({
     const { id: ruLocaleId }: { id: string } = await createAsync({
       data: {
         title: data.titleRu,
-        description: data.descriptionRu.split('; '),
+        description: data.descriptionRu.split(' ; '),
         locale: 'ru',
       },
       token,
@@ -148,7 +148,7 @@ export default function ServiceForm({
     await createAsync({
       data: {
         title: data.titleUk,
-        description: data.descriptionUk.split('; '),
+        description: data.descriptionUk.split(' ; '),
         ruLocaleId: `${ruLocaleId}`,
       },
       token,
@@ -161,7 +161,7 @@ export default function ServiceForm({
         id: id as string,
         data: {
           title: data.titleUk,
-          description: data.descriptionUk.split('; '),
+          description: data.descriptionUk.split(' ; '),
         },
         token,
       },
@@ -171,7 +171,7 @@ export default function ServiceForm({
       id: attributes.ruLocaleId as string,
       data: {
         title: data.titleRu,
-        description: data.descriptionRu.split('; '),
+        description: data.descriptionRu.split(' ; '),
         locale: 'ru',
       },
       token,
@@ -208,7 +208,7 @@ export default function ServiceForm({
           />
         </div>
 
-        <div className="wk_flex wk_justify-between wk_gap-[12px]">
+        <div className="wk_flex wk_justify-between wk_gap-[12px] wk_mb-[8px]">
           <textarea
             {...register('descriptionUk')}
             cols={30}
@@ -233,6 +233,10 @@ export default function ServiceForm({
             className="wk_w-[100%] wk_px-[20px] wk_py-[12px] wk_rounded-[12px] wk_bg-gray_50 placeholder:wk_text-gray_400 wk_resize-none wk_font-inherit wk_text-inherit focus:wk_outline-[#04D9FF]"
           ></textarea>
         </div>
+
+        <p className="wk_flex wk_gap-[8px] wk_text-[12px] wk_text-right wk_text-[#A3AAB7] before:wk_content-['?'] before:wk_flex before:wk_justify-center before:wk_items-center before:wk_size-[18px] before:wk_border-[2px] before:wk_border-[#A3AAB7] before:wk_rounded-[50%]">
+          Для розділення опису на частини використовуйте " ; "
+        </p>
       </div>
 
       {action !== 'read' && (

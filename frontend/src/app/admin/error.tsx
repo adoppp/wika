@@ -9,7 +9,7 @@ interface ErrorProps {
   reset: () => void;
 }
 
-export default function Error({ reset }: Readonly<ErrorProps>) {
+export default function Error({ error, reset }: Readonly<ErrorProps>) {
   return (
     <div className="wk_flex wk_flex-col wk_justify-center wk_items-center wk_gap-[40px] wk_h-[60vh]">
       <h1 className="wk_mt-[72px] wk_text-[46px] wk_font-500 wk_leading-[calc(64/46)]">
@@ -43,6 +43,10 @@ export default function Error({ reset }: Readonly<ErrorProps>) {
           На головну
         </Link>
       </div>
+
+      <p className="wk_absolute wk_bottom-[20px] wk_text-[12px]">
+        {error.stack}
+      </p>
     </div>
   );
 }
