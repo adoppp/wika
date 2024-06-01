@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { dir } from 'i18next';
 
 import { languages } from '../i18n/settings';
-import { MetadataHandler } from '../lib/utils';
+import { MetadataHandler, Providers } from '../lib/utils';
 
 interface LayoutProps {
   header: ReactNode;
@@ -72,7 +72,7 @@ export default function Layout({
   params: { lng },
 }: Readonly<LayoutProps>) {
   return (
-    <>
+    <Providers>
       <MetadataHandler lang={lng} dir={dir(lng)} />
 
       {header}
@@ -92,6 +92,6 @@ export default function Layout({
       {modal}
       {cookie}
       {privacyPolicy}
-    </>
+    </Providers>
   );
 }

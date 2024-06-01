@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -9,6 +10,7 @@ import {
   useQueryClient,
 } from '@tanstack/react-query';
 import { Loading, Notify } from 'notiflix';
+
 import {
   deleteMedia,
   deletePhoto,
@@ -23,7 +25,6 @@ import {
   notifyOptions,
   Svg,
 } from '@/app/lib/utils';
-import { useEffect, useRef, useState } from 'react';
 import { transition } from '@/app/lib/constants';
 
 export default function AdminModal() {

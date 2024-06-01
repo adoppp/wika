@@ -4,7 +4,6 @@ import { getServerSession } from 'next-auth/next';
 import { Sidebar } from '@/app/components';
 
 import { authOptions } from '../api/auth/[...nextauth]/auth';
-
 import { AdminBodyStyles } from '../lib/utils';
 
 export default async function Page() {

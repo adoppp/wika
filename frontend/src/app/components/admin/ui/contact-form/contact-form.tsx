@@ -35,7 +35,7 @@ export default function ContactForm({
     setIsBtnDisabled(
       (contacts as any)[name] === inputValue || inputValue === '',
     );
-  }, [inputValue]);
+  }, [contacts, name, inputValue]);
 
   const { mutateAsync } = useMutation({
     mutationFn: updateContacts,
@@ -46,12 +46,7 @@ export default function ContactForm({
     },
   });
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<Form>();
+  const { register, handleSubmit } = useForm<Form>();
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>): void => {
     setInputValue((e.target as any)?.value);
@@ -82,7 +77,7 @@ export default function ContactForm({
       className="wk_flex wk_flex-col wk_h-[calc(100vh-102px)] wk_justify-between"
     >
       <input
-        {...register(`link`)}
+        {...register('link', { required: true })}
         type="text"
         required
         value={inputValue}
@@ -98,7 +93,7 @@ export default function ContactForm({
           transition,
         )}
       >
-        {`Редагувати`}
+        {`Редагувати ${name}`}
       </button>
     </form>
   );

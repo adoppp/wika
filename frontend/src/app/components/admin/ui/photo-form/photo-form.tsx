@@ -1,15 +1,17 @@
 'use client';
 
 import { ChangeEvent, useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import Dropzone from 'react-dropzone';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Loading, Notify } from 'notiflix';
 
 import { AdminFormsProps } from '@/app/lib/types/global';
 import { cn, loadingOptions, notifyOptions, Svg } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useSession } from 'next-auth/react';
-import { useParams, useRouter } from 'next/navigation';
 import {
   addPhoto,
   deleteMedia,
@@ -18,8 +20,6 @@ import {
   updatePhoto,
   uploadMedia,
 } from '@/app/lib/api';
-import { Loading, Notify } from 'notiflix';
-import Image from 'next/image';
 
 export type Form = {
   descriptionUk: string;
@@ -71,12 +71,7 @@ export default function PhotoForm({
     }
   }, [form, values, fileBefore, fileAfter]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<Form>();
+  const { register, handleSubmit } = useForm<Form>();
 
   const { mutateAsync: createAsync } = useMutation({
     mutationFn: addPhoto,

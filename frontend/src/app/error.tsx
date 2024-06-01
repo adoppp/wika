@@ -3,13 +3,12 @@
 import { NextPageContext } from 'next';
 
 import { ErrorProps } from '@/app/lib/types';
-import { useParams, useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { Header, BurgerMenu, Button } from './components';
 import { Language } from './i18n/settings';
 import { useTranslation } from './i18n/client';
 import { cn } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
-import { useRouter } from 'next/router';
 
 ErrorPage.getInitialProps = ({ res, err }: Readonly<NextPageContext>) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
@@ -30,9 +29,10 @@ export default function ErrorPage({ error, statusCode }: Readonly<ErrorProps>) {
       <Header lng={lng as Language} t={headerT} navT={navT} />
 
       <section className="wk_mt-[140px] tablet:wk_mt-[180px] desktop:wk_mt-[240px] wk_mx-auto wk_w-fit wk_text-center wk_flex wk_flex-col wk_items-center">
-        <h1 className="wk_font-300 wk_text-[150px] wk_text-th_accent tablet:wk_text-[239px] wk_mb-[78px] tablet:wk_mb-[32px] desktop:wk_mb-[40px]">
+        <h1 className="wk_w-[calc(100vw-24px)] wk_font-300 wk_text-[150px] wk_text-th_accent tablet:wk_text-[239px] wk_mb-[78px] tablet:wk_mb-[32px] desktop:wk_mb-[40px] wk_truncate">
           {statusCode ? statusCode : error.message}
         </h1>
+
         <p className="wk_font-400 wk_text-[20px] wk_text-gray_400 tablet:wk_text-[40px] wk_mb-[156px] tablet:wk_mb-[66px] desktop:wk_mb-[80px]">
           {errorT('errorDescription')}
           <a
@@ -46,8 +46,9 @@ export default function ErrorPage({ error, statusCode }: Readonly<ErrorProps>) {
             instagram
           </a>
         </p>
+
         <Button
-          onClick={() => router.reload()}
+          onClick={() => router.refresh()}
           color="pink"
           lng={lng as Language}
           label="errorBtnRefresh"

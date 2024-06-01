@@ -5,7 +5,7 @@ import { signIn } from 'next-auth/react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { Notify } from 'notiflix';
 
-import { notifyOptions, Svg } from '@/app/lib/utils';
+import { cn, notifyOptions, Svg } from '@/app/lib/utils';
 
 type Inputs = {
   identifier: string;
@@ -18,14 +18,8 @@ export default function LoginForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    reset,
+    formState: { errors, touchedFields, isValid },
   } = useForm<Inputs>();
-
-  // const initialValues = {
-  //   identifier: '',
-  //   password: '',
-  // };
 
   const onSubmit: SubmitHandler<Inputs> = async values => {
     try {
@@ -40,17 +34,6 @@ export default function LoginForm() {
       onSubmit={handleSubmit(onSubmit)}
       className="wk_flex wk_flex-col wk_items-start wk_w-[486px] wk_pt-[38px] wk_px-[60px] wk_pb-[46px] wk_rounded-14 wk_bg-th_white"
     >
-      {/* <Formik
-        initialValues={initialValues}
-        validationSchema={ValidationSchema}
-        validateOnMount={true}
-        validateOnChange={true}
-        onSubmit={async values => {
-          signIn('credentials', values);
-        }}
-      >
-        {({ errors, touched, isValid }) => (
-          <Form className={styles.form}> */}
       <legend className="wk_w-[100%] wk_mb-[26px] wk_text-[30px] wk_font-500 wk_leading-[calc(36/30)] wk_text-center">
         Увійти в акаунт
       </legend>
@@ -79,19 +62,20 @@ export default function LoginForm() {
         <input
           id="name"
           type="text"
-          {...register('identifier')}
+          {...register('identifier', { required: true })}
           placeholder="Your name"
-          className="wk_w-[100%] wk_py-[10px] wk_pr-[54px] wk_pl-[10px] wk_rounded-[8px] wk_text-[16px] wk_bg-gray_50 focus:wk_outline-none focus-visible:wk_border focus-visible:wk_border-solid focus-visible:wk_border-[#04D9FF] focus-visible:wk_bg-th_white placeholder:wk_text-gray_400"
-
-          // className={clsx(
-          //   errors.identifier && touched.identifier && styles.isError,
-          //   !errors.identifier && touched.identifier && styles.isValid,
-          // )}
+          className={cn(
+            'wk_w-[100%] wk_py-[10px] wk_pr-[54px] wk_pl-[10px] wk_rounded-[8px] wk_text-[16px] wk_bg-gray_50 focus:wk_outline-none wk_border wk_border-th_white wk_border-solid focus-visible:wk_border-[#04D9FF] focus-visible:wk_bg-th_white placeholder:wk_text-gray_400',
+            errors.identifier &&
+              'wk_border-red_danger focus-visible:wk_border-red_danger',
+          )}
         />
 
-        {/* {errors.identifier && touched.identifier && (
-          <p className={styles.error_message}>{errors.identifier}</p>
-        )} */}
+        {errors.identifier?.type === 'required' && (
+          <p className="wk_text-[12px] wk_text-red_danger">
+            Це обовʼязкове поле
+          </p>
+        )}
       </div>
 
       <div className="wk_relative wk_w-[100%] wk_mb-[26px]">
@@ -105,14 +89,20 @@ export default function LoginForm() {
         <input
           id="password"
           type={isPasswordVisible ? 'text' : 'password'}
-          {...register('password')}
+          {...register('password', { required: true, minLength: 8 })}
           placeholder="Введіть мінімум 8 символів"
-          className="wk_w-[100%] wk_py-[10px] wk_pr-[54px] wk_pl-[10px] wk_rounded-[8px] wk_text-[16px] wk_bg-gray_50 focus:wk_outline-none focus-visible:wk_border focus-visible:wk_border-solid focus-visible:wk_border-[#04D9FF] focus-visible:wk_bg-th_white placeholder:wk_text-gray_400"
-          // className={clsx(
-          //   errors.password && touched.password && styles.isError,
-          //   !errors.password && touched.password && styles.isValid,
-          // )}
+          className={cn(
+            'wk_w-[100%] wk_py-[10px] wk_pr-[54px] wk_pl-[10px] wk_rounded-[8px] wk_text-[16px] wk_bg-gray_50 focus:wk_outline-none wk_border wk_border-th_white wk_border-solid focus-visible:wk_border-[#04D9FF] focus-visible:wk_bg-th_white placeholder:wk_text-gray_400',
+            errors.password &&
+              'wk_border-red_danger focus-visible:wk_border-red_danger',
+          )}
         />
+
+        {errors.password?.type === 'required' && (
+          <p className="wk_text-[12px] wk_text-red_danger">
+            Це обовʼязкове поле
+          </p>
+        )}
 
         <button
           type="button"
@@ -121,21 +111,14 @@ export default function LoginForm() {
         >
           {isPasswordVisible ? <Svg id="eyeHide" /> : <Svg id="eyeShow" />}
         </button>
-
-        {/* {errors.password && touched.password && (
-          <p className={styles.error_message}>{errors.password}</p>
-        )} */}
       </div>
 
       <button
-        // disabled={!isValid}
+        disabled={!isValid}
         className="wk_w-[100%] wk_rounded-14 wk_mb-[16px] wk_p-[14px] wk_text-th_white wk_bg-th_accent wk_transition hover:wk_text-th_black hover:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_text-th_black focus:wk_shadow-[0px_0px_50px_0px_rgba(4,217,255,0.50)] focus:wk_outline-none disabled:wk_text-[#535A62] disabled:wk_cursor-not-allowed disabled:wk_bg-th_black"
       >
         Увійти
       </button>
-      {/* </Form>
-        )}
-      </Formik> */}
     </form>
   );
 }

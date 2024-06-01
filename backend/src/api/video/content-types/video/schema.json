@@ -21,6 +21,14 @@
       "type": "string",
       "unique": true,
       "required": true
+    },
+    "posterMediaId": {
+      "type": "string",
+      "required": true
+    },
+    "posterUrl": {
+      "type": "string",
+      "required": true
     }
   }
 }

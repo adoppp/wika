@@ -1,10 +1,11 @@
+import Link from 'next/link';
+import Image from 'next/image';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+
 import { getPhotos, PhotosResponse, PROJECT_API } from '@/app/lib/api';
 import { transition } from '@/app/lib/constants';
 import { cn, Svg } from '@/app/lib/utils';
 import getQueryClient from '@/app/lib/utils/getQueryClient';
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
-import Image from 'next/image';
-import Link from 'next/link';
 
 export default async function Page() {
   const queryClient = getQueryClient();

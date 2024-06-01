@@ -1,6 +1,7 @@
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+
 import { getVideo, PROJECT_API, VideoResponse } from '@/app/lib/api';
 import getQueryClient from '@/app/lib/utils/getQueryClient';
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
 
 export default async function Page() {
   const queryClient = getQueryClient();
@@ -22,6 +23,7 @@ export default async function Page() {
           controls
           src={`${PROJECT_API}${video.attributes.url}`}
           className="wk_h-[calc(100vh-106px)] wk_rounded-[8px]"
+          poster={`${PROJECT_API}${video.attributes.posterUrl}`}
         ></video>
       </div>
     </HydrationBoundary>

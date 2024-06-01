@@ -5,10 +5,11 @@ import { hasCookie, setCookie } from 'cookies-next';
 
 import { CookieBanner, CookieSettings } from '@/app/components';
 
-import { PageProps } from '@/app/lib/types';
 import { cn, Svg } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
 import { useTranslation } from '@/app/i18n/client';
+
+import { PageProps } from '@/app/lib/types';
 
 export const allRejectedCookies = {
   necessary: true,

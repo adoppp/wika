@@ -1,4 +1,5 @@
 import { PhotoList } from '@/app/components';
+
 import { useTranslation } from '@/app/i18n';
 import { PageProps } from '@/app/lib/types';
 import { endpoints } from '@/app/lib/utils';

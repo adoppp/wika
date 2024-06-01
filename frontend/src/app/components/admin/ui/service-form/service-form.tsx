@@ -1,16 +1,16 @@
 'use client';
 
 import { ChangeEvent, useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Loading, Notify } from 'notiflix';
 
 import { AdminFormsProps } from '@/app/lib/types/global';
 import { cn, loadingOptions, notifyOptions } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
-import { Loading, Notify } from 'notiflix';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { addService, ServiceAttributes, updateService } from '@/app/lib/api';
-import { useSession } from 'next-auth/react';
-import { useParams, useRouter } from 'next/navigation';
 
 export type Form = {
   titleUk: string;
@@ -51,14 +51,9 @@ export default function ServiceForm({
     } else {
       setIsBtnDisabled(false);
     }
-  }, [form]);
+  }, [values, form]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<Form>();
+  const { register, handleSubmit } = useForm<Form>();
 
   const { mutateAsync: createAsync } = useMutation({
     mutationFn: addService,
@@ -161,7 +156,7 @@ export default function ServiceForm({
         id: id as string,
         data: {
           title: data.titleUk,
-          description: data.descriptionUk.split(' ; '),
+          description: data.descriptionUk.split(';'),
         },
         token,
       },
@@ -171,7 +166,7 @@ export default function ServiceForm({
       id: attributes.ruLocaleId as string,
       data: {
         title: data.titleRu,
-        description: data.descriptionRu.split(' ; '),
+        description: data.descriptionRu.split(';'),
         locale: 'ru',
       },
       token,
@@ -235,7 +230,7 @@ export default function ServiceForm({
         </div>
 
         <p className="wk_flex wk_gap-[8px] wk_text-[12px] wk_text-right wk_text-[#A3AAB7] before:wk_content-['?'] before:wk_flex before:wk_justify-center before:wk_items-center before:wk_size-[18px] before:wk_border-[2px] before:wk_border-[#A3AAB7] before:wk_rounded-[50%]">
-          Для розділення опису на частини використовуйте " ; "
+          Для розділення опису на частини використовуйте &ldquo; ; &ldquo;
         </p>
       </div>
 

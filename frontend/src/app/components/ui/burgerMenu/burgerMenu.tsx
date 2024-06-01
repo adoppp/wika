@@ -1,8 +1,9 @@
 import Link from 'next/link';
 
+import { Button, LanguageSwitcher, NavBar } from '@/app/components';
+
 import { transition } from '@/app/lib/constants';
 import { DisableScroll, Svg, cn } from '@/app/lib/utils';
-import { Button, LanguageSwitcher, NavBar } from '@/app/components';
 import { BurgerMenuProps } from '@/app/components/ui/burgerMenu/burgerMenu.types';
 
 export default function BurgerMenu({

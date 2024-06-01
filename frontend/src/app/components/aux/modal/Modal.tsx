@@ -6,11 +6,12 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { Notify } from 'notiflix';
 
 import { Button } from '@/app/components/ui';
-import { ModalProps } from '../modal';
 
 import { notifyOptions, Svg } from '@/app/lib/utils';
 import { useTranslation } from '@/app/i18n/client';
 import { submitForm } from '@/app/lib/api';
+
+import { ModalProps } from '../modal';
 
 type Inputs = {
   name: string;

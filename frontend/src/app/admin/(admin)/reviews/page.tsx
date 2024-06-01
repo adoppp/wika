@@ -1,12 +1,13 @@
+import Image from 'next/image';
+import Link from 'next/link';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+import { format } from 'date-fns';
+import { uk } from 'date-fns/locale';
+
 import { getReviews, PROJECT_API, ReviewResponse } from '@/app/lib/api';
 import { transition } from '@/app/lib/constants';
 import { cn, Svg } from '@/app/lib/utils';
 import getQueryClient from '@/app/lib/utils/getQueryClient';
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
-import { format } from 'date-fns';
-import { uk } from 'date-fns/locale';
-import Image from 'next/image';
-import Link from 'next/link';
 
 export default async function Page() {
   const queryClient = getQueryClient();

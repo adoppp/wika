@@ -24,9 +24,12 @@ export default function Service({
 
       <div className="desktop:wk_flex desktop:wk_justify-between desktop:wk_gap-[80px]">
         <ul className="wk_mb-[20px] desktop:wk_mb-[0] wk_ps-[-18px] desktop:wk_ps-[148px] wk_text-[18px] wk_leading-[calc(20/18)] wk_text-gray_400 wk_list-disc">
-          {description.map((item: string) => (
-            <li key={item}>{item}</li>
-          ))}
+          {description
+            .toString()
+            .split(';')
+            .map((item: string) => (
+              <li key={item}>{item}</li>
+            ))}
         </ul>
 
         <Button

@@ -1,8 +1,8 @@
 export interface KeyboardEvent {
-    code: string;
+  code: string;
 }
 
 export interface ModalEventHandlersProps {
-    backdropClassName: string;
-    cancelLink?: string;
+  backdropClassName: string;
+  cancelLink?: string;
 }

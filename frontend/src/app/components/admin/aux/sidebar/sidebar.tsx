@@ -6,6 +6,7 @@ import { signOut } from 'next-auth/react';
 import clsx from 'clsx';
 
 import { Logo } from '@/app/components';
+
 import { Svg } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
 

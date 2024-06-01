@@ -9,7 +9,10 @@ import { useTranslation } from '@/app/i18n/client';
 import { Svg, cn } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
 
-export default function AboutText({ lng }: Readonly<AboutTextProps>) {
+export default function AboutText({
+  lng,
+  instagram,
+}: Readonly<AboutTextProps>) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { t } = useTranslation(lng, 'about');
 
@@ -27,7 +30,7 @@ export default function AboutText({ lng }: Readonly<AboutTextProps>) {
           {t('secondaryTextSignature')}
 
           <a
-            href="https://www.instagram.com/viksi_fitness"
+            href={`https://www.instagram.com/${instagram}`}
             target="_blank"
             className="wk_transition-colors wk_ease-wk_quart wk_duration-400 hover:wk_text-th_accent focus:wk_text-th_accent focus:wk_outline-none"
           >

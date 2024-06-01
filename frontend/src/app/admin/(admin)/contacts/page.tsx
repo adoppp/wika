@@ -1,16 +1,17 @@
-import { Contacts, getContacts } from '@/app/lib/api';
+import Link from 'next/link';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+
 import { transition } from '@/app/lib/constants';
+
+import { Contacts, getContacts } from '@/app/lib/api';
 import { cn, Svg } from '@/app/lib/utils';
 import getQueryClient from '@/app/lib/utils/getQueryClient';
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
-import Link from 'next/link';
 
 export default async function Page() {
   const queryClient = getQueryClient();
 
   await queryClient.prefetchQuery({
     queryKey: ['contacts'],
-    // queryFn: getContacts,
     queryFn: () => getContacts({ cache: 'no-store' }),
     staleTime: 10 * 1000,
   });

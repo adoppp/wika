@@ -1,7 +1,9 @@
+import { notFound } from 'next/navigation';
+
 import { ContactForm } from '@/app/components';
+
 import { Contacts, getContacts } from '@/app/lib/api';
 import getQueryClient from '@/app/lib/utils/getQueryClient';
-import { notFound } from 'next/navigation';
 
 interface PageProps {
   params: {

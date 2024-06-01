@@ -1,9 +1,11 @@
-import { getServices, ServiceResponse } from '@/app/lib/api';
+import Link from 'next/link';
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+
 import { transition } from '@/app/lib/constants';
+
+import { getServices, ServiceResponse } from '@/app/lib/api';
 import { cn, Svg } from '@/app/lib/utils';
 import getQueryClient from '@/app/lib/utils/getQueryClient';
-import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
-import Link from 'next/link';
 
 export default async function Page() {
   const queryClient = getQueryClient();

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { Logo, NavBar, LanguageSwitcher, Button } from '@/app/components';
+
 import { Svg } from '@/app/lib/utils';
 import { HeaderProps } from '@/app/components/ui/header/header.types';
 

@@ -1059,6 +1059,8 @@ export interface ApiVideoVideo extends Schema.SingleType {
   attributes: {
     url: Attribute.String & Attribute.Required & Attribute.Unique;
     mediaId: Attribute.String & Attribute.Required & Attribute.Unique;
+    posterMediaId: Attribute.String & Attribute.Required;
+    posterUrl: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

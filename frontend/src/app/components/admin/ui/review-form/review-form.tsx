@@ -1,17 +1,21 @@
 'use client';
 
 import { ChangeEvent, useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { useParams, useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import Dropzone from 'react-dropzone';
 import DatePicker from 'react-datepicker';
 import { uk } from 'date-fns/locale';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Loading, Notify } from 'notiflix';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { AdminFormsProps } from '@/app/lib/types/global';
 import { cn, loadingOptions, notifyOptions, Svg } from '@/app/lib/utils';
 import { transition } from '@/app/lib/constants';
-import Image from 'next/image';
 import {
   addReview,
   deleteMedia,
@@ -20,10 +24,6 @@ import {
   updateReview,
   uploadMedia,
 } from '@/app/lib/api';
-import { Loading, Notify } from 'notiflix';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useSession } from 'next-auth/react';
-import { useParams, useRouter } from 'next/navigation';
 
 export type Form = {
   reviewerName: string;
@@ -73,12 +73,7 @@ export default function ReviewForm({
     }
   }, [form, values, file]);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<Form>();
+  const { register, handleSubmit } = useForm<Form>();
 
   const { mutateAsync: createAsync } = useMutation({
     mutationFn: addReview,

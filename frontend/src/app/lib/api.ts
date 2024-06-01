@@ -4,6 +4,8 @@ import { Language } from '../i18n/settings';
 export interface VideoAttributes {
   url: string;
   mediaId: string;
+  posterUrl: string;
+  posterMediaId: string;
 }
 
 export interface VideoResponse {
