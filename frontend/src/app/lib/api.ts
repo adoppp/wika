@@ -3,6 +3,9 @@ import { Language } from '../i18n/settings';
 
 export interface VideoAttributes {
   url: string;
+  mediaId: string;
+  posterUrl: string;
+  posterMediaId: string;
 }
 
 export interface VideoResponse {
@@ -10,21 +13,23 @@ export interface VideoResponse {
   attributes: VideoAttributes;
 }
 
-export interface PriceItemAttributes {
+export interface ServiceAttributes {
   title: string;
   description: string[];
   ruLocaleId?: string;
 }
 
-export interface PriceItem {
+export interface ServiceResponse {
   id: string;
-  attributes: PriceItemAttributes;
+  attributes: ServiceAttributes;
 }
 
 export interface PhotosAttributes {
   description: string;
   beforeUrl: string;
+  beforeMediaId: string;
   afterUrl: string;
+  afterMediaId: string;
   ruLocaleId?: string;
 }
 
@@ -34,7 +39,7 @@ export interface PhotosResponse {
 }
 
 export interface ReviewAttributes {
-  date: string;
+  date: Date;
   reviewerName: string;
   review: string;
   avatarUrl: string;
@@ -48,9 +53,9 @@ export interface ReviewResponse {
 }
 
 export interface ContactsAttributes {
+  instagram: string;
   telegram: string;
   tiktok: string;
-  instagram: string;
 }
 
 export interface Contacts {
@@ -93,8 +98,11 @@ export const getVideo = (init?: RequestInit) => {
   return sendRequest<VideoResponse>(buildUrl('video'), init);
 };
 
-export const getPriceList = (lng: Language, init?: RequestInit) => {
-  return sendRequest<PriceItem[]>(buildUrl(`prices?locale=${lng}`), init);
+export const getServices = (lng: Language, init?: RequestInit) => {
+  return sendRequest<ServiceResponse[]>(
+    buildUrl(`services?locale=${lng}`),
+    init,
+  );
 };
 
 export const getPhotos = (lng: Language, init?: RequestInit) => {
@@ -105,20 +113,74 @@ export const getReviews = (lng: Language, init?: RequestInit) => {
   return sendRequest<ReviewResponse[]>(buildUrl(`reviews?locale=${lng}`), init);
 };
 
-export const getContacts = (
-  lng: Language,
-  init?: RequestInit,
-  populate?: true,
-) => {
-  return sendRequest<Contacts>(
-    buildUrl(`contact?locale=${lng}${populate ? '&populate=*' : ''}`),
-    init,
-  );
+export const getContacts = (init?: RequestInit) => {
+  return sendRequest<Contacts>(buildUrl('contact'), init);
 };
 
 // Private fetches
-export const getService = (id: string, token: string, init?: RequestInit) => {
-  return sendRequest<PriceItem>(buildUrl(`prices/${id}`), {
+export const uploadMedia = (
+  formData: FormData,
+  token: string,
+  init?: RequestInit,
+) => {
+  return sendRequest(buildUrl('upload'), {
+    method: 'POST',
+    body: formData,
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const deleteMedia = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest(buildUrl('upload', 'files', id), {
+    method: 'DELETE',
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const updateVideo = ({
+  data,
+  token,
+  init,
+}: {
+  data: VideoAttributes;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest(buildUrl('video'), {
+    method: 'PUT',
+    body: JSON.stringify({ data }),
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
+export const getService = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<ServiceResponse>(buildUrl(`services/${id}`), {
     ...init,
     headers: {
       ...init?.headers,
@@ -132,11 +194,11 @@ export const addService = ({
   token,
   init,
 }: {
-  data: PriceItemAttributes & { locale?: 'en' };
+  data: ServiceAttributes & { locale?: 'ru' };
   token: string;
   init?: RequestInit;
 }) => {
-  return sendRequest<PriceItem>(buildUrl('prices'), {
+  return sendRequest<ServiceResponse>(buildUrl('services'), {
     method: 'POST',
     body: JSON.stringify({ data }),
     headers: {
@@ -154,11 +216,11 @@ export const updateService = ({
   init,
 }: {
   id: string;
-  data: PriceItemAttributes & { locale?: 'en' };
+  data: ServiceAttributes & { locale?: 'ru' };
   token: string;
   init?: RequestInit;
 }) => {
-  return sendRequest<PriceItem>(buildUrl(`prices/${id}`), {
+  return sendRequest<ServiceResponse>(buildUrl(`services/${id}`), {
     method: 'PUT',
     body: JSON.stringify({ data }),
     headers: {
@@ -178,7 +240,7 @@ export const deleteService = ({
   token: string;
   init?: RequestInit;
 }) => {
-  return sendRequest<PriceItem>(buildUrl(`prices/${id}`), {
+  return sendRequest<ServiceResponse>(buildUrl(`services/${id}`), {
     method: 'DELETE',
     headers: {
       ...init?.headers,
@@ -187,8 +249,16 @@ export const deleteService = ({
   });
 };
 
-export const getReview = (id: string, token: string, init?: RequestInit) => {
-  return sendRequest<ReviewResponse>(buildUrl(`reviews/${id}?populate=*`), {
+export const getPhoto = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PhotosResponse>(buildUrl(`photos/${id}`), {
     ...init,
     headers: {
       ...init?.headers,
@@ -197,14 +267,59 @@ export const getReview = (id: string, token: string, init?: RequestInit) => {
   });
 };
 
-export const uploadImage = (
-  formData: FormData,
-  token: string,
-  init?: RequestInit,
-) => {
-  return sendRequest(buildUrl('upload'), {
+export const addPhoto = ({
+  data,
+  token,
+  init,
+}: {
+  data: PhotosAttributes & { locale?: 'ru' };
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PhotosResponse>(buildUrl('photos'), {
     method: 'POST',
-    body: formData,
+    body: JSON.stringify({ data }),
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
+export const updatePhoto = ({
+  id,
+  data,
+  token,
+  init,
+}: {
+  id: string;
+  data: PhotosAttributes & { locale?: 'ru' };
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PhotosResponse>(buildUrl(`photos/${id}`), {
+    method: 'PUT',
+    body: JSON.stringify({ data }),
+    headers: {
+      ...init?.headers,
+      Authorization: `Bearer ${token}`,
+      'content-type': 'application/json',
+    },
+  });
+};
+
+export const deletePhoto = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<PhotosResponse>(buildUrl(`photos/${id}`), {
+    method: 'DELETE',
     headers: {
       ...init?.headers,
       Authorization: `Bearer ${token}`,
@@ -212,9 +327,17 @@ export const uploadImage = (
   });
 };
 
-export const deleteImage = (id: string, token: string, init?: RequestInit) => {
-  return sendRequest(buildUrl('upload', 'files', id), {
-    method: 'DELETE',
+export const getReview = ({
+  id,
+  token,
+  init,
+}: {
+  id: string;
+  token: string;
+  init?: RequestInit;
+}) => {
+  return sendRequest<ReviewResponse>(buildUrl(`reviews/${id}`), {
+    ...init,
     headers: {
       ...init?.headers,
       Authorization: `Bearer ${token}`,
@@ -227,7 +350,7 @@ export const addReview = ({
   token,
   init,
 }: {
-  data: ReviewAttributes & { locale?: 'en' };
+  data: ReviewAttributes & { locale?: 'ru' };
   token: string;
   init?: RequestInit;
 }) => {
@@ -249,7 +372,7 @@ export const updateReview = ({
   init,
 }: {
   id: string;
-  data: ReviewAttributes & { locale?: 'en' };
+  data: ReviewAttributes & { locale?: 'ru' };
   token: string;
   init?: RequestInit;
 }) => {
@@ -285,13 +408,11 @@ export const deleteReview = ({
 export const updateContacts = ({
   data,
   token,
-  locale,
 }: {
   data: Partial<ContactsAttributes>;
   token: string;
-  locale: Language;
 }) => {
-  return sendRequest(buildUrl(`contact?locale=${locale}`), {
+  return sendRequest(buildUrl('contact'), {
     method: 'PUT',
     body: JSON.stringify({ data }),
     headers: {

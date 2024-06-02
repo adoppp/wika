@@ -1,6 +1,7 @@
 import { Button, Paragraph, Title } from '@/app/components';
 
 import { useTranslation } from '@/app/i18n';
+
 import { PageProps } from '@/app/lib/types';
 
 export default async function Page({ params: { lng } }: Readonly<PageProps>) {

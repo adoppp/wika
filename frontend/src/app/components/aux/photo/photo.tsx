@@ -2,9 +2,7 @@ import Image from 'next/image';
 
 import { PhotoProps } from '../photo';
 
-// import { PROJECT_API } from '@/app/lib/api';
-import before_photo from 'public/images/photo_before.jpg';
-import after_photo from 'public/images/photo_after.jpg';
+import { PROJECT_API } from '@/app/lib/api';
 
 export default function Photo({
   data: { description, beforeUrl, afterUrl },
@@ -12,8 +10,7 @@ export default function Photo({
   return (
     <li className="wk_relative wk_flex wk_max-w-[calc(100vw-56px)] mobile:wk_max-w-[378px] wk_mb-[30px] desktop:wk_mb-[50px] wk_rounded-25 wk_overflow-hidden">
       <Image
-        // src={`${PROJECT_API}${beforeUrl}`}
-        src={before_photo}
+        src={`${PROJECT_API}${beforeUrl}`}
         alt="Дівчина"
         width={189}
         height={352}
@@ -21,8 +18,7 @@ export default function Photo({
       />
 
       <Image
-        // src={`${PROJECT_API}${afterUrl}`}
-        src={after_photo}
+        src={`${PROJECT_API}${afterUrl}`}
         alt="Дівчина"
         width={189}
         height={352}

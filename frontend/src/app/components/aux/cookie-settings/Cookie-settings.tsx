@@ -3,15 +3,16 @@
 import { useState } from 'react';
 import { hasCookie, getCookie, setCookie } from 'cookies-next';
 
+import { Toggle } from '@/app/components';
 import {
   allAcceptedCookies,
   allRejectedCookies,
 } from '@/app/[lng]/@cookie/page';
+
 import { useTranslation } from '@/app/i18n/client';
-import { CookieSettingsProps } from '.';
 import { cn, Svg } from '@/app/lib/utils';
-import { Toggle } from '@/app/components';
 import { transition } from '@/app/lib/constants';
+import { CookieSettingsProps } from '.';
 
 export default function CookieSettings({
   lng,
@@ -120,6 +121,7 @@ export default function CookieSettings({
                       <th scope="row" className="wk_w-[100px] wk_font-600">
                         Cookie
                       </th>
+
                       <td>i18next</td>
                     </tr>
 
@@ -127,6 +129,7 @@ export default function CookieSettings({
                       <th scope="row" className="wk_w-[100px] wk_font-600">
                         {t('cookieSettingsDuration')}
                       </th>
+
                       <td>{t('cookieSettingsDurationSession')}</td>
                     </tr>
 
@@ -134,6 +137,7 @@ export default function CookieSettings({
                       <th scope="row" className="wk_w-[100px] wk_font-600">
                         {t('cookieSettingsDescription')}
                       </th>
+
                       <td>
                         {lng === 'uk'
                           ? 'Ми встановлюємо цей файл cookie, щоб запам’ятовувати бажану мову для цього веб-сайту. Він буде автоматично видалений, коли ви закриєте сайт.'

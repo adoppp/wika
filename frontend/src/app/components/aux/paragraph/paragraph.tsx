@@ -1,5 +1,5 @@
-import ParagraphProps from '@/app/components/aux/paragraph/paragraph.types';
 import { cn } from '@/app/lib/utils';
+import ParagraphProps from '@/app/components/aux/paragraph/paragraph.types';
 
 export default function paragraph({
   children,

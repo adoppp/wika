@@ -10,9 +10,23 @@ type Svg =
   | 'arrowCorner'
   | 'arrowSide'
   | 'close'
+  | 'closeSmall'
   | 'modalStats'
   | 'cookie'
-  | 'dot';
+  | 'dot'
+  | 'google'
+  | 'eyeShow'
+  | 'eyeHide'
+  | 'columns'
+  | 'contacts'
+  | 'heart'
+  | 'logout'
+  | 'review'
+  | 'youtube'
+  | 'adminArrow'
+  | 'edit'
+  | 'trash'
+  | 'upload';
 
 export type SvgTypes = {
   [K in Svg]: (props: { className?: string }) => JSX.Element;

@@ -1,19 +1,20 @@
 import Image from 'next/image';
+import { format } from 'date-fns';
+import { ru, uk } from 'date-fns/locale';
 
-// import { PROJECT_API } from '@/app/lib/api';
-import avatar from 'public/images/avatar.jpg';
+import { PROJECT_API } from '@/app/lib/api';
 
 import ReviewProps from './review.types';
 
 export default function Review({
   review: { reviewerName, date, review: reviewText, avatarUrl },
+  lng,
 }: Readonly<ReviewProps>) {
   return (
     <li className="wk_mb-[30px] desktop:wk_mb-[50px]">
       <div className="wk_mb-[30px] tablet:wk_mb-[40px] desktop:wk_mb-[72px]">
         <Image
-          // src={`${PROJECT_API}${avatarUrl}`}
-          src={avatar}
+          src={`${PROJECT_API}${avatarUrl}`}
           alt="Фото клієнта"
           width={65}
           height={65}
@@ -21,7 +22,10 @@ export default function Review({
         />
 
         <h3 className="wk_text-[18px] wk_leading-[calc(22/18)] wk_text-gray_200 wk_text-center">
-          {reviewerName}, <span className="wk_text-gray_600">{date}</span>
+          {reviewerName},{' '}
+          <span className="wk_text-gray_400 wk_capitalize">
+            {format(date, 'LLLL, d, yyyy', { locale: lng === 'uk' ? uk : ru })}
+          </span>
         </h3>
       </div>
 

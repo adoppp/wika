@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { dir } from 'i18next';
 
 import { languages } from '../i18n/settings';
-import { MetadataHandler } from '../lib/utils';
+import { MetadataHandler, Providers } from '../lib/utils';
 
 interface LayoutProps {
   header: ReactNode;
@@ -33,12 +33,14 @@ export async function generateMetadata({
   switch (lng) {
     case 'uk':
       title = 'Твоя персональна фітнес тренерка';
-      description = '';
+      description =
+        'Персональний фітнес тренер для дівчат у Києві. Індивідуальні тренування, програми харчування. Досягніть своїх цілей з професіоналом!';
       break;
 
     case 'ru':
       title = 'Твой персональный фитнес тренер';
-      description = '';
+      description =
+        'Персональный тренер для девочек в Киеве. Индивидуальные тренировки, программы питания. Достигни свои цели с профессионалом!';
       break;
 
     default:
@@ -72,7 +74,7 @@ export default function Layout({
   params: { lng },
 }: Readonly<LayoutProps>) {
   return (
-    <>
+    <Providers>
       <MetadataHandler lang={lng} dir={dir(lng)} />
 
       {header}
@@ -92,6 +94,6 @@ export default function Layout({
       {modal}
       {cookie}
       {privacyPolicy}
-    </>
+    </Providers>
   );
 }

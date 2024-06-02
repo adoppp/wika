@@ -1,5 +1,6 @@
-import { PageProps } from '@/app/lib/types';
 import { Modal } from '@/app/components';
+
+import { PageProps } from '@/app/lib/types';
 
 export default async function Page({
   params: { lng },

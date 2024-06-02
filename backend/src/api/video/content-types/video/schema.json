@@ -4,7 +4,8 @@
   "info": {
     "singularName": "video",
     "pluralName": "videos",
-    "displayName": "Video"
+    "displayName": "Video",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,22 @@
   "pluginOptions": {},
   "attributes": {
     "url": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "mediaId": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "posterMediaId": {
+      "type": "string",
+      "required": true
+    },
+    "posterUrl": {
+      "type": "string",
+      "required": true
     }
   }
 }

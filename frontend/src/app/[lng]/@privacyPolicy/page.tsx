@@ -3,9 +3,11 @@
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { useTranslation } from '@/app/i18n/client';
-import { PageProps } from '@/app/lib/types';
 import { Button } from '@/app/components';
+
+import { useTranslation } from '@/app/i18n/client';
+
+import { PageProps } from '@/app/lib/types';
 
 export default function Page({
   params: { lng },

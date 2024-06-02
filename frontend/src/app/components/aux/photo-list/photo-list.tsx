@@ -1,61 +1,27 @@
+import { dehydrate, HydrationBoundary } from '@tanstack/react-query';
+
 import { Photo, Slider } from '@/app/components';
 
-import { PhotosResponse } from '@/app/lib/api';
+import { getPhotos, PhotosResponse } from '@/app/lib/api';
 import { Options } from '@/app/lib/utils';
+import getQueryClient from '@/app/lib/utils/getQueryClient';
 import { PhotoListProps } from '../photo-list';
 
-const photos = [
-  {
-    id: '1',
-    attributes: {
-      description: 'З 105 кг до 99 кг',
-      beforeUrl: '',
-      afterUrl: '',
-    },
-  },
-  {
-    id: '2',
-    attributes: {
-      description: 'До/після на онлайні за місяць',
-      beforeUrl: '',
-      afterUrl: '',
-    },
-  },
-  {
-    id: '3',
-    attributes: {
-      description: '9 кг за 4 місяці без обмежень',
-      beforeUrl: '',
-      afterUrl: '',
-    },
-  },
-  {
-    id: '4',
-    attributes: {
-      description: 'End',
-      beforeUrl: '',
-      afterUrl: '',
-    },
-  },
-  {
-    id: '5',
-    attributes: {
-      description: 'End + 1',
-      beforeUrl: '',
-      afterUrl: '',
-    },
-  },
-  {
-    id: '6',
-    attributes: {
-      description: 'End + 2',
-      beforeUrl: '',
-      afterUrl: '',
-    },
-  },
-];
+export default async function PhotoList({ lng }: Readonly<PhotoListProps>) {
+  const queryClient = getQueryClient();
 
-export default function PhotoList({ lng }: Readonly<PhotoListProps>) {
+  await queryClient.prefetchQuery({
+    queryKey: ['photos'],
+    queryFn: () => getPhotos(lng),
+    staleTime: 10 * 1000,
+  });
+
+  queryClient.invalidateQueries({ queryKey: ['photos'] });
+
+  const photos = queryClient.getQueryData(['photos']) as PhotosResponse[];
+
+  const dehydratedState = dehydrate(queryClient);
+
   const sliderOptions: Options = {
     itemsToShow: 1,
     itemsToSwipe: 1,
@@ -82,7 +48,7 @@ export default function PhotoList({ lng }: Readonly<PhotoListProps>) {
   };
 
   return (
-    <>
+    <HydrationBoundary state={dehydratedState}>
       <div className="tablet:wk_px-[calc(50%-189px)]">
         <ul className="photos">
           {photos?.map((photo: PhotosResponse) => (
@@ -92,6 +58,6 @@ export default function PhotoList({ lng }: Readonly<PhotoListProps>) {
       </div>
 
       <Slider className="photos" options={sliderOptions} />
-    </>
+    </HydrationBoundary>
   );
 }
