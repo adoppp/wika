@@ -23,7 +23,7 @@ export default function Review({
 
         <h3 className="wk_text-[18px] wk_leading-[calc(22/18)] wk_text-gray_200 wk_text-center">
           {reviewerName},{' '}
-          <span className="wk_text-gray_600 wk_capitalize">
+          <span className="wk_text-gray_400 wk_capitalize">
             {format(date, 'LLLL, d, yyyy', { locale: lng === 'uk' ? uk : ru })}
           </span>
         </h3>
